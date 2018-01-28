@@ -3,6 +3,15 @@
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.24",
     "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.gcc7"
+    ],
+    "build-options": {
+        "env": {
+            "CC": "/usr/lib/sdk/gcc7/bin/gcc",
+            "CXX": "/usr/lib/sdk/gcc7/bin/g++"
+        }
+    },
     "command": "/app/libreoffice/program/soffice",
     "separate-locales": false,
     "modules": [
