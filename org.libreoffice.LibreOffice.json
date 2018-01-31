@@ -23,7 +23,12 @@
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
                     "branch": "libreoffice-6.0.0.3",
-                    "disable-fsckobjects": true
+                    "disable-fsckobjects": true,
+                    "disable-shallow-clone": true
+                },
+                {
+                    "commands": ["git cherry-pick -n 6e1e8225bea130c0e586029500cfe14130d5691c"],
+                    "type": "shell"
                 },
                 {
                     "type": "archive",
