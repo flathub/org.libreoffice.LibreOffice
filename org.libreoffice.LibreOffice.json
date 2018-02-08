@@ -22,7 +22,7 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.0.0.3",
+                    "branch": "libreoffice-6.0.1.1",
                     "disable-fsckobjects": true,
                     "disable-shallow-clone": true
                 },
