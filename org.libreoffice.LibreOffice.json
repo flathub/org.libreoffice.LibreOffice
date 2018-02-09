@@ -4,11 +4,27 @@
     "runtime-version": "3.24",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.gcc7",
         "org.freedesktop.Sdk.Extension.openjdk9"
     ],
+    "build-options": {
+        "env": {
+            "CC": "/usr/lib/sdk/gcc7/bin/gcc",
+            "CXX": "/usr/lib/sdk/gcc7/bin/g++",
+            "LD_LIBRARY_PATH": "/usr/lib/sdk/gcc7/lib"
+        }
+    },
     "command": "/app/libreoffice/program/soffice",
     "separate-locales": false,
     "modules": [
+        {
+            "name": "gcc7",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib",
+                "cp -d /usr/lib/sdk/gcc7/lib/lib{gcc_s.so.1,stdc++.so.6*} /app/lib"
+            ]
+        },
         {
             "name": "openjdk",
             "buildsystem": "simple",
@@ -27,8 +43,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "http://www-us.apache.org/dist/ant/binaries/apache-ant-1.10.2-bin.tar.xz",
-                    "sha512": "a1af5173eafbc5b76fe0ae62c656c96a4c3bfd9d67b10ad19fef53152ae73d61aa05d1b57ceca1d007475113f234feb9d1541d2c624f6ac606361a6e6e375385",
+                    "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.2-bin.tar.xz",
+                    "sha256": "361c8ad2ed8341416e323e7c28af10a8297170a80fdffba294a5c2031527bb6c",
                     "dest": "ant"
                 },
                 {
@@ -532,8 +548,8 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --disable-symbols",
-                "make",
+                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --disable-symbols $(if test \"$(uname -m)\" = aarch64; then printf %s --disable-pdfium; fi)",
+                "make $(if test \"$(uname -i)\" = i386; then printf build-nocheck; fi)",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'"
             ]
