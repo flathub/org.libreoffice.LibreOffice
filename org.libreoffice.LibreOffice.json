@@ -4,11 +4,27 @@
     "runtime-version": "3.24",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.gcc7",
         "org.freedesktop.Sdk.Extension.openjdk9"
     ],
+    "build-options": {
+        "env": {
+            "CC": "/usr/lib/sdk/gcc7/bin/gcc",
+            "CXX": "/usr/lib/sdk/gcc7/bin/g++",
+            "LD_LIBRARY_PATH": "/usr/lib/sdk/gcc7/lib"
+        }
+    },
     "command": "/app/libreoffice/program/soffice",
     "separate-locales": false,
     "modules": [
+        {
+            "name": "gcc7",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib",
+                "cp -d /usr/lib/sdk/gcc7/lib/lib{gcc_s.so.1,stdc++.so.6*} /app/lib"
+            ]
+        },
         {
             "name": "openjdk",
             "buildsystem": "simple",
@@ -22,18 +38,13 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.0.1.1",
-                    "disable-fsckobjects": true,
-                    "disable-shallow-clone": true
-                },
-                {
-                    "commands": ["git cherry-pick -n 6e1e8225bea130c0e586029500cfe14130d5691c"],
-                    "type": "shell"
+                    "branch": "master",
+                    "disable-fsckobjects": true
                 },
                 {
                     "type": "archive",
-                    "url": "http://www-us.apache.org/dist/ant/binaries/apache-ant-1.10.2-bin.tar.xz",
-                    "sha512": "a1af5173eafbc5b76fe0ae62c656c96a4c3bfd9d67b10ad19fef53152ae73d61aa05d1b57ceca1d007475113f234feb9d1541d2c624f6ac606361a6e6e375385",
+                    "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.2-bin.tar.xz",
+                    "sha256": "361c8ad2ed8341416e323e7c28af10a8297170a80fdffba294a5c2031527bb6c",
                     "dest": "ant"
                 },
                 {
@@ -43,10 +54,10 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-3235.tar.bz2",
-                    "sha256": "7dc0d33fc24b1612865f5e173d48800ba3f2db891c57e3f92b9d2ce56ffeb72f",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-3312.tar.bz2",
+                    "sha256": "baa103ab9b72cf3be5ae80106e7ca56110a150fc60a9a3d897e5b26631355b0f",
                     "type": "file",
-                    "dest-filename": "external/tarballs/pdfium-3235.tar.bz2"
+                    "dest-filename": "external/tarballs/pdfium-3312.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz",
@@ -133,10 +144,10 @@
                     "dest-filename": "external/tarballs/EmojiOneColor-SVGinOT-1.3.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/boost_1_65_1.tar.bz2",
-                    "sha256": "9807a5d16566c57fd74fb522764e0b134a8bbe6b6e8967b83afefd30dcd3be81",
+                    "url": "https://dev-www.libreoffice.org/src/boost_1_66_0.tar.bz2",
+                    "sha256": "5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9",
                     "type": "file",
-                    "dest-filename": "external/tarballs/boost_1_65_1.tar.bz2"
+                    "dest-filename": "external/tarballs/boost_1_66_0.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/48d647fbd8ef8889e5a7f422c1bfda94-clucene-core-2.3.3.4.tar.gz",
@@ -175,10 +186,10 @@
                     "dest-filename": "external/tarballs/gpgme-1.9.0.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.4.3.tar.bz2",
-                    "sha256": "22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71",
+                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.1.tar.bz2",
+                    "sha256": "47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449",
                     "type": "file",
-                    "dest-filename": "external/tarballs/libassuan-2.4.3.tar.bz2"
+                    "dest-filename": "external/tarballs/libassuan-2.5.1.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.27.tar.bz2",
@@ -349,10 +360,10 @@
                     "dest-filename": "external/tarballs/openldap-2.4.45.tgz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.13.1.tar.gz",
-                    "sha256": "d7041ef455bb78db66b4ba7876af1b3d0fa377b9444e3ef72ceaccd2e8400937",
+                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.13.2.tar.gz",
+                    "sha256": "0f8e85dc163881c358bd175227a970e3c70443109e2bb0d8d422439c31641df2",
                     "type": "file",
-                    "dest-filename": "external/tarballs/liborcus-0.13.1.tar.gz"
+                    "dest-filename": "external/tarballs/liborcus-0.13.2.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-0.59.0.tar.xz",
@@ -538,7 +549,7 @@
             "buildsystem": "simple",
             "build-commands": [
                 "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --disable-symbols",
-                "make build-nocheck",
+                "make $(if test \"$(uname -i)\" = i386; then printf build-nocheck; fi)",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'"
             ]
