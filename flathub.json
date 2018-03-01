@@ -1,4 +1,3 @@
 {
-    "classes": ["big"],
     "skip-arches": ["arm"]
 }
