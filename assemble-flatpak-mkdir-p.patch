@@ -1,0 +1,30 @@
+--- libreoffice-6/solenv/bin/assemble-flatpak.sh~	2018-04-03 10:06:25.027779098 +0000
++++ libreoffice-6/solenv/bin/assemble-flatpak.sh	2018-04-03 10:07:13.960068386 +0000
+@@ -16,8 +16,7 @@
+ cp -r "${PREFIXDIR?}"/lib/libreoffice /app/
+ 
+ ## libreoffice-*.desktop -> org.libreoffice.LibreOffice-*.desktop:
+-mkdir /app/share
+-mkdir /app/share/applications
++mkdir -p /app/share/applications
+ for i in "${PREFIXDIR?}"/share/applications/libreoffice-*.desktop
+ do
+  sed -e 's,^Exec=libreoffice,Exec=/app/libreoffice/program/soffice,' \
+@@ -29,7 +28,7 @@
+ 
+ ## icons/hicolor/*/apps/libreoffice-* ->
+ ## icons/hicolor/*/apps/org.libreoffice.LibreOffice-*:
+-mkdir /app/share/icons
++mkdir -p /app/share/icons
+ for i in "${PREFIXDIR?}"/share/icons/hicolor/*/apps/libreoffice-*
+ do
+  mkdir -p \
+@@ -42,7 +41,7 @@
+ ## inst/share/appdata/libreoffice-*.appdata.xml (at least recent GNOME Software
+ ## doesn't show more than five screenshots anyway, so restrict to one each from
+ ## the five libreoffice-*.appdata.xml: Writer, Calc, Impress, Draw, Base):
+-mkdir /app/share/appdata
++mkdir -p /app/share/appdata
+ cat <<EOF >/app/share/appdata/org.libreoffice.LibreOffice.appdata.xml
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop">
