@@ -8,10 +8,10 @@
         "org.freedesktop.Sdk.Extension.openjdk9"
     ],
     "build-options": {
+        "append-ld-library-path": "/usr/lib/sdk/gcc7/lib",
         "env": {
             "CC": "/usr/lib/sdk/gcc7/bin/gcc",
-            "CXX": "/usr/lib/sdk/gcc7/bin/g++",
-            "LD_LIBRARY_PATH": "/usr/lib/sdk/gcc7/lib"
+            "CXX": "/usr/lib/sdk/gcc7/bin/g++"
         }
     },
     "command": "/app/libreoffice/program/soffice",
