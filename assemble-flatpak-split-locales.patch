@@ -13,7 +13,7 @@
 +  ln -s ../../../share/runtime/locale/"${lang}"/resource/"${i}" /app/libreoffice/program/resource
 +done
 +
-+for i in /app/libreoffice/share/registry/Langpack-*.xcd /app/libreoffice/share/registry/res/*.xcd
++for i in /app/libreoffice/share/registry/Langpack-*.xcd /app/libreoffice/share/registry/res/{fcfg_langpack,registry}_*.xcd
 +do
 +  basename="$(basename "${i}" .xcd)"
 +  lang="${basename#Langpack-}"
