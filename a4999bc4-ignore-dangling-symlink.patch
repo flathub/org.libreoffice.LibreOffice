@@ -1,0 +1,40 @@
+From a4999bc40d6e856ec9230bc1229a8ba0121fb625 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Wed, 04 Apr 2018 15:44:40 +0200
+Subject: [PATCH] Ignore dangling symlink configuration files
+
+This will be used by the Flatpak build, to offload per-locale data to a Locale
+extension (which expects all per-locale files to be in one place, so we need to
+add---potentially dangling, if a given locale is not installed---symlinks from
+the original places to the location where that Locale extension stores the
+actual files).
+
+Change-Id: Id13b8c53fbc9e0763e53fd09c0c059c9e638c13d
+---
+
+diff --git a/configmgr/source/components.cxx b/configmgr/source/components.cxx
+index 3f99191..e296f8d 100644
+--- a/configmgr/source/components.cxx
++++ b/configmgr/source/components.cxx
+@@ -708,6 +708,10 @@
+                     parseFileLeniently(
+                         parseFile, stat.getFileURL(), layer, nullptr, nullptr, nullptr);
+                 } catch (css::container::NoSuchElementException & e) {
++                    if (stat.getFileType() == osl::FileStatus::Link) {
++                        SAL_WARN("configmgr", "dangling link <" << stat.getFileURL() << ">");
++                        continue;
++                    }
+                     throw css::uno::RuntimeException(
+                         "stat'ed file does not exist: " + e.Message);
+                 }
+@@ -784,6 +788,10 @@
+                         stat.getFileURL(),
+                         new XcdParser(layer, processedDeps, data_));
+                 } catch (css::container::NoSuchElementException & e) {
++                    if (stat.getFileType() == osl::FileStatus::Link) {
++                        SAL_WARN("configmgr", "dangling link <" << stat.getFileURL() << ">");
++                        continue;
++                    }
+                     throw css::uno::RuntimeException(
+                         "stat'ed file does not exist: " + e.Message);
+                 }
