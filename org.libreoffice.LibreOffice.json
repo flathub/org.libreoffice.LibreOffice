@@ -15,7 +15,6 @@
         }
     },
     "command": "/app/libreoffice/program/soffice",
-    "separate-locales": false,
     "modules": [
         {
             "name": "gcc7",
@@ -71,6 +70,14 @@
                 {
                     "type": "patch",
                     "path": "assemble-flatpak-mkdir-p.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "assemble-flatpak-split-locales.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "a4999bc4-ignore-dangling-symlink.patch"
                 },
                 {
                     "type": "archive",
