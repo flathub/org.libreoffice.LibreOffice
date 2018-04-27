@@ -77,6 +77,10 @@
                 },
                 {
                     "type": "patch",
+                    "path": "assemble-flatpak-desktop-integration.patch"
+                },
+                {
+                    "type": "patch",
                     "path": "a4999bc4-ignore-dangling-symlink.patch"
                 },
                 {
