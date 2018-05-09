@@ -64,24 +64,12 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.0.3.2",
+                    "branch": "libreoffice-6.0.4.2",
                     "disable-fsckobjects": true
                 },
                 {
                     "type": "patch",
-                    "path": "assemble-flatpak-mkdir-p.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "assemble-flatpak-split-locales.patch"
-                },
-                {
-                    "type": "patch",
                     "path": "assemble-flatpak-desktop-integration.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "a4999bc4-ignore-dangling-symlink.patch"
                 },
                 {
                     "type": "archive",
@@ -590,7 +578,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --disable-symbols --disable-gtk $(if test \"$(uname -m)\" = aarch64; then printf %s --disable-pdfium; fi)",
+                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --disable-symbols $(if test \"$(uname -m)\" = aarch64; then printf %s --disable-pdfium; fi)",
                 "make $(if test \"$(uname -i)\" = i386; then printf build-nocheck; fi)",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
