@@ -72,6 +72,10 @@
                     "path": "assemble-flatpak-desktop-integration.patch"
                 },
                 {
+                    "type": "patch",
+                    "path": "0001-Resolves-tdf-116951-rhbz-1569331-start-is-G_MAXINT.patch"
+                },
+                {
                     "type": "archive",
                     "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.2-bin.tar.xz",
                     "sha256": "361c8ad2ed8341416e323e7c28af10a8297170a80fdffba294a5c2031527bb6c",
