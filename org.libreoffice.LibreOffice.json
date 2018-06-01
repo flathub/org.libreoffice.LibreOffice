@@ -46,6 +46,10 @@
                     "path": "0001-The-gcc3_linux_aarch64-bridge-needs-to-call-__cxa_cu.patch"
                 },
                 {
+                    "type": "patch",
+                    "path": "assemble-flatpak-dotty-appid.patch"
+                },
+                {
                     "type": "archive",
                     "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.2-bin.tar.xz",
                     "sha256": "361c8ad2ed8341416e323e7c28af10a8297170a80fdffba294a5c2031527bb6c",
@@ -568,8 +572,8 @@
                 "make $(if test \"$FLATPAK_ARCH\" = i386; then printf build-nocheck; fi)",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
-                "desktop-file-edit --set-key=X-Endless-Alias --set-value=libreoffice-startcenter /app/share/applications/org.libreoffice.LibreOffice.desktop",
-                "for i in base calc draw impress math writer xsltfilter; do desktop-file-edit --set-key=X-Endless-Alias --set-value=libreoffice-$i /app/share/applications/org.libreoffice.LibreOffice-$i.desktop; done"
+                "desktop-file-edit --set-key=X-Endless-Alias --set-value=libreoffice-startcenter --set-key=X-Flatpak-RenamedFrom --set-value='libreoffice-startcenter.desktop;' /app/share/applications/org.libreoffice.LibreOffice.desktop",
+                "for i in base calc draw impress math writer xsltfilter; do desktop-file-edit --set-key=X-Endless-Alias --set-value=libreoffice-$i --set-key=X-Flatpak-RenamedFrom --set-value='libreoffice-$i.desktop;org.libreoffice.LibreOffice-$i.desktop;' /app/share/applications/org.libreoffice.LibreOffice.$i.desktop; done"
             ]
         }
     ],
