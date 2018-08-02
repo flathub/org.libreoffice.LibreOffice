@@ -77,20 +77,8 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.0.5.2",
+                    "branch": "libreoffice-6.0.6.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-enable-gio-also-for-disable-gtk-enable-gtk3.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Update-Flatpak-to-OpenJDK10.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Don-t-reset-signal-that-hasn-t-been-set.patch"
                 },
                 {
                     "type": "archive",
@@ -417,10 +405,10 @@
                     "dest-filename": "external/tarballs/liborcus-0.13.3.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-0.59.0.tar.xz",
-                    "sha256": "a3d626b24cd14efa9864e12584b22c9c32f51c46417d7c10ca17651f297c9641",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-0.66.0.tar.xz",
+                    "sha256": "2c096431adfb74bc2f53be466889b7646e1b599f28fa036094f3f7235cc9eae7",
                     "type": "file",
-                    "dest-filename": "external/tarballs/poppler-0.59.0.tar.xz"
+                    "dest-filename": "external/tarballs/poppler-0.66.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/c0b4799ea9850eae3ead14f0a60e9418-postgresql-9.2.1.tar.bz2",
@@ -599,7 +587,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --disable-symbols $(if test \"$(uname -m)\" = aarch64; then printf %s --disable-pdfium; fi)",
+                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak $(if test \"$(uname -m)\" = aarch64; then printf %s --disable-pdfium; fi)",
                 "make $(if test \"$(uname -i)\" = i386; then printf build-nocheck; fi)",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
