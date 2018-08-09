@@ -1,0 +1,37 @@
+From c294bd882414bf23caebddf98012d24af075de4f Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Thu, 9 Aug 2018 13:13:40 +0200
+Subject: [PATCH] Set umask /before/ using it
+
+The test used to fail when umask originally was e.g. 077.
+
+Change-Id: I21d346532698feebccc8bb3f6cb9a9dd3002a20e
+---
+ sfx2/qa/cppunit/test_misc.cxx | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/sfx2/qa/cppunit/test_misc.cxx b/sfx2/qa/cppunit/test_misc.cxx
+index 88764a63f842..9cd789e2b32e 100644
+--- a/sfx2/qa/cppunit/test_misc.cxx
++++ b/sfx2/qa/cppunit/test_misc.cxx
+@@ -119,6 +119,9 @@ void MiscTest::testNoThumbnail()
+     CPPUNIT_ASSERT(xComponent.is());
+ 
+     // Save it with the NoThumbnail option and assert that it has no thumbnail.
++#ifndef _WIN32
++    mode_t nMask = umask(022);
++#endif
+     uno::Reference<frame::XStorable> xStorable(xComponent, uno::UNO_QUERY);
+     CPPUNIT_ASSERT(xStorable.is());
+     utl::TempFile aTempFile;
+@@ -132,7 +135,6 @@ void MiscTest::testNoThumbnail()
+ 
+ #ifndef _WIN32
+     // Check permissions of the URL after store.
+-    mode_t nMask = umask(022);
+     osl::DirectoryItem aItem;
+     CPPUNIT_ASSERT_EQUAL(osl::DirectoryItem::E_None,
+                          osl::DirectoryItem::get(aTempFile.GetURL(), aItem));
+-- 
+2.17.1
+
