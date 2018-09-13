@@ -77,16 +77,8 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.1.0.3",
+                    "branch": "libreoffice-6.1.1.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Set-umask-before-using-it.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Properly-encode-OAuth2-credentials.patch"
                 },
                 {
                     "type": "archive",
