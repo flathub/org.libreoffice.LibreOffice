@@ -1,0 +1,53 @@
+From 1404bdc0d65d35a6d242bbe6965ac98ce3962569 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Fri, 25 Jan 2019 18:02:54 +0100
+Subject: [PATCH] Upgrade libatomic_ops to latest libatomic_ops-7.6.8.tar.gz
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+...from <https://github.com/ivmai/libatomic_ops/wiki/Download>.  (The md5sum
+given there is 99128f05e3e3f4e0cd39aa23f23bbe0c.)
+
+The old version of external/libatomic_ops failed to build at least when building
+a Flatpak for aarch64, see
+<https://flathub.org/builds/#/builders/39/builds/702/steps/5/logs/stdio>:
+
+[...]
+> Making all in src
+> Making all in atomic_ops
+> Making all in sysdeps
+> In file included from atomic_ops_stack.h:32,
+>                  from atomic_ops_malloc.c:20:
+> atomic_ops.h:343:4: error: #error Cannot implement AO_compare_and_swap_full on this architecture.
+>  #  error Cannot implement AO_compare_and_swap_full on this architecture.
+>     ^~~~~
+> atomic_ops.c:97:1: error: unknown type name ‘AO_TS_t’; did you mean ‘AO_TS_T’?
+>  AO_TS_t AO_locks[AO_HASH_SIZE] = {
+>  ^~~~~~~
+>  AO_TS_T
+[...]
+
+Change-Id: Icc040cc47f45f71577995a2ff9c63df97150bdea
+---
+ download.lst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/download.lst b/download.lst
+index 5d4b8f06c4f3..009baa8ff72c 100644
+--- a/download.lst
++++ b/download.lst
+@@ -140,8 +140,8 @@ export LCMS2_SHA256SUM := 48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f80
+ export LCMS2_TARBALL := lcms2-2.9.tar.gz
+ export LIBASSUAN_SHA256SUM := 47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
+ export LIBASSUAN_TARBALL := libassuan-2.5.1.tar.bz2
+-export LIBATOMIC_OPS_SHA256SUM := cf5c52f08a2067ae4fe7c8919e3c1ccf3ee917f1749e0bcc7efffff59c68d9ad
+-export LIBATOMIC_OPS_TARBALL := libatomic_ops-7_2d.zip
++export LIBATOMIC_OPS_SHA256SUM := 1d6a279edf81767e74d2ad2c9fce09459bc65f12c6525a40b0cb3e53c089f665
++export LIBATOMIC_OPS_TARBALL := libatomic_ops-7.6.8.tar.gz
+ export LIBEOT_SHA256SUM := cf5091fa8e7dcdbe667335eb90a2cfdd0a3fe8f8c7c8d1ece44d9d055736a06a
+ export LIBEOT_TARBALL := libeot-0.01.tar.bz2
+ export LIBEXTTEXTCAT_SHA256SUM := 13fdbc9d4c489a4d0519e51933a1aa21fe3fb9eb7da191b87f7a63e82797dac8
+-- 
+2.20.1
+
