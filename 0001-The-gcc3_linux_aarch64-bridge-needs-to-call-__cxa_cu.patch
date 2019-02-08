@@ -1,0 +1,71 @@
+From 06b2e06a581ba99c79aa553ef27e4187f3349a18 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Fri, 8 Feb 2019 10:10:30 +0100
+Subject: [PATCH] The gcc3_linux_aarch64 bridge needs to call
+ __cxa_current_exception_type, too
+
+...or else mapException would extract garbage from the fake
+exception->exceptionType std::type_info* when catching via
+cppu::getCaughtException the rethrown exception thrown via
+std::rethrow_exception in Test::testgetCaughtException in
+cppuhelper/qa/misc/test_misc.cxx.
+
+6ddecf61ecada646fbd6f8809270d47289727e8a "fillUnoException not working on
+std::rethrow_exception exceptions" had adapted the other relevant
+bridges/source/cpp_uno/gcc3_*/ cases but missed the gcc3_linux_aarch64 one.
+
+Change-Id: I5a2afb11ad4abf851169bd3fd8ae647cc81c2fcd
+---
+ bridges/source/cpp_uno/gcc3_linux_aarch64/abi.cxx     | 5 +++--
+ bridges/source/cpp_uno/gcc3_linux_aarch64/abi.hxx     | 2 +-
+ bridges/source/cpp_uno/gcc3_linux_aarch64/uno2cpp.cxx | 3 ++-
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.cxx b/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.cxx
+index da22eb436b8f..477879f2f2a0 100644
+--- a/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.cxx
++++ b/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.cxx
+@@ -224,10 +224,11 @@ StructKind getStructKind(typelib_CompoundTypeDescription const * type) {
+ namespace abi_aarch64 {
+ 
+ void mapException(
+-    __cxa_exception * exception, uno_Any * any, uno_Mapping * mapping)
++    __cxa_exception * exception, std::type_info const * type, uno_Any * any, uno_Mapping * mapping)
+ {
+     assert(exception != 0);
+-    OUString unoName(toUnoName(exception->exceptionType->name()));
++    assert(type != nullptr);
++    OUString unoName(toUnoName(type->name()));
+     typelib_TypeDescription * td = 0;
+     typelib_typedescription_getByName(&td, unoName.pData);
+     if (td == 0) {
+diff --git a/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.hxx b/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.hxx
+index de9bd5efbccb..50c5f1f21a37 100644
+--- a/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.hxx
++++ b/bridges/source/cpp_uno/gcc3_linux_aarch64/abi.hxx
+@@ -70,7 +70,7 @@ struct __cxa_eh_globals
+ };
+ 
+ void mapException(
+-    __cxa_exception * exception, uno_Any * any, uno_Mapping * mapping);
++    __cxa_exception * exception, std::type_info const * type, uno_Any * any, uno_Mapping * mapping);
+ 
+ void raiseException(uno_Any * any, uno_Mapping * mapping);
+ 
+diff --git a/bridges/source/cpp_uno/gcc3_linux_aarch64/uno2cpp.cxx b/bridges/source/cpp_uno/gcc3_linux_aarch64/uno2cpp.cxx
+index 8faccbf3edaf..32a19de020b1 100644
+--- a/bridges/source/cpp_uno/gcc3_linux_aarch64/uno2cpp.cxx
++++ b/bridges/source/cpp_uno/gcc3_linux_aarch64/uno2cpp.cxx
+@@ -192,7 +192,8 @@ void call(
+         abi_aarch64::mapException(
+             reinterpret_cast<abi_aarch64::__cxa_eh_globals *>(
+                 __cxxabiv1::__cxa_get_globals())->caughtExceptions,
+-            *exception, proxy->getBridge()->getCpp2Uno());
++            __cxxabiv1::__cxa_current_exception_type(), *exception,
++            proxy->getBridge()->getCpp2Uno());
+         for (sal_Int32 i = 0; i != count; ++i) {
+             if (cppArgs[i] != 0) {
+                 uno_destructData(
+-- 
+2.20.1
+
