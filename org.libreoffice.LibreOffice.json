@@ -38,12 +38,8 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.2.3.2",
+                    "branch": "libreoffice-6.2.4.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Support-Preview-in-Web-Browser-in-Flatpak-mode.patch"
                 },
                 {
                     "type": "archive",
@@ -238,10 +234,10 @@
                     "dest-filename": "external/tarballs/libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2018-04-23.tar.bz2",
-                    "sha256": "14c21f4533ca74e3af9e09184d6756a750d0cd46099015ba8c595e48499aa878",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2019-04-03.tar.bz2",
+                    "sha256": "a1d7fb901764bb8f251d4f686cdf565764f9987d0fb5d9315d54a7366a84822d",
                     "type": "file",
-                    "dest-filename": "external/tarballs/language-subtag-registry-2018-04-23.tar.bz2"
+                    "dest-filename": "external/tarballs/language-subtag-registry-2019-04-03.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.2.tar.bz2",
