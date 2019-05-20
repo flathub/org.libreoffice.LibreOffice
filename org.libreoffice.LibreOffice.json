@@ -42,6 +42,10 @@
                     "disable-fsckobjects": true
                 },
                 {
+                    "type": "patch",
+                    "path": "0001-Add-content_rating-to-AppData-files.patch"
+                },
+                {
                     "type": "archive",
                     "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.5-bin.tar.xz",
                     "sha256": "cebb705dbbe26a41d359b8be08ec066caba4e8686670070ce44bbf2b57ae113f",
