@@ -1,0 +1,172 @@
+From a997475c732fb6714671de1c61274966aa2052d2 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Mon, 20 May 2019 08:44:02 +0200
+Subject: [PATCH] Add content_rating to AppData files
+
+At least building on Flathub makes presence of this information a hard
+requirement now (see <https://blogs.gnome.org/hughsie/2019/03/28/
+new-appstream-validation-requirements/> and witness the failed
+<https://flathub.org/builds/#/builders/32/builds/3597>).
+
+The suggested way to calculate that information is via the form at
+<https://hughsie.github.io/oars/generate.html>, which I filled in as follows
+(the answers I selected are prefixed with "=>"):
+
+> By answering all the questions you can generate AppStream-compatible markup
+> for the upstream AppData file.
+>
+> If the user is able to "enable" NSFW or "adult" content, then this should be
+> included in the assessment even if it is turned off by default.
+>
+> What type of component are you generating content for:
+
+=> Application that can connect to the Internet
+
+> OARS has multiple versions, and the newer versions include more questions
+> involving specific cultural and religious sensitivities. What version of OARS
+> metadata do you want to produce:
+
+=> 1.0 (works with all clients)
+
+> Advertising
+>
+> Defined as the activity of producing advertisements for commercial products or
+> services.
+>
+> For example, this would include banners showing the Coca-Cola logo shown in a
+> Soccer game.
+
+=> None
+
+> Gambling
+>
+> Defined as taking a risky action in the hope of a desired result.
+>
+> For example, this would include spinning a wheel to get in-app credits.
+
+=> None
+
+> In-App Purchases
+>
+> Defined as items or points that a user can buy for use within a virtual world
+> to improve a character or enhance the playing experience.
+
+=> None
+
+> Online Text-only Messaging
+>
+> Defined as any messaging system connected to the Internet.
+
+=> None
+
+> Online Audio and Video Messaging
+>
+> Defined as any multimedia messaging system connected to the Internet.
+
+=> None
+
+> Contact Details
+>
+> Defined as sharing identifiable details with other users to allow out-of-band
+> communication.
+
+=> None
+
+> Information Sharing
+>
+> Defined as sharing information with a legal entity typically used for
+> advertising or for sending back diagnostic data.
+>
+> For example, this would include sending your purchasing history to Amazon.
+
+=> None
+
+> Location Sharing
+>
+> Defined as sharing your physical real-time location.
+>
+> For example, this would include uploading the GPS co-ordinates of your current
+> location. NOTE: This does not include heuristic based location services, e.g.
+> GeoIP and others.
+
+=> None
+
+> The following markup can be pasted into the existing application AppData file.
+>
+> <content_rating type="oars-1.0" />
+
+Change-Id: I063484d8031892c20f88999c5a9beeae3666511c
+---
+ solenv/bin/assemble-flatpak.sh                                  | 1 +
+ sysui/desktop/appstream-appdata/libreoffice-base.appdata.xml    | 1 +
+ sysui/desktop/appstream-appdata/libreoffice-calc.appdata.xml    | 1 +
+ sysui/desktop/appstream-appdata/libreoffice-draw.appdata.xml    | 1 +
+ sysui/desktop/appstream-appdata/libreoffice-impress.appdata.xml | 1 +
+ sysui/desktop/appstream-appdata/libreoffice-writer.appdata.xml  | 1 +
+ 6 files changed, 6 insertions(+)
+
+diff --git a/solenv/bin/assemble-flatpak.sh b/solenv/bin/assemble-flatpak.sh
+index 6c0734178662..b4bce2d4d172 100755
+--- a/solenv/bin/assemble-flatpak.sh
++++ b/solenv/bin/assemble-flatpak.sh
+@@ -142,6 +142,7 @@ cat <<EOF >/app/share/appdata/org.libreoffice.LibreOffice.appdata.xml
+   <kudo>ModernToolkit</kudo>
+   <kudo>UserDocs</kudo>
+  </kudos>
++ <content_rating type="oars-1.0"/>
+  <releases>
+   <release
+     version="${LIBO_VERSION_MAJOR?}.${LIBO_VERSION_MINOR?}.${LIBO_VERSION_MICRO?}.${LIBO_VERSION_PATCH?}"
+diff --git a/sysui/desktop/appstream-appdata/libreoffice-base.appdata.xml b/sysui/desktop/appstream-appdata/libreoffice-base.appdata.xml
+index 4ccbe7be47d5..c8918dd82f77 100644
+--- a/sysui/desktop/appstream-appdata/libreoffice-base.appdata.xml
++++ b/sysui/desktop/appstream-appdata/libreoffice-base.appdata.xml
+@@ -49,4 +49,5 @@ to connect to virtually any other existing database engine as well.
+     <kudo>ModernToolkit</kudo>
+     <kudo>UserDocs</kudo>
+   </kudos>
++  <content_rating type="oars-1.0"/>
+ </component>
+diff --git a/sysui/desktop/appstream-appdata/libreoffice-calc.appdata.xml b/sysui/desktop/appstream-appdata/libreoffice-calc.appdata.xml
+index 6753773bcccb..8cf2755abe6a 100644
+--- a/sysui/desktop/appstream-appdata/libreoffice-calc.appdata.xml
++++ b/sysui/desktop/appstream-appdata/libreoffice-calc.appdata.xml
+@@ -43,4 +43,5 @@ worrying about compatibility.
+     <kudo>ModernToolkit</kudo>
+     <kudo>UserDocs</kudo>
+   </kudos>
++  <content_rating type="oars-1.0"/>
+ </component>
+diff --git a/sysui/desktop/appstream-appdata/libreoffice-draw.appdata.xml b/sysui/desktop/appstream-appdata/libreoffice-draw.appdata.xml
+index 3655e959cbc0..df2c93e2deee 100644
+--- a/sysui/desktop/appstream-appdata/libreoffice-draw.appdata.xml
++++ b/sysui/desktop/appstream-appdata/libreoffice-draw.appdata.xml
+@@ -48,4 +48,5 @@ worrying about compatibility.
+     <kudo>ModernToolkit</kudo>
+     <kudo>UserDocs</kudo>
+   </kudos>
++  <content_rating type="oars-1.0"/>
+ </component>
+diff --git a/sysui/desktop/appstream-appdata/libreoffice-impress.appdata.xml b/sysui/desktop/appstream-appdata/libreoffice-impress.appdata.xml
+index 23fdc1154e0e..ec6b4fb4c89b 100644
+--- a/sysui/desktop/appstream-appdata/libreoffice-impress.appdata.xml
++++ b/sysui/desktop/appstream-appdata/libreoffice-impress.appdata.xml
+@@ -44,4 +44,5 @@ worrying about compatibility.
+     <kudo>ModernToolkit</kudo>
+     <kudo>UserDocs</kudo>
+   </kudos>
++  <content_rating type="oars-1.0"/>
+ </component>
+diff --git a/sysui/desktop/appstream-appdata/libreoffice-writer.appdata.xml b/sysui/desktop/appstream-appdata/libreoffice-writer.appdata.xml
+index df0ce289a839..d6b10cff9e59 100644
+--- a/sysui/desktop/appstream-appdata/libreoffice-writer.appdata.xml
++++ b/sysui/desktop/appstream-appdata/libreoffice-writer.appdata.xml
+@@ -50,4 +50,5 @@ worrying about compatibility.
+     <kudo>ModernToolkit</kudo>
+     <kudo>UserDocs</kudo>
+   </kudos>
++  <content_rating type="oars-1.0"/>
+ </component>
+-- 
+2.21.0
+
