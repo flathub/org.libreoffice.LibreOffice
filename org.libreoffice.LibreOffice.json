@@ -38,12 +38,8 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.2.4.2",
+                    "branch": "libreoffice-6.2.5.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Add-content_rating-to-AppData-files.patch"
                 },
                 {
                     "type": "archive",
