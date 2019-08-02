@@ -33,12 +33,23 @@
             ]
         },
         {
+            "name": "gperf",
+            "cleanup": [ "*" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.gnu.org/pub/gnu/gperf/gperf-3.1.tar.gz",
+                    "sha256": "588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2"
+                }
+            ]
+        },
+        {
             "name": "libreoffice",
             "sources": [
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.2.5.2",
+                    "branch": "libreoffice-6.3.0.4",
                     "disable-fsckobjects": true
                 },
                 {
@@ -54,10 +65,10 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-3550.tar.bz2",
-                    "sha256": "572460f7f9e2f86d022a9c6a82f1e2ded6c3c29ba352d4b9fac60b87e2159679",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-3794.tar.bz2",
+                    "sha256": "e3faddcf741336c64ca2e6f72b23e9e60979969b2cf67c878c9a5bc38328cfc4",
                     "type": "file",
-                    "dest-filename": "external/tarballs/pdfium-3550.tar.bz2"
+                    "dest-filename": "external/tarballs/pdfium-3794.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz",
@@ -66,10 +77,10 @@
                     "dest-filename": "external/tarballs/0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.27.tar.gz",
-                    "sha256": "97d756bad8e92588e6997d2227797eaa900d05e34a426829b149f65d87118eb6",
+                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.28.tar.gz",
+                    "sha256": "13eec4811ea30e3f0e16a734d1dbf7f9d246a71d540b48d143a07b489f6222d4",
                     "type": "file",
-                    "dest-filename": "external/tarballs/xmlsec1-1.2.27.tar.gz"
+                    "dest-filename": "external/tarballs/xmlsec1-1.2.28.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/368f114c078f94214a308a74c7e991bc-crosextrafonts-20130214.tar.gz",
@@ -126,10 +137,10 @@
                     "dest-filename": "external/tarballs/edc4d741888bc0d38e32dbaa17149596-source-sans-pro-2.010R-ro-1.065R-it.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/source-serif-font-2.007R.tar.gz",
-                    "sha256": "10b2bbb357d52bf0f516d3e0ac0a09b5f7901470fbf649b69dad9ccc2d29f7cb",
+                    "url": "https://dev-www.libreoffice.org/src/source-serif-pro-3.000R.tar.gz",
+                    "sha256": "826a2b784d5cdb4c2bbc7830eb62871528360a61a52689c102a101623f1928e3",
                     "type": "file",
-                    "dest-filename": "external/tarballs/source-serif-font-2.007R.tar.gz"
+                    "dest-filename": "external/tarballs/source-serif-pro-3.000R.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/EmojiOneColor-SVGinOT-1.3.tar.gz",
@@ -138,10 +149,10 @@
                     "dest-filename": "external/tarballs/EmojiOneColor-SVGinOT-1.3.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/boost_1_66_0.tar.bz2",
-                    "sha256": "5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9",
+                    "url": "https://dev-www.libreoffice.org/src/boost_1_69_0.tar.bz2",
+                    "sha256": "8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406",
                     "type": "file",
-                    "dest-filename": "external/tarballs/boost_1_66_0.tar.bz2"
+                    "dest-filename": "external/tarballs/boost_1_69_0.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/48d647fbd8ef8889e5a7f422c1bfda94-clucene-core-2.3.3.4.tar.gz",
@@ -252,10 +263,10 @@
                     "dest-filename": "external/tarballs/libmspub-0.1.4.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libmwaw-0.3.14.tar.xz",
-                    "sha256": "aca8bf1ce55ed83adbea82c70d4c8bebe8139f334b3481bf5a6e407f91f33ce9",
+                    "url": "https://dev-www.libreoffice.org/src/libmwaw-0.3.15.tar.xz",
+                    "sha256": "0440bb09f05e3419423d8dfa36ee847056ebfd837f9cbc091fdb5b057daab0b1",
                     "type": "file",
-                    "dest-filename": "external/tarballs/libmwaw-0.3.14.tar.xz"
+                    "dest-filename": "external/tarballs/libmwaw-0.3.15.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libodfgen-0.1.6.tar.bz2",
@@ -552,10 +563,10 @@
                     "dest-filename": "external/tarballs/libatomic_ops-7.6.8.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/extern/49a64f3bcf20a7909ba2751349231d6652ded9cd2840e961b5164d09de3ffa63-opens___.ttf",
-                    "sha256": "49a64f3bcf20a7909ba2751349231d6652ded9cd2840e961b5164d09de3ffa63",
+                    "url": "https://dev-www.libreoffice.org/extern/884ed41809687c3e168fc7c19b16585149ff058eca79acbf3ee784f6630704cc-opens___.ttf",
+                    "sha256": "884ed41809687c3e168fc7c19b16585149ff058eca79acbf3ee784f6630704cc",
                     "type": "file",
-                    "dest-filename": "external/tarballs/49a64f3bcf20a7909ba2751349231d6652ded9cd2840e961b5164d09de3ffa63-opens___.ttf"
+                    "dest-filename": "external/tarballs/884ed41809687c3e168fc7c19b16585149ff058eca79acbf3ee784f6630704cc-opens___.ttf"
                 }
             ],
             "buildsystem": "simple",
