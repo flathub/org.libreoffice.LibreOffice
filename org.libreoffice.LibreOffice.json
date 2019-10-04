@@ -44,6 +44,17 @@
             ]
         },
         {
+            "name": "krb5",
+            "subdir": "src",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://kerberos.org/dist/krb5/1.16/krb5-1.16.3.tar.gz",
+                    "sha256": "e40499df7c6dbef0cf9b11870a0e167cde827737d8b2c06a9436334f08ab9b0d"
+                }
+            ]
+        },
+        {
             "name": "libreoffice",
             "sources": [
                 {
