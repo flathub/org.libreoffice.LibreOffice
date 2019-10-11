@@ -1,0 +1,35 @@
+From 1db8253dafd7d2bbaad3f4cbdffcff9f1cd6122f Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Thu, 10 Oct 2019 17:17:41 +0200
+Subject: [PATCH] Pass LDFLAGS into external/postgresql
+
+This will be needed when building against Flatpak org.freedesktop.Sdk//19.08,
+which no longer bundles krb5, so we will have a bundled libgssapi_krb5.so
+at /app/lib (instead of under /usr), but which requires LDFLAGS=-L/app/lib to
+be found.
+
+Change-Id: I8767740ab0cbb02b6ae682b7f0e21ec90ea5ddd7
+Reviewed-on: https://gerrit.libreoffice.org/80620
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+(cherry picked from commit cfd06eb99b8f366bfe96e4a6d3112e4c6057098b)
+---
+ external/postgresql/ExternalProject_postgresql.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/external/postgresql/ExternalProject_postgresql.mk b/external/postgresql/ExternalProject_postgresql.mk
+index fc4342c60f93..ba462a34a1a1 100644
+--- a/external/postgresql/ExternalProject_postgresql.mk
++++ b/external/postgresql/ExternalProject_postgresql.mk
+@@ -31,7 +31,7 @@ $(call gb_ExternalProject_get_state_target,postgresql,build) :
+ else
+ 
+ postgresql_CPPFLAGS := $(ZLIB_CFLAGS)
+-postgresql_LDFLAGS  :=
++postgresql_LDFLAGS  := $(LDFLAGS)
+ 
+ ifeq ($(SYSTEM_ZLIB),)
+ postgresql_LDFLAGS += $(ZLIB_LIBS)
+-- 
+2.21.0
+
