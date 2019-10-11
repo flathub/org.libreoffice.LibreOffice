@@ -1,0 +1,68 @@
+From be0135a2540a30a4f2041ad6dc80c87162adf833 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Fri, 11 Oct 2019 16:34:04 +0200
+Subject: [PATCH] aarch64 callVirtualFunction needs to be compiled w/o
+ -fstack-clash-protection
+
+At least when doing an aarch64 Flatpak build against org.freedesktop.Sdk//19.08,
+which uses GCC 9.2.0 and passes in `CXXFLAGS=-O2 -g -pipe
+-Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions
+-fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables
+-fstack-clash-protection`, callVirtualMethod (in
+bridges/source/cpp_uno/gcc3_linux_aarch64/callvirtualfunction.cxx) would
+decrement the stack pointer another 16 bytes after the
+
+  stackargs = alloca(...);
+
+and before the asm block, so in the called virtual function, arguments read from
+the stack would read garbage (and CustomTarget_testtools/uno_test would fail
+with SIGSEGV at
+
+> #0  0x0000ffffb733eb48 in rtl::OUString::operator= (this=0xaaaaf9c1ac30, str=...) at /run/build/libreoffice/include/rtl/ustring.hxx:453
+> #1  0x0000ffffb733a7bc in bridge_object::assign (rData=..., bBool=true, cChar=64 u'@', nByte=17 '\021', nShort=4660, nUShort=65244, nLong=305419896, nULong=4275878552, nHyper=0, nUHyper=187651311381888, fFloat=17.0814991, fDouble=3.1415926358999999, eEnum=-1698898192, rStr=..., xTest=..., rAny=...) at /run/build/libreoffice/testtools/source/bridgetest/cppobj.cxx:99
+> #2  0x0000ffffb733a87c in bridge_object::assign (rData=..., bBool=true, cChar=64 u'@', nByte=17 '\021', nShort=4660, nUShort=65244, nLong=305419896, nULong=4275878552, nHyper=0, nUHyper=187651311381888, fFloat=17.0814991, fDouble=3.1415926358999999, eEnum=-1698898192, rStr=..., xTest=..., rAny=..., rSequence=...) at /run/build/libreoffice/testtools/source/bridgetest/cppobj.cxx:115
+> #3  0x0000ffffb733ade4 in bridge_object::Test_Impl::setValues (this=0xaaaaf9c1abb0, bBool=1 '\001', cChar=64 u'@', nByte=17 '\021', nShort=4660, nUShort=65244, nLong=305419896, nULong=4275878552, nHyper=0, nUHyper=187651311381888, fFloat=17.0814991, fDouble=3.1415926358999999, eEnum=-1698898192, rStr=..., xTest=..., rAny=..., rSequence=..., rStruct=...) at /run/build/libreoffice/testtools/source/bridgetest/cppobj.cxx:548
+> #4  0x0000ffffb740bff4 in callVirtualFunction (function=281473755360772, gpr=0xffffd1ab1f28, fpr=0xffffd1ab1f68, stack=0xffffd1ab1d40, sp=8, ret=0xffffd1ab22c0) at /run/build/libreoffice/bridges/source/cpp_uno/gcc3_linux_aarch64/callvirtualfunction.cxx:63
+> #5  0x0000ffffb740ca70 in (anonymous namespace)::call (proxy=0xaaaaf9c291c0, slot=..., returnType=0xaaaaf9c00770, count=17, parameters=0xaaaaf9c3a210, returnValue=0xffffd1ab22c0, arguments=0xffffd1ab2230, exception=0xffffd1ab2370) at /run/build/libreoffice/bridges/source/cpp_uno/gcc3_linux_aarch64/uno2cpp.cxx:178
+> #6  0x0000ffffb740d4c4 in bridges::cpp_uno::shared::unoInterfaceProxyDispatch (pUnoI=0xaaaaf9c291c0, pMemberDescr=0xaaaaf9c55950, pReturn=0xffffd1ab22c0, pArgs=0xffffd1ab2230, ppException=0xffffd1ab2370) at /run/build/libreoffice/bridges/source/cpp_uno/gcc3_linux_aarch64/uno2cpp.cxx:361
+> #7  0x0000ffffb740720c in (anonymous namespace)::call (proxy=0xaaaaf9c549c0, description=..., returnType=0xaaaaf9c00770, count=17, parameters=0xaaaaf9c3a210, gpr=0xffffd1ab2510, fpr=0xffffd1ab2550, stack=0xffffd1ab2590, indirectRet=0xffffb7d24790) at /run/build/libreoffice/bridges/source/cpp_uno/gcc3_linux_aarch64/cpp2uno.cxx:120
+> #8  0x0000ffffb74079a0 in (anonymous namespace)::vtableCall (functionIndex=40, vtableOffset=0, gpr=0xffffd1ab2510, fpr=0xffffd1ab2550, stack=0xffffd1ab2590, indirectRet=0xffffb7d24790) at /run/build/libreoffice/bridges/source/cpp_uno/gcc3_linux_aarch64/cpp2uno.cxx:291
+> #9  0x0000ffffb7407b00 in (anonymous namespace)::vtableSlotCall (gpr0=187651311618536, gpr1=1, gpr2=64, gpr3=17, gpr4=4660, gpr5=65244, gpr6=305419896, gpr7=4275878552, fpr0=5.4321266044931319e-315, fpr1=3.1415926358999999, fpr2=0, fpr3=4.0039072046065485, fpr4=0, fpr5=4.003911019303815, fpr6=8.9589789687541617e+102, fpr7=-4.4588500238274385e-308) at /run/build/libreoffice/bridges/source/cpp_uno/gcc3_linux_aarch64/cpp2uno.cxx:348
+> #10 0x0000ffffb739e60c in bridge_test::performTest (xContext=..., xLBT=..., noCurrentContext=false) at /run/build/libreoffice/testtools/source/bridgetest/bridgetest.cxx:378
+> #11 0x0000ffffb73a3d58 in bridge_test::TestBridgeImpl::run (this=0xaaaaf9c18550, rArgs=...) at /run/build/libreoffice/testtools/source/bridgetest/bridgetest.cxx:1162
+> #12 0x0000aaaad292a3ec in sal_main () at /run/build/libreoffice/cpputools/source/unoexe/unoexe.cxx:509
+> #13 0x0000aaaad29297a0 in main (argc=8, argv=0xffffd1ab31b8) at /run/build/libreoffice/cpputools/source/unoexe/unoexe.cxx:349
+
+.)
+
+By experiment, I found the problematic thing to be -fstack-clash-protection,
+which can apparently be cancelled with a subsequent -fno-stack-clash-protection
+at least on that GCC 9.2.0.
+
+Change-Id: Iab99fcdaf489b8f8bffad598525a3ae4af27dbf5
+---
+ bridges/Library_cpp_uno.mk | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/bridges/Library_cpp_uno.mk b/bridges/Library_cpp_uno.mk
+index eded406d3f35..2d66cfcb663b 100644
+--- a/bridges/Library_cpp_uno.mk
++++ b/bridges/Library_cpp_uno.mk
+@@ -30,7 +30,13 @@ else ifeq ($(CPUNAME),AARCH64)
+ 
+ ifneq ($(filter ANDROID DRAGONFLY FREEBSD LINUX NETBSD OPENBSD,$(OS)),)
+ bridges_SELECTED_BRIDGE := gcc3_linux_aarch64
+-bridge_exception_objects := abi callvirtualfunction uno2cpp
++bridge_exception_objects := abi uno2cpp
++
++$(eval $(call gb_Library_add_cxxobjects,$(gb_CPPU_ENV)_uno, \
++    bridges/source/cpp_uno/$(bridges_SELECTED_BRIDGE)/callvirtualfunction, \
++    $(gb_LinkTarget_EXCEPTIONFLAGS) \
++    $(call gb_LinkTarget__get_cxxflags,$(gb_CPPU_ENV)_uno) -fno-stack-clash-protection \
++))
+ 
+ $(eval $(call gb_Library_add_cxxobjects,$(gb_CPPU_ENV)_uno, \
+     bridges/source/cpp_uno/$(bridges_SELECTED_BRIDGE)/cpp2uno, \
+-- 
+2.21.0
+
