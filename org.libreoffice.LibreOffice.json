@@ -53,12 +53,8 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.3.2.2",
+                    "branch": "libreoffice-6.3.3.1",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Pass-LDFLAGS-into-external-postgresql.patch"
                 },
                 {
                     "type": "patch",
