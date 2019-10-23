@@ -53,16 +53,8 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.3.3.1",
+                    "branch": "libreoffice-6.3.3.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-aarch64-callVirtualFunction-needs-to-be-compiled-w-o.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Don-t-use-uninitialized-memory-when-reading-from-the.patch"
                 },
                 {
                     "type": "archive",
