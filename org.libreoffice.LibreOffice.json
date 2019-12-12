@@ -53,7 +53,7 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.3.3.2",
+                    "branch": "libreoffice-6.3.4.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -249,10 +249,10 @@
                     "dest-filename": "external/tarballs/libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2019-04-03.tar.bz2",
-                    "sha256": "a1d7fb901764bb8f251d4f686cdf565764f9987d0fb5d9315d54a7366a84822d",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2019-09-16.tar.bz2",
+                    "sha256": "07b66bc0f2786fde55f6bbcbcb4a455a846eb8e2351c8ce3d0a219a73693736a",
                     "type": "file",
-                    "dest-filename": "external/tarballs/language-subtag-registry-2019-04-03.tar.bz2"
+                    "dest-filename": "external/tarballs/language-subtag-registry-2019-09-16.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.2.tar.bz2",
@@ -375,10 +375,10 @@
                     "dest-filename": "external/tarballs/liborcus-0.14.1.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-0.74.0.tar.xz",
-                    "sha256": "92e09fd3302567fd36146b36bb707db43ce436e8841219025a82ea9fb0076b2f",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-0.82.0.tar.xz",
+                    "sha256": "234f8e573ea57fb6a008e7c1e56bfae1af5d1adf0e65f47555e1ae103874e4df",
                     "type": "file",
-                    "dest-filename": "external/tarballs/poppler-0.74.0.tar.xz"
+                    "dest-filename": "external/tarballs/poppler-0.82.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/postgresql-9.2.24.tar.bz2",
