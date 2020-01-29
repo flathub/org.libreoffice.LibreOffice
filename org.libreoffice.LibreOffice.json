@@ -53,7 +53,7 @@
                 {
                     "type": "git",
                     "url": "git://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-6.3.4.2",
+                    "branch": "libreoffice-6.4.0.3-buildfix1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -69,10 +69,10 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-3794.tar.bz2",
-                    "sha256": "e3faddcf741336c64ca2e6f72b23e9e60979969b2cf67c878c9a5bc38328cfc4",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-3963.tar.bz2",
+                    "sha256": "80d4d6bd8faec226936fcde5521c6e92c0c645126ac3ae72dd2c160ca1749895",
                     "type": "file",
-                    "dest-filename": "external/tarballs/pdfium-3794.tar.bz2"
+                    "dest-filename": "external/tarballs/pdfium-3963.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz",
@@ -345,10 +345,10 @@
                     "dest-filename": "external/tarballs/a233181e03d3c307668b4c722d881661-mariadb_client-2.0.0-src.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mdds-1.4.3.tar.bz2",
-                    "sha256": "25ce3d5af9f6609e1de05bb22b2316e57b74a72a5b686fbb2da199da72349c81",
+                    "url": "https://dev-www.libreoffice.org/src/mdds-1.5.0.tar.bz2",
+                    "sha256": "144d6debd7be32726f332eac14ef9f17e2d3cf89cb3250eb31a7127e0789680d",
                     "type": "file",
-                    "dest-filename": "external/tarballs/mdds-1.4.3.tar.bz2"
+                    "dest-filename": "external/tarballs/mdds-1.5.0.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/neon-0.30.2.tar.gz",
@@ -369,10 +369,10 @@
                     "dest-filename": "external/tarballs/openldap-2.4.45.tgz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.14.1.tar.gz",
-                    "sha256": "3f48cfbc21ad74787218284939c04d42cb836c73bc393f27f538b668e4d78a5f",
+                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.15.3.tar.gz",
+                    "sha256": "0dd26f3f2e611c51df9ee02d6dbf08887989eaa417b73f6877cd0d94df795fc2",
                     "type": "file",
-                    "dest-filename": "external/tarballs/liborcus-0.14.1.tar.gz"
+                    "dest-filename": "external/tarballs/liborcus-0.15.3.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-0.82.0.tar.xz",
@@ -385,6 +385,12 @@
                     "sha256": "a754c02f7051c2f21e52f8669a421b50485afcde9a581674d6106326b189d126",
                     "type": "file",
                     "dest-filename": "external/tarballs/postgresql-9.2.24.tar.bz2"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/QR-Code-generator-1.4.0.tar.gz",
+                    "sha256": "fcdf9fd69fde07ae4dca2351d84271a9de8093002f733b77c70f52f1630f6e4a",
+                    "type": "file",
+                    "dest-filename": "external/tarballs/QR-Code-generator-1.4.0.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/a39f6c07ddb20d7dd2ff1f95fa21e2cd-raptor2-2.0.15.tar.gz",
