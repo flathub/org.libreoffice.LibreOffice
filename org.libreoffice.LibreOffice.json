@@ -21,14 +21,14 @@
             "config-opts": [ "-Dsystemduserunitdir=no", "-Dtmpfilesdir=no", "-Dinstalled_tests=true",
             "-Ddbus_service_dir=/usr/share/dbus-1/services", "-Dadmin=false", "-Dafc=false", "-Dafp=false",
             "-Darchive=false", "-Dcdda=false", "-Ddnssd=false", "-Dgoa=false", "-Dgoogle=false",
-            "-Dgphoto2=false", "-Dhttp=false", "-Dmtp=false", "-Dnfs=false", "-Dsftp=false", "-Dsmb=false",
+            "-Dgphoto2=false", "-Dhttp=true", "-Dmtp=false", "-Dnfs=false", "-Dsftp=false", "-Dsmb=false",
             "-Dudisks2=false", "-Dbluray=false", "-Dfuse=false", "-Dgcr=false", "-Dgcrypt=false",
             "-Dgudev=false", "-Dkeyring=false", "-Dlogind=false", "-Dlibusb=false" ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gvfs/1.38/gvfs-1.38.1.tar.xz",
-                    "sha256": "ed136a842c996d25c835da405c4775c77106b46470e75bdc242bdd59ec0d61a0"
+                    "url": "https://download.gnome.org/sources/gvfs/1.42/gvfs-1.42.2.tar.xz",
+                    "sha256": "b57af97573bd295aa50037eed29c6ba7a36188230c515e007c3018855a5cf949"
                 }
             ]
         },
@@ -42,8 +42,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://kerberos.org/dist/krb5/1.16/krb5-1.16.2.tar.gz",
-                    "sha256": "9f721e1fe593c219174740c71de514c7228a97d23eb7be7597b2ae14e487f027"
+                    "url": "https://kerberos.org/dist/krb5/1.17/krb5-1.17.1.tar.gz",
+                    "sha256": "3706d7ec2eaa773e0e32d3a87bf742ebaecae7d064e190443a3acddfd8afb181"
                 }
             ]
         },
