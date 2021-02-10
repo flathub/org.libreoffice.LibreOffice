@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-7.1.0.3",
+                    "branch": "libreoffice-7.1.1.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -255,10 +255,10 @@
                     "dest-filename": "external/tarballs/libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2020-09-29.tar.bz2",
-                    "sha256": "cbe9fca811a37056560aab73e9fc9d3522b46b6785cb02db165f521bf42c230f",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2020-12-18.tar.bz2",
+                    "sha256": "62ce680d5db0f28001b64bd57db47f388c13629cdefc9af8e8af0fbe93689ba1",
                     "type": "file",
-                    "dest-filename": "external/tarballs/language-subtag-registry-2020-09-29.tar.bz2"
+                    "dest-filename": "external/tarballs/language-subtag-registry-2020-12-18.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.2.tar.bz2",
@@ -387,10 +387,10 @@
                     "dest-filename": "external/tarballs/poppler-21.01.0.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-9.2.24.tar.bz2",
-                    "sha256": "a754c02f7051c2f21e52f8669a421b50485afcde9a581674d6106326b189d126",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.1.tar.bz2",
+                    "sha256": "12345c83b89aa29808568977f5200d6da00f88a035517f925293355432ffe61f",
                     "type": "file",
-                    "dest-filename": "external/tarballs/postgresql-9.2.24.tar.bz2"
+                    "dest-filename": "external/tarballs/postgresql-13.1.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/QR-Code-generator-1.4.0.tar.gz",
@@ -567,10 +567,10 @@
                     "dest-filename": "external/tarballs/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.6.tar.xz",
-                    "sha256": "739f220b34bf7cb731c09de2921771d644d37dfd276c45564401e5759f10ae57",
+                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.7.tar.xz",
+                    "sha256": "17b8249cb89ae11ae15a85612d2665626c0e0e3e56b35654363ba6566d8b61fc",
                     "type": "file",
-                    "dest-filename": "external/tarballs/libnumbertext-1.0.6.tar.xz"
+                    "dest-filename": "external/tarballs/libnumbertext-1.0.7.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.6.8.tar.gz",
