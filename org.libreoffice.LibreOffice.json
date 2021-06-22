@@ -699,6 +699,121 @@
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
                 "printf '<?xml version=\"1.0\"?>\\n<oor:data xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:oor=\"http://openoffice.org/2001/registry\"><dependency file=\"main\"/><oor:component-data oor:name=\"Common\" oor:package=\"org.openoffice.Office\"><node oor:name=\"Misc\"><prop oor:name=\"UseOpenCL\"><value>false</value></prop></node></oor:component-data></oor:data>' >/app/libreoffice/share/registry/flatpak.xcd"
             ]
+        },
+        {
+            "name": "libsigc++",
+            "buildsystem": "autotools",
+            "config-opts": [ "--disable-documentation"  ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://deb.debian.org/debian/pool/main/libs/libsigc++-2.0/libsigc++-2.0_2.10.1.orig.tar.xz",
+                    "sha256": "576c763a81870f36d1cf582f3a9042fd41c9be874f27be61505d5be1d7240b37"
+                }
+            ]
+        },
+        {
+            "name": "glibmm",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://deb.debian.org/debian/pool/main/g/glibmm2.4/glibmm2.4_2.58.0.orig.tar.xz",
+                    "sha256": "c954425f729788503f51eea3cd9dc23d9eb0909f0f72a9e8bb9027a20f8d8c05"
+                }
+            ]
+        },
+        {
+            "name": "libxml++",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://deb.debian.org/debian/pool/main/libx/libxml++2.6/libxml++2.6_2.40.1.orig.tar.xz",
+                    "sha256": "4ad4abdd3258874f61c2e2a41d08e9930677976d303653cd1670d3e9f35463e9"
+                }
+            ]
+        },
+        {
+            "name": "hfst-ospell",
+            "buildsystem": "simple",
+            "build-commands": [ "autoreconf --install",
+                                "./configure --prefix=/app",
+                                "make",
+                                "make install" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/hfst/hfst-ospell/releases/download/v0.5.2/hfst-ospell-0.5.2.tar.bz2",
+                    "sha256": "ab9ccf3c2165c0efd8dd514e0bf9116e86a8a079d712c0ed6c2fabf0052e9aa4"
+                }
+            ]
+        },
+        {
+            "name": "libvoikko",
+            "buildsystem": "simple",
+            "build-commands": [ "./configure --prefix=/app --with-dictionary-path=/app/lib/voikko",
+                                "make",
+                                "make install",
+                                "mkdir -p /app/lib/python3.8/site-packages",
+                                "cd python && python3 ./setup.py install --prefix=/app" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.3.1.tar.gz",
+                    "sha256": "368240d4cfa472c2e2c43dc04b63e6464a3e6d282045848f420d0f7a6eb09a13"
+                },
+                {
+                    "type": "patch",
+                    "path": "voikkopython.patch"
+                }
+            ]
+        },
+        {
+            "name": "foma",
+            "buildsystem": "simple",
+            "build-commands": [ "make", "make install" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://bitbucket.org/mhulden/foma/downloads/foma-0.9.18.tar.gz",
+                    "sha256": "cb380f43e86fc7b3d4e43186db3e7cff8f2417e18ea69cc991e466a3907d8cbd"
+                },
+                {
+                    "type": "patch",
+                    "path": "foma-installpath.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "foma-variables.patch"
+                }
+            ]
+        },
+        {
+            "name": "voikko-fi",
+            "buildsystem": "simple",
+            "build-commands": [ "make vvfst", "make vvfst-install DESTDIR=/app/lib/voikko" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.4.tar.gz",
+                    "sha256": "320b2d4e428f6beba9d0ab0d775f8fbe150284fbbafaf3e5afaf02524cee28cc"
+                }
+            ]
+        },
+        {
+            "name": "libreoffice-voikko",
+            "buildsystem": "simple",
+            "build-commands": [ "make oxt",
+                                "mkdir -p /app/libreoffice/share/extensions/voikko",
+                                "unzip -d /app/libreoffice/share/extensions/voikko build/voikko.oxt" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-voikko-5.0.tar.gz",
+                    "sha256": "8322b58d83eb6e1398d6914885d88a2ee08c8dd2fc2b72d75fba8fe83eefbe38"
+                }
+            ]
         }
     ],
     "add-extensions": {
