@@ -1,0 +1,10 @@
+--- /dev/null
++++ libvoikko-4.3.1/python/setup.py
+@@ -0,0 +1,7 @@
++from setuptools import setup
++
++setup(
++    name='voikko',
++    py_modules=['libvoikko'],
++    long_description='Finnish hyphenation and spellchecking.'
++)
