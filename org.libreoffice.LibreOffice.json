@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "branch": "43ae5ef76252e6504103b88b1d969e836a9d4681",
+                    "branch": "libreoffice-7.2.0.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -437,6 +437,13 @@
                     "type": "file",
                     "dest": "external/tarballs",
                     "dest-filename": "poppler-21.01.0.tar.xz"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.10.tar.gz",
+                    "sha256": "6e2fcef66ec8c44625f94292ccf8af9f1d918b410d5aa69c274ce67387967b30",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "poppler-data-0.4.10.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/postgresql-13.1.tar.bz2",
