@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "branch": "libreoffice-7.2.0.1",
+                    "branch": "libreoffice-7.2.0.2",
                     "disable-fsckobjects": true
                 },
                 {
