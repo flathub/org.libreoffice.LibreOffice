@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.2.3.1",
+                    "tag": "libreoffice-7.2.3.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -418,11 +418,11 @@
                     "dest-filename": "noto-fonts-20171024.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/openldap-2.4.45.tgz",
-                    "sha256": "cdd6cffdebcd95161a73305ec13fc7a78e9707b46ca9f84fb897cd5626df3824",
+                    "url": "https://dev-www.libreoffice.org/src/openldap-2.4.59.tgz",
+                    "sha256": "99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "openldap-2.4.45.tgz"
+                    "dest-filename": "openldap-2.4.59.tgz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liborcus-0.16.1.tar.bz2",
@@ -446,11 +446,11 @@
                     "dest-filename": "poppler-data-0.4.10.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.1.tar.bz2",
-                    "sha256": "12345c83b89aa29808568977f5200d6da00f88a035517f925293355432ffe61f",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.5.tar.bz2",
+                    "sha256": "9b81067a55edbaabc418aacef457dd8477642827499560b00615a6ea6c13f6b3",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "postgresql-13.1.tar.bz2"
+                    "dest-filename": "postgresql-13.5.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/a39f6c07ddb20d7dd2ff1f95fa21e2cd-raptor2-2.0.15.tar.gz",
