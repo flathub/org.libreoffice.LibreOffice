@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "branch": "cf2c1c28d7539c99b9b899da641c50ad21e1c210",
+                    "commit": "57ad86fec9e5b4981332392bdb5c5a1f5e468bfe",
                     "disable-fsckobjects": true
                 },
                 {
@@ -404,13 +404,6 @@
                     "dest-filename": "mdds-2.0.1.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/neon-0.31.2.tar.gz",
-                    "sha256": "cf1ee3ac27a215814a9c80803fcee4f0ede8466ebead40267a9bd115e16a8678",
-                    "type": "file",
-                    "dest": "external/tarballs",
-                    "dest-filename": "neon-0.31.2.tar.gz"
-                },
-                {
                     "url": "https://dev-www.libreoffice.org/src/noto-fonts-20171024.tar.gz",
                     "sha256": "29acc15a4c4d6b51201ba5d60f303dfbc2e5acbfdb70413c9ae1ed34fa259994",
                     "type": "file",
@@ -425,11 +418,11 @@
                     "dest-filename": "openldap-2.4.59.tgz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.17.0.tar.bz2",
-                    "sha256": "2ef9d2b5ee374c683cf631b78356b110510ab895788a68d778e225d8c4176d1b",
+                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.17.2.tar.bz2",
+                    "sha256": "2a86c405a5929f749b27637509596421d46805753364ab258b035fd01fbde143",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "liborcus-0.17.0.tar.bz2"
+                    "dest-filename": "liborcus-0.17.2.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-21.11.0.tar.xz",
