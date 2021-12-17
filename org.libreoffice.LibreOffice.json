@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "commit": "57ad86fec9e5b4981332392bdb5c5a1f5e468bfe",
+                    "commit": "793d4596d0facf5fc361fe2170bb73e01c60c9c7",
                     "disable-fsckobjects": true
                 },
                 {
