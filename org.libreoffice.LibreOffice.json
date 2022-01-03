@@ -59,12 +59,8 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.2.5.1",
+                    "tag": "libreoffice-7.2.5.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-unset-mpMenuBarWidget-when-it-was-destroyed-along-wi.patch"
                 },
                 {
                     "type": "archive",
