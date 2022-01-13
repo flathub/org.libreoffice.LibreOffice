@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.3.0.1",
+                    "tag": "libreoffice-7.3.0.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -215,25 +215,25 @@
                     "dest-filename": "glm-0.9.9.8.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.13.1.tar.bz2",
-                    "sha256": "c4e30b227682374c23cddc7fdb9324a99694d907e79242a25a4deeedb393be46",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.16.0.tar.bz2",
+                    "sha256": "6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.13.1.tar.bz2"
+                    "dest-filename": "gpgme-1.16.0.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.3.tar.bz2",
-                    "sha256": "91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702",
+                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.5.tar.bz2",
+                    "sha256": "8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libassuan-2.5.3.tar.bz2"
+                    "dest-filename": "libassuan-2.5.5.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.37.tar.bz2",
-                    "sha256": "b32d6ff72a73cf79797f7f2d039e95e9c6f92f0c1450215410840ab62aea9763",
+                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.43.tar.bz2",
+                    "sha256": "a9ab83ca7acc442a5bd846a75b920285ff79bdb4e3d34aa382be88ed2c3aebaf",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libgpg-error-1.37.tar.bz2"
+                    "dest-filename": "libgpg-error-1.43.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libabw-0.1.3.tar.xz",
@@ -642,11 +642,11 @@
                     "dest-filename": "35c94d2df8893241173de1d16b6034c0-swingExSrc.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.7.tar.xz",
-                    "sha256": "17b8249cb89ae11ae15a85612d2665626c0e0e3e56b35654363ba6566d8b61fc",
+                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.8.tar.xz",
+                    "sha256": "db9060d208501bd7bc06300a55d8489d29dd560ee0fbbd0f41b78af56816680c",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libnumbertext-1.0.7.tar.xz"
+                    "dest-filename": "libnumbertext-1.0.8.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.6.8.tar.gz",
