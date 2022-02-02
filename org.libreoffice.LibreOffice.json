@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.2.5.2",
+                    "tag": "libreoffice-7.3.0.3",
                     "disable-fsckobjects": true
                 },
                 {
@@ -75,11 +75,11 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-4500.tar.bz2",
-                    "sha256": "26a03dd60e5ed0979cdaba9cc848242895110ddfdf347d40989ce2f14020f304",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-4699.tar.bz2",
+                    "sha256": "ee80fe0a3b20ef5c5babc494cd655d1b1a0bdec710acb04524789df500c563bf",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "pdfium-4500.tar.bz2"
+                    "dest-filename": "pdfium-4699.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz",
@@ -89,11 +89,11 @@
                     "dest-filename": "0168229624cfac409e766913506961a8-ucpp-1.3.2.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.32.tar.gz",
-                    "sha256": "e383702853236004e5b08e424b8afe9b53fe9f31aaa7a5382f39d9533eb7c043",
+                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.33.tar.gz",
+                    "sha256": "26041d35a20a245ed5a2fb9ee075f10825664d274220cb5190340fa87a4d0931",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "xmlsec1-1.2.32.tar.gz"
+                    "dest-filename": "xmlsec1-1.2.33.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/368f114c078f94214a308a74c7e991bc-crosextrafonts-20130214.tar.gz",
@@ -173,11 +173,11 @@
                     "dest-filename": "EmojiOneColor-SVGinOT-1.3.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/boost_1_75_0.tar.xz",
-                    "sha256": "cc378a036a1cfd3af289f3da24deeb8dba7a729f61ab104c7b018a622e22d21b",
+                    "url": "https://dev-www.libreoffice.org/src/boost_1_77_0.tar.xz",
+                    "sha256": "9b334d6c6d7af5a0687280788cd84444398b8e0b472cd88e52bbc3c3ef11d98e",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "boost_1_75_0.tar.xz"
+                    "dest-filename": "boost_1_77_0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/48d647fbd8ef8889e5a7f422c1bfda94-clucene-core-2.3.3.4.tar.gz",
@@ -208,32 +208,32 @@
                     "dest-filename": "Firebird-3.0.7.33374-0.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/glm-0.9.9.7.zip",
-                    "sha256": "c5e167c042afd2d7ad642ace6b643863baeb33880781983563e1ab68a30d3e95",
+                    "url": "https://dev-www.libreoffice.org/src/glm-0.9.9.8.zip",
+                    "sha256": "6bba5f032bed47c73ad9397f2313b9acbfb56253d0d0576b5873d3dcb25e99ad",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "glm-0.9.9.7.zip"
+                    "dest-filename": "glm-0.9.9.8.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.13.1.tar.bz2",
-                    "sha256": "c4e30b227682374c23cddc7fdb9324a99694d907e79242a25a4deeedb393be46",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.16.0.tar.bz2",
+                    "sha256": "6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.13.1.tar.bz2"
+                    "dest-filename": "gpgme-1.16.0.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.3.tar.bz2",
-                    "sha256": "91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702",
+                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.5.tar.bz2",
+                    "sha256": "8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libassuan-2.5.3.tar.bz2"
+                    "dest-filename": "libassuan-2.5.5.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.37.tar.bz2",
-                    "sha256": "b32d6ff72a73cf79797f7f2d039e95e9c6f92f0c1450215410840ab62aea9763",
+                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.43.tar.bz2",
+                    "sha256": "a9ab83ca7acc442a5bd846a75b920285ff79bdb4e3d34aa382be88ed2c3aebaf",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libgpg-error-1.37.tar.bz2"
+                    "dest-filename": "libgpg-error-1.43.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libabw-0.1.3.tar.xz",
@@ -271,11 +271,11 @@
                     "dest-filename": "libetonyek-0.1.10.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libexttextcat-3.4.5.tar.xz",
-                    "sha256": "13fdbc9d4c489a4d0519e51933a1aa21fe3fb9eb7da191b87f7a63e82797dac8",
+                    "url": "https://dev-www.libreoffice.org/src/libexttextcat-3.4.6.tar.xz",
+                    "sha256": "6d77eace20e9ea106c1330e268ede70c9a4a89744ddc25715682754eca3368df",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libexttextcat-3.4.5.tar.xz"
+                    "dest-filename": "libexttextcat-3.4.6.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libfreehand-0.1.2.tar.xz",
@@ -292,11 +292,11 @@
                     "dest-filename": "language-subtag-registry-2021-08-06.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.2.tar.bz2",
-                    "sha256": "d6242790324f1432fb0a6fae71b6851f520b2c5a87675497cf8ea14c2924d52e",
+                    "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.3.tar.bz2",
+                    "sha256": "1f12a20a02ec3a8d22e54dedb8b683a43c9c160bda1ba337bf1060607ae733bd",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "liblangtag-0.6.2.tar.bz2"
+                    "dest-filename": "liblangtag-0.6.3.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libmspub-0.1.4.tar.xz",
@@ -306,11 +306,11 @@
                     "dest-filename": "libmspub-0.1.4.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libmwaw-0.3.19.tar.xz",
-                    "sha256": "b272e234eefc828c4bb8344af0f047a62e070f530e9e2fba11b04c8db8eda5af",
+                    "url": "https://dev-www.libreoffice.org/src/libmwaw-0.3.21.tar.xz",
+                    "sha256": "e8750123a78d61b943cef78b7736c8a7f20bb0a649aa112402124fba794fc21c",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libmwaw-0.3.19.tar.xz"
+                    "dest-filename": "libmwaw-0.3.21.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libodfgen-0.1.8.tar.xz",
@@ -397,11 +397,11 @@
                     "dest-filename": "mariadb-connector-c-3.1.8-src.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mdds-1.7.0.tar.bz2",
-                    "sha256": "a66a2a8293a3abc6cd9baff7c236156e2666935cbfb69a15d64d38141638fecf",
+                    "url": "https://dev-www.libreoffice.org/src/mdds-2.0.1.tar.bz2",
+                    "sha256": "3ab33fce58e6acf9540cc1a52264be6863ef80f55ac287194cc98cda48e71fe6",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mdds-1.7.0.tar.bz2"
+                    "dest-filename": "mdds-2.0.1.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/neon-0.31.2.tar.gz",
@@ -425,11 +425,11 @@
                     "dest-filename": "openldap-2.4.59.tgz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.16.1.tar.bz2",
-                    "sha256": "c700d1325f744104d9fca0d5a019434901e9d51a16eedfb05792f90a298587a4",
+                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.17.2.tar.bz2",
+                    "sha256": "2a86c405a5929f749b27637509596421d46805753364ab258b035fd01fbde143",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "liborcus-0.16.1.tar.bz2"
+                    "dest-filename": "liborcus-0.17.2.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-21.11.0.tar.xz",
@@ -642,11 +642,11 @@
                     "dest-filename": "35c94d2df8893241173de1d16b6034c0-swingExSrc.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.7.tar.xz",
-                    "sha256": "17b8249cb89ae11ae15a85612d2665626c0e0e3e56b35654363ba6566d8b61fc",
+                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.8.tar.xz",
+                    "sha256": "db9060d208501bd7bc06300a55d8489d29dd560ee0fbbd0f41b78af56816680c",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libnumbertext-1.0.7.tar.xz"
+                    "dest-filename": "libnumbertext-1.0.8.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.6.8.tar.gz",
@@ -670,11 +670,11 @@
                     "dest-filename": "box2d-2.3.1.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/zxing-cpp-1.1.1.tar.gz",
-                    "sha256": "e595b3fa2ec320beb0b28f6af56b1141853257c2611686685639cebb3b248c86",
+                    "url": "https://dev-www.libreoffice.org/src/zxing-cpp-1.2.0.tar.gz",
+                    "sha256": "653d9e44195d86cf64a36af9ff3a1978ec5599df3882439fefa56e7064f55e8a",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "zxing-cpp-1.1.1.tar.gz"
+                    "dest-filename": "zxing-cpp-1.2.0.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
@@ -682,6 +682,13 @@
                     "type": "file",
                     "dest": "external/tarballs",
                     "dest-filename": "f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/libcuckoo-93217f8d391718380c508a722ab9acd5e9081233.tar.gz",
+                    "sha256": "471dd83a813ed2816c2246c373004470ad0f6612c7ce72038929dc5161cdd58e",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "libcuckoo-93217f8d391718380c508a722ab9acd5e9081233.tar.gz"
                 }
             ],
             "buildsystem": "simple",
