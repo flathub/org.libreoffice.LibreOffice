@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.3.2.2",
+                    "tag": "libreoffice-7.3.3.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -642,11 +642,11 @@
                     "dest-filename": "35c94d2df8893241173de1d16b6034c0-swingExSrc.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.8.tar.xz",
-                    "sha256": "db9060d208501bd7bc06300a55d8489d29dd560ee0fbbd0f41b78af56816680c",
+                    "url": "https://dev-www.libreoffice.org/src/libnumbertext-1.0.10.tar.xz",
+                    "sha256": "a285573864eaac8d36a0f66d946e9b1d3cf01c5d93d31fda00264a76f2633beb",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libnumbertext-1.0.8.tar.xz"
+                    "dest-filename": "libnumbertext-1.0.10.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.6.8.tar.gz",
