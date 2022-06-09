@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.3.3.2",
+                    "tag": "libreoffice-7.3.4.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -397,11 +397,11 @@
                     "dest-filename": "mariadb-connector-c-3.1.8-src.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mdds-2.0.1.tar.bz2",
-                    "sha256": "3ab33fce58e6acf9540cc1a52264be6863ef80f55ac287194cc98cda48e71fe6",
+                    "url": "https://dev-www.libreoffice.org/src/mdds-2.0.3.tar.bz2",
+                    "sha256": "9771fe42e133443c13ca187253763e17c8bc96a1a02aec9e1e8893367ffa9ce5",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mdds-2.0.1.tar.bz2"
+                    "dest-filename": "mdds-2.0.3.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/neon-0.31.2.tar.gz",
