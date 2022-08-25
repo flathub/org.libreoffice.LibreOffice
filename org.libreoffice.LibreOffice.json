@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.4.0.3",
+                    "tag": "libreoffice-7.4.1.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -467,11 +467,11 @@
                     "dest-filename": "e5be03eda13ef68aabab6e42aa67715e-redland-1.0.17.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/ReemKufi-0.7.zip",
-                    "sha256": "f60c6508d209ce4236d2d7324256c2ffddd480be7e3d6023770b93dc391a605f",
+                    "url": "https://dev-www.libreoffice.org/src/ReemKufi-1.2.zip",
+                    "sha256": "c4fd68a23c0ea471cc084ae7efe888da372b925cb208eeb0322c26792d2ef413",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "ReemKufi-0.7.zip"
+                    "dest-filename": "ReemKufi-1.2.zip"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libepubgen-0.1.1.tar.xz",
@@ -495,11 +495,11 @@
                     "dest-filename": "alef-1.001.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/Amiri-0.111.zip",
-                    "sha256": "1fbfccced6348b5db2c1c21d5b319cd488e14d055702fa817a0f6cb83d882166",
+                    "url": "https://dev-www.libreoffice.org/src/Amiri-0.117.zip",
+                    "sha256": "9c4e768893e0023a0ad6f488d5c84bd5add6565d3dcadb838ba5b20e75fcc9a7",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "Amiri-0.111.zip"
+                    "dest-filename": "Amiri-0.117.zip"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/culmus-0.133.tar.gz",
@@ -682,13 +682,6 @@
                     "type": "file",
                     "dest": "external/tarballs",
                     "dest-filename": "f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf"
-                },
-                {
-                    "url": "https://dev-www.libreoffice.org/src/libcuckoo-93217f8d391718380c508a722ab9acd5e9081233.tar.gz",
-                    "sha256": "471dd83a813ed2816c2246c373004470ad0f6612c7ce72038929dc5161cdd58e",
-                    "type": "file",
-                    "dest": "external/tarballs",
-                    "dest-filename": "libcuckoo-93217f8d391718380c508a722ab9acd5e9081233.tar.gz"
                 }
             ],
             "buildsystem": "simple",
