@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.4.1.2",
+                    "tag": "libreoffice-7.4.2.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -285,11 +285,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2021-12-29.tar.bz2",
-                    "sha256": "d9dcf20be5ad4856daef023087421bedc1477f9b4247fc8ea53bb32e07c97837",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2022-08-08.tar.bz2",
+                    "sha256": "e2d9224e0e50fc8ad12a3cf47396bbcadf45b2515839d4770432653a88972c00",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2021-12-29.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2022-08-08.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.3.tar.bz2",
@@ -425,11 +425,11 @@
                     "dest-filename": "liborcus-0.17.2.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-22.01.0.tar.xz",
-                    "sha256": "7d3493056b5b86413e5c693c2cae02c5c06cd8e618d14c2c31e2c84b67b2313e",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-22.09.0.tar.xz",
+                    "sha256": "d7a8f748211359cadb774ba3e18ecda6464b34027045c0648eb30d5852a41e2e",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-22.01.0.tar.xz"
+                    "dest-filename": "poppler-22.09.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.11.tar.gz",
