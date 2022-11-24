@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.4.2.3",
+                    "tag": "libreoffice-7.4.3.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -439,11 +439,11 @@
                     "dest-filename": "poppler-data-0.4.11.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.5.tar.bz2",
-                    "sha256": "9b81067a55edbaabc418aacef457dd8477642827499560b00615a6ea6c13f6b3",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.8.tar.bz2",
+                    "sha256": "73876fdd3a517087340458dca4ce15b8d2a4dbceb334c0441424551ae6c4cded",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "postgresql-13.5.tar.bz2"
+                    "dest-filename": "postgresql-13.8.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/a39f6c07ddb20d7dd2ff1f95fa21e2cd-raptor2-2.0.15.tar.gz",
