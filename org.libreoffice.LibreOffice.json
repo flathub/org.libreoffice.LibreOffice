@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.5.0.0.beta1",
+                    "tag": "libreoffice-7.5.0.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -187,11 +187,11 @@
                     "dest-filename": "glm-0.9.9.8.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.16.0.tar.bz2",
-                    "sha256": "6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.18.0.tar.bz2",
+                    "sha256": "361d4eae47ce925dba0ea569af40e7b52c645c4ae2e65e5621bf1b6cdd8b0e9e",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.16.0.tar.bz2"
+                    "dest-filename": "gpgme-1.18.0.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.5.tar.bz2",
@@ -397,11 +397,11 @@
                     "dest-filename": "liborcus-0.17.2.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-22.09.0.tar.xz",
-                    "sha256": "d7a8f748211359cadb774ba3e18ecda6464b34027045c0648eb30d5852a41e2e",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-22.12.0.tar.xz",
+                    "sha256": "d9aa9cacdfbd0f8e98fc2b3bb008e645597ed480685757c3e7bc74b4278d15c0",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-22.09.0.tar.xz"
+                    "dest-filename": "poppler-22.12.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.11.tar.gz",
