@@ -1,0 +1,104 @@
+From e1ff8eb1e26239c8e53a22d94675a83ea05cd0fe Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Thu, 12 Jan 2023 16:42:39 +0100
+Subject: [PATCH] Fix VclTextTest with colorized antialiasing
+
+The Flathub build for
+<https://github.com/flathub/org.libreoffice.LibreOffice/commit/d5ac1d2bd680970ba992c8c6836683262f067592>
+"Merge pull request #206 from flathub/lo-7.4.4" on 2023-01-12 at
+<https://buildbot.flathub.org/#/builders/6/builds/16778> consistently failed for
+both aarch64 and x86_64 builds with
+
+> text.cxx:260:Assertion
+> Test name: VclTextTest::testSimpleText
+> double equality assertion failed
+> - Expected: 28
+> - Actual  : -1
+> - Delta   : 2
+
+during CppunitTest_vcl_text.  The reason (as seen with a temporary build setting
+mbExportBitmap = true and looking at the resulting
+workdir/CppunitTest/vcl_text.test.core/simple-text-36-50pct.png) is that the
+stem of the "L" doesn't contain any COL_BLACK pixels, so
+getCharacterLeftSideHeight returns early with -1.  The stem is drawn as three
+vertical lines of pixels, a yellow (RGB 255/195/111), a black-ish (RGB 23/0/0),
+and a blue (RGB 31/155/199) one.  In comparison, when running the same test on
+Fedora 37, the three vertical lines use gray-scale instead of colors,
+RGB 195/195/195, then true black (RGB 0/0/0), and RGB 115/115/115.
+
+An earlier test build of
+<https://github.com/flathub/org.libreoffice.LibreOffice/pull/206> "Update to
+LibreOffice 7.4.4" for the same libreoffice-7.4.4.2 tag on 2023-01-02 at
+<https://buildbot.flathub.org/#/builders/6/builds/14712> succeeded, so I assume
+that it must be some change in the meantime to the underlying
+org.fedoraproject.sdk//22.08 that started to cause colorized antialiasing here.
+
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/145411
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+(cherry picked from commit 933519505aee0e91ca99af0ed860e4a0f148f922)
+Conflicts:
+	vcl/qa/cppunit/text.cxx
+
+Change-Id: I7059268eabcfe8e501d0be4f38746707def7bb35
+---
+ vcl/qa/cppunit/text.cxx | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/vcl/qa/cppunit/text.cxx b/vcl/qa/cppunit/text.cxx
+index 668e84ef2aad..823ffeabffc7 100644
+--- a/vcl/qa/cppunit/text.cxx
++++ b/vcl/qa/cppunit/text.cxx
+@@ -79,6 +79,13 @@ public:
+     CPPUNIT_TEST_SUITE_END();
+ };
+ 
++// Avoid issues when colorized antialiasing generates slightly tinted rather than truly black
++// pixels:
++static bool isBlack(Color col)
++{
++    return col.GetRed() < 25 && col.GetGreen() < 25 && col.GetBlue() < 25;
++}
++
+ // Return pixel width of the base of the given character located above
+ // the starting position.
+ // In other words, go up in y direction until a black pixel is found,
+@@ -89,7 +96,7 @@ static tools::Long getCharacterBaseWidth(VirtualDevice* device, const Point& sta
+     Bitmap bitmap = device->GetBitmap(Point(), device->GetOutputSizePixel());
+     Bitmap::ScopedReadAccess access(bitmap);
+     tools::Long y = start.Y();
+-    while (y >= 0 && access->GetColor(y, start.X()) != COL_BLACK)
++    while (y >= 0 && !isBlack(access->GetColor(y, start.X())))
+         --y;
+     if (y < 0)
+         return -1;
+@@ -108,7 +115,7 @@ static tools::Long getCharacterTopWidth(VirtualDevice* device, const Point& star
+     Bitmap bitmap = device->GetBitmap(Point(), device->GetOutputSizePixel());
+     Bitmap::ScopedReadAccess access(bitmap);
+     tools::Long y = start.Y();
+-    while (y < bitmap.GetSizePixel().Height() && access->GetColor(y, start.X()) != COL_BLACK)
++    while (y < bitmap.GetSizePixel().Height() && !isBlack(access->GetColor(y, start.X())))
+         ++y;
+     if (y >= bitmap.GetSizePixel().Height())
+         return -1;
+@@ -129,7 +136,7 @@ static tools::Long getCharacterLeftSideHeight(VirtualDevice* device, const Point
+     Bitmap bitmap = device->GetBitmap(Point(), device->GetOutputSizePixel());
+     Bitmap::ScopedReadAccess access(bitmap);
+     tools::Long x = start.X();
+-    while (x < bitmap.GetSizePixel().Width() && access->GetColor(start.Y(), x) != COL_BLACK)
++    while (x < bitmap.GetSizePixel().Width() && !isBlack(access->GetColor(start.Y(), x)))
+         ++x;
+     if (x >= bitmap.GetSizePixel().Width())
+         return -1;
+@@ -148,7 +155,7 @@ static tools::Long getCharacterRightSideHeight(VirtualDevice* device, const Poin
+     Bitmap bitmap = device->GetBitmap(Point(), device->GetOutputSizePixel());
+     Bitmap::ScopedReadAccess access(bitmap);
+     tools::Long x = start.X();
+-    while (x >= 0 && access->GetColor(start.Y(), x) != COL_BLACK)
++    while (x >= 0 && !isBlack(access->GetColor(start.Y(), x)))
+         --x;
+     if (x < 0)
+         return -1;
+-- 
+2.39.0
+
