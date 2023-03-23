@@ -64,7 +64,7 @@
                 },
                 {
                     "type": "archive",
-                    "url": "apache-ant-1.10.9-bin.tar.xz",
+                    "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.9-bin.tar.xz",
                     "sha256": "42f12ea7dc854b69aac0bd05c5767252dddd297888503e69b8aae0a1dc791cf5",
                     "dest": "ant"
                 },
