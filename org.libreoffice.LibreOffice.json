@@ -64,8 +64,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.13-bin.zip",
-                    "sha512": "347e964db73d1f8e9fe110f135625920e09c8c9997e9950c405cfeec60b70750044a91ef0535d76d6f8e023de0788f2619be76fd91b7a80be9a6b569a16cc3e8",
+                    "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.13-bin.tar.xz",
+                    "sha512": "26e56bf670c22c8093fe51ec952fa51e813b1ab4200cb09fcd68fa291c5f6f626d7c6a42b4d3358b38111466e249d4bc6089b8c4093383759d6f8a08d39bc32d",
                     "dest": "ant"
                 },
                 {
