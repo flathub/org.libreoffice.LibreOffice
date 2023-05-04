@@ -59,13 +59,8 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.5.2.2",
+                    "tag": "libreoffice-7.5.3.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Backport-fix-for-test-that-started-to-fail-with-libx.patch",
-                    "use-git": true
                 },
                 {
                     "type": "archive",
