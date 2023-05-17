@@ -59,7 +59,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.5.3.2",
+                    "tag": "libreoffice-7.5.4.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -339,11 +339,11 @@
                     "dest-filename": "libwpd-0.10.3.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libwpg-0.3.3.tar.xz",
-                    "sha256": "99b3f7f8832385748582ab8130fbb9e5607bd5179bebf9751ac1d51a53099d1c",
+                    "url": "https://dev-www.libreoffice.org/src/libwpg-0.3.4.tar.xz",
+                    "sha256": "b55fda9440d1e070630eb2487d8b8697cf412c214a27caee9df69cec7c004de3",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libwpg-0.3.3.tar.xz"
+                    "dest-filename": "libwpg-0.3.4.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libwps-0.4.12.tar.xz",
