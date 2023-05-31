@@ -5,7 +5,7 @@
     "sdk": "org.freedesktop.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.openjdk17",
-        "
+        
     ],
     "command": "libreoffice",
     "modules": [
