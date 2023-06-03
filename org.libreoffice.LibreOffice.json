@@ -119,46 +119,6 @@
           ]
         },
         {
-            "name": "extra-cmake-modules",
-            "buildsystem": "cmake-ninja",
-            "cleanup": [
-              "*"
-            ],
-            "sources": [
-              {
-                "type": "archive",
-                "url": "https://download.kde.org/stable/frameworks/5.106/extra-cmake-modules-5.106.0.tar.xz",
-                "sha256": "404f58ecac5d37485e51472ff5f88149f460689bec8792ea29bae279e63cb598"
-              }
-            ]
-          },
-          {
-            "name": "kdbusaddons",
-            "buildsystem": "cmake-ninja",
-            "cleanup": [
-              "/bin",
-              "/include",
-              "/lib/cmake",
-              "/lib/mkspecs"
-            ],
-            "config-opts": [
-              "-DENABLE_TESTING=OFF"
-            ],
-            "sources": [
-              {
-                "type": "archive",
-                "url": "https://download.kde.org/stable/frameworks/5.106/kdbusaddons-5.106.0.tar.xz",
-                "sha256": "8183b45899681f7e8181c33aa573fe43fde8535eb4cb586b310038bbb0eacc17"
-              },
-              {
-                "type": "shell",
-                "commands": [
-                  "rm -fr po"
-                ]
-              }
-            ]
-          },
-        {
             "name": "gvfs",
             "buildsystem": "meson",
             "config-opts": [ "-Dsystemduserunitdir=no", "-Dtmpfilesdir=no", "-Dinstalled_tests=true",
