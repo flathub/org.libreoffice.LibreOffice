@@ -34,7 +34,7 @@
                 "sha256": "1947deb9d98aaf46bf47e6659b3e1444ce6616974470523756c082041d396d1e",
                 "x-checker-data": {
                   "type": "anitya",
-                  "project-id": 7927,
+                  "project-id": "7927",
                   "url-template": "https:/download.qt.io/archive/qt/$major.$minor/$version/submodules/qtbase-everywhere-src-$version.tar.xz"
                 },
                 "cleanup": [
