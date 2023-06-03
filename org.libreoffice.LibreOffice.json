@@ -16,17 +16,56 @@
             ]
         },
         {
-            "name": "qtbase",
-            "buildsystem": "cmake-ninja",
+            "name": "qt5-qtbase",
+            "buildsystem": "autotools",
             "builddir": true,
             "config-opts": [
-              "-DCMAKE_BUILD_TYPE=None",
-              "-DINSTALL_ARCHDATADIR=/app/lib",
-              "-DINPUT_openssl=linked",
-              "-DINPUT_getentropy=no",
-              "-DINPUT_renameat2=no",
-              "-DINPUT_statx=no"
+              "-confirm-license",
+              "-opensource",
+              "-shared",
+              "-platform",
+              "-linux-g++",
+              "-optimized-qmake",
+              "-nomake",
+              "-examples",
+              "-nomake",
+              "-tests",
+              "-system-harfbuzz",
+              "-system-sqlite",
+              "-accessibility",
+              "-dbus-linked",
+              "-fontconfig",
+              "-glib",
+              "-icu",
+              "-openssl-linked",
+              "-no-pch",
+              "-no-rpath",
+              "-no-directfb",
+              "-no-linuxfb",
+              "-no-kms",
+              "-system-proxies",
+              "-gtk",
+              "-no-use-gold-linker",
+              "-no-cups",
+              "-no-directfb",
+              "-no-gbm",
+              "-no-linuxfb",
+              "-no-kms",
+              "-archdatadir",
+              "/app/lib/"
             ],
+            "cleanup": [
+              "/bin",
+              "/doc",
+              "/include",
+              "/lib/*.a",
+              "/lib/*.la",
+              "/lib/*.prl",
+              "/lib/cmake",
+              "/lib/debug",
+              "/lib/mkspecs",
+             "/lib/pkgconfig"
+         ],
             "sources": [
               {
                 "type": "archive",
@@ -35,6 +74,7 @@
               }
             ]
           },
+        },
         {
             "name": "gvfs",
             "buildsystem": "meson",
