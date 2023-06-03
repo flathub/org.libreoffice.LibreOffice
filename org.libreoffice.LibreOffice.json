@@ -1,4 +1,3 @@
-{
     "id": "org.libreoffice.LibreOffice",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "22.08",
@@ -16,20 +15,20 @@
             ]
         },
         {
-            "name": "qt5-qtbase",
-            "buildsystem": "autotools",
+            "name": "qtbase",
+            "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
               "-confirm-license",
               "-opensource",
               "-shared",
               "-platform",
-              "-linux-g++",
+              "linux-g++",
               "-optimized-qmake",
               "-nomake",
-              "-examples",
+              "examples",
               "-nomake",
-              "-tests",
+              "tests",
               "-system-harfbuzz",
               "-system-sqlite",
               "-accessibility",
@@ -65,16 +64,99 @@
               "/lib/debug",
               "/lib/mkspecs",
              "/lib/pkgconfig"
-         ],
-            "sources": [
+             ],
+              "sources": [
               {
                 "type": "archive",
                 "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtbase-everywhere-opensource-src-5.15.9.tar.xz",
                 "sha256": "1947deb9d98aaf46bf47e6659b3e1444ce6616974470523756c082041d396d1e"
               }
             ]
-          },
         },
+        {
+            "name": "qt5-qtsvg",
+            "buildsystem": "qmake",
+            "cleanup": [
+              "/bin",
+              "/include",
+              "/lib/*.a",
+              "/lib/*.la",
+              "/lib/*.prl",
+              "/lib/cmake",
+              "/lib/debug",
+              "/lib/mkspecs",
+              "/lib/pkgconfig"
+            ],
+            "sources": [
+              {
+                "type": "archive",
+                "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtsvg-everywhere-opensource-src-5.15.9.tar.xz",
+                "sha256": "881f75d3c4a29a4ef88202763115c19d4869af2638227e9c3474e422639abb5a"
+              }
+            ]
+          },
+        {
+          "name": "qt5-wayland",
+          "buildsystem": "qmake",
+          "cleanup": [
+            "/bin",
+            "/include",
+            "/lib/*.a",
+            "/lib/*.la",
+            "/lib/*.prl",
+            "/lib/cmake",
+            "/lib/debug",
+            "/lib/mkspecs",
+            "/lib/pkgconfig"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtwayland-everywhere-opensource-src-5.15.9.tar.xz",
+              "sha256": "b719baf33068f3b92309ac610c3b7ed70edb5bf1e8fa07eefc7cbae6ab6a3c12"
+            }
+          ]
+        },
+        {
+            "name": "extra-cmake-modules",
+            "buildsystem": "cmake-ninja",
+            "cleanup": [
+              "*"
+            ],
+            "sources": [
+              {
+                "type": "archive",
+                "url": "https://download.kde.org/stable/frameworks/5.106/extra-cmake-modules-5.106.0.tar.xz",
+                "sha256": "404f58ecac5d37485e51472ff5f88149f460689bec8792ea29bae279e63cb598"
+              }
+            ]
+          },
+          {
+            "name": "kdbusaddons",
+            "buildsystem": "cmake-ninja",
+            "cleanup": [
+              "/bin",
+              "/include",
+              "/lib/cmake",
+              "/lib/mkspecs"
+            ],
+            "config-opts": [
+              "-DENABLE_TESTING=OFF"
+            ],
+            "sources": [
+              {
+                "type": "archive",
+                "url": "https://download.kde.org/stable/frameworks/5.106/kdbusaddons-5.106.0.tar.xz",
+                "sha256": "8183b45899681f7e8181c33aa573fe43fde8535eb4cb586b310038bbb0eacc17"
+              },
+              {
+                "type": "shell",
+                "commands": [
+                  "rm -fr po"
+                ]
+              }
+            ]
+          },
         {
             "name": "gvfs",
             "buildsystem": "meson",
