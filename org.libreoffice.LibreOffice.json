@@ -118,6 +118,28 @@
             }
           ]
         },
+         {
+          "name": "qt5-x11extras",
+          "buildsystem": "qmake",
+          "cleanup": [
+            "/bin",
+            "/include",
+            "/lib/*.a",
+            "/lib/*.la",
+            "/lib/*.prl",
+            "/lib/cmake",
+            "/lib/debug",
+            "/lib/mkspecs",
+            "/lib/pkgconfig"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtx11extras-everywhere-opensource-src-5.15.9.tar.xz",
+              "sha256": "7ba3123de7b4ff87d02f513ffa1e4c4284e8f882563d114f29cb98d4c00fcbdb"
+            }
+          ]
+        },
         {
             "name": "gvfs",
             "buildsystem": "meson",
