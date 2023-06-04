@@ -821,6 +821,7 @@
         "--env=LIBO_FLATPAK=1",
         "--own-name=org.libreoffice.LibreOfficeIpc0",
         "--talk-name=org.gtk.vfs.*",
-        "--talk-name=com.canonical.AppMenu.Registrar"
+        "--talk-name=com.canonical.AppMenu.Registrar",
+        "--env=QT_QPA_PLATFORM=wayland"
     ]
 }
