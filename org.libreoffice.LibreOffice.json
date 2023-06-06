@@ -190,7 +190,7 @@
               {
                 "type": "shell",
                 "commands": [
-                  "rm -fr po"
+                  "rm -fr poqm"
                 ]
               }
             ]
