@@ -181,6 +181,9 @@
               "/lib/cmake",
               "/lib/mkspecs"
             ],
+            "config-opts": [
+              "-DENABLE_TESTING=OFF"
+            ],
             "sources": [
               {
                 "type": "archive",
