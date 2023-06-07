@@ -136,6 +136,28 @@
             }
           ]
         },
+        {
+            "name": "qt5-declarative",
+            "buildsystem": "qmake",
+            "cleanup": [
+                "/bin",
+            "/include",
+            "/lib/*.a",
+            "/lib/*.la",
+            "/lib/*.prl",
+            "/lib/cmake",
+            "/lib/debug",
+            "/lib/mkspecs",
+            "/lib/pkgconfig"
+            ],
+           "sources": [
+            {
+              "type": "archive",
+              "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtdeclarative-everywhere-opensource-src-5.15.9.tar.xz",
+              "sha256": "124aa6e0513f8d4b33a1b351b8d0980be37522da68f7051d0db9adfcf07ba726"
+            }
+          ] 
+        },
          {
           "name": "qt5-x11extras",
           "buildsystem": "qmake",
