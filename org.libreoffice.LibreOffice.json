@@ -27,8 +27,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gitlab.gnome.org/GNOME/gvfs/-/archive/1.50.4/gvfs-1.50.4.tar.gz",
-                    "sha256": "c67bba49c5b1dbe0b8b8f53b45eab545f6a6ce36fcdf3c11ac92464732b60ea5"
+                    "url": "https://download.gnome.org/sources/gvfs/1.50/gvfs-1.50.4.tar.xz",
+                    "sha256": "ab9059a676a537edbea21388c2aafe1a7e2c8f1ac2dfdc6d64550233075457fd"
                 }
             ]
         },
