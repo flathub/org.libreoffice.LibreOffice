@@ -229,7 +229,13 @@
                     "type": "archive",
                     "url": "https://download.kde.org/stable/frameworks/5.106/kconfig-5.106.0.tar.xz",
                     "sha256": "05294ed7db971e1c7c7ef9b1429513516a96f4951c768fce2d915c067e75502d"
-                }
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
             ]
         },
         {
