@@ -239,6 +239,96 @@
             ]
         },
         {
+            "name": "kcrash",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/kcrash-5.106.0.tar.xz",
+                    "sha256": "529e26d32d5826fa075020d2396f4658af8c101da0e7393f9d92c084c4f1244b"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+         {
+            "name": "kinit",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/kinit-5.106.0.tar.xz",
+                    "sha256": "af3f392426e94c2dcce987af1375ca0668787a2531bfd6f2978ccc0ce979d5a5"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
+           "name": "kglobalaccel",
+           "buildsystem": "cmake",
+           "builddir": true,
+           "sources": [
+              {
+                  "type": "archive",
+                  "url": "https://download.kde.org/stable/frameworks/5.106/kglobalaccel-5.106.0.tar.xz",
+                  "sha256": "757cca928669905e5db0b8841724fd523956aa2d25aa9282c6960005f022b100"
+               },
+               {
+                 "type": "shell",
+                 "commands": [
+                  "rm -fr poqm"
+                ]
+             }
+           ]
+        },
+        {
+           "name": "kio",
+           "buildsystem": "cmake",
+           "builddir": true,
+           "sources": [
+              {
+                  "type": "archive",
+                  "url": "https://download.kde.org/stable/frameworks/5.106/kio-5.106.0.tar.xz",
+                  "sha256": "ed2f976422169ff92d67c2c434ac894e22a0216d22567acacb62e87c5908ccb6"
+               },
+               {
+                 "type": "shell",
+                 "commands": [
+                  "rm -fr poqm"
+                ]
+             }
+           ]
+        },
+        {
+           "name": "knotifications",
+           "buildsystem": "cmake",
+           "builddir": true,
+           "sources": [
+              {
+                  "type": "archive",
+                  "url": "https://download.kde.org/stable/frameworks/5.106/knotifications-5.106.0.tar.xz",
+                  "sha256": "cf24db29bee9659c6ccc7bfc644de44e8785ba3f9de6a1b29ad0d1f3a91f8a9a"
+               },
+               {
+                 "type": "shell",
+                 "commands": [
+                  "rm -fr poqm"
+                ]
+             }
+           ]
+        },
+        {
             "name": "gvfs",
             "buildsystem": "meson",
             "config-opts": [ "-Dsystemduserunitdir=no", "-Dtmpfilesdir=no", "-Dinstalled_tests=true",
