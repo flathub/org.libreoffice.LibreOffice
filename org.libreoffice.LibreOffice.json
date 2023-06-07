@@ -239,6 +239,78 @@
             ]
         },
         {
+            "name": "kconfig-widgets",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/kconfigwidgets-5.106.0.tar.xz",
+                    "sha256": "05ec1550b058051afa7a76ee7e97edba669b9dbf78beef0dc72aca7b5e8f9b76"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
+            "name": "kgui-addons",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/kguiaddons-5.106.0.tar.xz",
+                    "sha256": "292357236c86066ef5e2680bc49537c9565d7f10c66666670e357d57e994b8d5"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
+            "name": "kwindow-system",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/kwindowsystem-5.106.0.tar.xz",
+                    "sha256": "3371432556d0c884022f7e16578c775d59066419e5ee34ba1bae2e3fbb19480c"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
+            "name": "kcore-addons",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/kcoreaddons-5.106.0.tar.xz",
+                    "sha256": "e80c50d0d9fc402726d92c869b0314dbb8fe8a2163627f695e0897d7c27cc07c"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
             "name": "kcrash",
             "buildsystem": "cmake",
             "builddir": true,
