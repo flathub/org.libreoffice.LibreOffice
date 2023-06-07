@@ -28,7 +28,12 @@
                 {
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/gvfs/1.50/gvfs-1.50.4.tar.xz",
-                    "sha256": "ab9059a676a537edbea21388c2aafe1a7e2c8f1ac2dfdc6d64550233075457fd"
+                    "sha256": "ab9059a676a537edbea21388c2aafe1a7e2c8f1ac2dfdc6d64550233075457fd",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "gvfs",
+                        "stable-only": true
+                    }
                 }
             ]
         },
@@ -49,7 +54,13 @@
                 {
                     "type": "archive",
                     "url": "https://kerberos.org/dist/krb5/1.20/krb5-1.20.1.tar.gz",
-                    "sha256": "704aed49b19eb5a7178b34b2873620ec299db08752d6a8574f95d41879ab8851"
+                    "sha256": "704aed49b19eb5a7178b34b2873620ec299db08752d6a8574f95d41879ab8851",
+                    "x-checker-data": {
+                        "type": "html",
+                        "url": "https://kerberos.org/dist/",
+                        "version-pattern": "Kerberos V5 Release ([\\d\\.]+) - current release",
+                        "url-template": "https://kerberos.org/dist/krb5/$major.$minor/krb5-$version.tar.gz"
+                    }
                 }
             ]
         },
