@@ -92,7 +92,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.6.0.0.alpha1",
+                    "tag": "libreoffice-7.6.0.0.beta1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -121,11 +121,11 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-5636.tar.bz2",
-                    "sha256": "1a625b25562fb4c25c8bf4660c704111cdd306b8934b94dcd9b89329909ede55",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-5778.tar.bz2",
+                    "sha256": "b1052ff24e9ffb11af017c444bb0f6ad508d64c9a0fb88cacb0e8210245dde06",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "pdfium-5636.tar.bz2"
+                    "dest-filename": "pdfium-5778.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.37.tar.gz",
