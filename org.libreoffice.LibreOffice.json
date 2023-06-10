@@ -221,6 +221,32 @@
             ]
           },
         {
+            "name": "kcodecs",
+            "buildsystem": "cmake-ninja",
+            "cleanup": [
+              "/bin",
+              "/include",
+              "/lib/cmake",
+              "/lib/mkspecs"
+            ],
+            "config-opts": [
+              "-DENABLE_TESTING=OFF"
+            ],
+            "sources": [
+              {
+                "type": "archive",
+                "url": "https://download.kde.org/stable/frameworks/5.106/kcodecs-5.106.0.tar.xz",
+                "sha256": "f5dd4213e7747516a8785a0c0c3a59aac19bc797eac8c41c66833a7a26365ea3"
+              },
+              {
+                "type": "shell",
+                "commands": [
+                  "rm -fr poqm"
+                ]
+              }
+            ]
+          },
+        {
             "name": "kconfig",
             "buildsystem": "cmake",
             "builddir": true,
