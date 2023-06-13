@@ -1,0 +1,514 @@
+From 731ab48c4e7b2fb2ad012d60c44b373bb07a9f4e Mon Sep 17 00:00:00 2001
+From: Bartosz Kosiorek <gang65@poczta.onet.pl>
+Date: Sat, 10 Jun 2023 18:13:50 +0200
+Subject: [PATCH] tdf#143877 Fix failing tests caused by floating point
+ precision
+
+Due to different imlementation of floating-point unit (FPU),
+on different CPU platforms, the floating point numbers could
+could be different.
+https://stackoverflow.com/questions/64036879/differing-floating-point-calculation-results-between-x86-64-and-armv8-2-a
+https://mcuoneclipse.com/2019/03/29/be-aware-floating-point-operations-on-arm-cortex-m4f/
+
+With this path I have changed the tested images,
+to use floating point numbers which are easily represented
+by floating numbers (multiplied/divided by 2), like:
+ - change tension to values: 0.125, 0.25, 0.5, 1.0, 1.5 ...
+ - change position of curve to of control points to 256.0, 384.0 512.0
+
+Previous values was hard to represent by floating numbers,
+for example tension:
+- 0.4 has been written as 0.399999976158142
+- 0.1 has been written as 0.099999994039535
+
+More information:
+https://observablehq.com/@benaubin/floating-point
+
+Additionally the precision of numbers were
+increased to double.
+
+Change-Id: I5725c1f2f474d0c00821edaa9bb2102cb172093f
+---
+ drawinglayer/source/tools/emfppath.cxx        |  42 ++-
+ emfio/qa/cppunit/emf/EmfImportTest.cxx        | 263 +++++++++---------
+ .../cppunit/emf/data/TestEmfPlusDrawCurve.emf | Bin 0 -> 2696 bytes
+ .../emf/data/TestEmfPlusFillClosedCurve.emf   | Bin 1400 -> 1232 bytes
+ .../data/TestEmfPlusRecordTypeDrawCurve.emf   | Bin 2888 -> 0 bytes
+ 5 files changed, 143 insertions(+), 162 deletions(-)
+ create mode 100644 emfio/qa/cppunit/emf/data/TestEmfPlusDrawCurve.emf
+ delete mode 100644 emfio/qa/cppunit/emf/data/TestEmfPlusRecordTypeDrawCurve.emf
+
+diff --git a/drawinglayer/source/tools/emfppath.cxx b/drawinglayer/source/tools/emfppath.cxx
+index bd5b2d357b0f..e7c4a5512c76 100644
+--- a/drawinglayer/source/tools/emfppath.cxx
++++ b/drawinglayer/source/tools/emfppath.cxx
+@@ -34,7 +34,12 @@ namespace
+ 
+ namespace emfplushelper
+ {
+-    typedef float matrix [4][4];
++    typedef double matrix [4][4];
++
++    constexpr sal_uInt32 nDetails = 8;
++    constexpr double alpha[nDetails]
++        = { 1. / nDetails, 2. / nDetails, 3. / nDetails, 4. / nDetails,
++            5. / nDetails, 6. / nDetails, 7. / nDetails, 8. / nDetails };
+ 
+     // see 2.2.2.21 EmfPlusInteger7
+     //     2.2.2.22 EmfPlusInteger15
+@@ -232,21 +237,20 @@ namespace emfplushelper
+         m[0][2] = tension - 2.;
+         m[1][0] = 2. * tension;
+         m[1][1] = tension - 3.;
+-        m[1][2] = 3. - 2 * tension;
++        m[1][2] = 3. - 2. * tension;
+         m[3][1] = 1.;
+         m[0][3] = m[2][2] = tension;
+         m[0][0] = m[1][3] = m[2][0] = -tension;
+         m[2][1] = m[2][3] = m[3][0] = m[3][2] = m[3][3] = 0.;
+     }
+ 
+-    static float calculateSplineCoefficients(float p0, float p1, float p2, float p3, float alpha, matrix m)
++    static double calculateSplineCoefficients(float p0, float p1, float p2, float p3, sal_uInt32 step, matrix m)
+     {
+-        float a, b, c, d;
+-        a = m[0][0] * p0 + m[0][1] * p1 + m[0][2] * p2 + m[0][3] * p3;
+-        b = m[1][0] * p0 + m[1][1] * p1 + m[1][2] * p2 + m[1][3] * p3;
+-        c = m[2][0] * p0 + m[2][2] * p2;
+-        d = p1;
+-        return (d + alpha * (c + alpha * (b + alpha * a)));
++        double a = m[0][0] * p0 + m[0][1] * p1 + m[0][2] * p2 + m[0][3] * p3;
++        double b = m[1][0] * p0 + m[1][1] * p1 + m[1][2] * p2 + m[1][3] * p3;
++        double c = m[2][0] * p0 + m[2][2] * p2;
++        double d = p1;
++        return (d + alpha[step] * (c + alpha[step] * (b + alpha[step] * a)));
+     }
+ 
+     ::basegfx::B2DPolyPolygon& EMFPPath::GetCardinalSpline(EmfPlusHelperData const& rR, float fTension,
+@@ -254,11 +258,7 @@ namespace emfplushelper
+     {
+         ::basegfx::B2DPolygon polygon;
+         matrix mat;
+-        float x, y;
+-        constexpr sal_uInt32 nDetails = 8;
+-        constexpr float alpha[nDetails]
+-            = { 1. / nDetails, 2. / nDetails, 3. / nDetails, 4. / nDetails,
+-                5. / nDetails, 6. / nDetails, 7. / nDetails, 8. / nDetails };
++        double x, y;
+         if (aNumSegments >= nPoints)
+             aNumSegments = nPoints - 1;
+         GetCardinalMatrix(fTension, mat);
+@@ -274,9 +274,9 @@ namespace emfplushelper
+             for (sal_uInt32 s = 0; s < nDetails; s++)
+             {
+                 x = calculateSplineCoefficients(xPoints[i - 3], xPoints[i - 2], xPoints[i - 1],
+-                                                xPoints[i], alpha[s], mat);
++                                                xPoints[i], s, mat);
+                 y = calculateSplineCoefficients(yPoints[i - 3], yPoints[i - 2], yPoints[i - 1],
+-                                                yPoints[i], alpha[s], mat);
++                                                yPoints[i], s, mat);
+                 polygon.append(rR.Map(x, y));
+             }
+         }
+@@ -289,11 +289,7 @@ namespace emfplushelper
+     {
+         ::basegfx::B2DPolygon polygon;
+         matrix mat;
+-        float x, y;
+-        constexpr sal_uInt32 nDetails = 8;
+-        constexpr float alpha[nDetails]
+-            = { 1. / nDetails, 2. / nDetails, 3. / nDetails, 4. / nDetails,
+-                5. / nDetails, 6. / nDetails, 7. / nDetails, 8. / nDetails };
++        double x, y;
+         GetCardinalMatrix(fTension, mat);
+         // add three first points at the end
+         xPoints.push_back(xPoints[0]);
+@@ -308,9 +304,9 @@ namespace emfplushelper
+             for (sal_uInt32 s = 0; s < nDetails; s++)
+             {
+                 x = calculateSplineCoefficients(xPoints[i - 3], xPoints[i - 2], xPoints[i - 1],
+-                                                xPoints[i], alpha[s], mat);
++                                                xPoints[i], s, mat);
+                 y = calculateSplineCoefficients(yPoints[i - 3], yPoints[i - 2], yPoints[i - 1],
+-                                                yPoints[i], alpha[s], mat);
++                                                yPoints[i], s, mat);
+                 polygon.append(rR.Map(x, y));
+             }
+         }
+diff --git a/emfio/qa/cppunit/emf/EmfImportTest.cxx b/emfio/qa/cppunit/emf/EmfImportTest.cxx
+index f7b0239d6f3b..7c3e2ee6e8be 100644
+--- a/emfio/qa/cppunit/emf/EmfImportTest.cxx
++++ b/emfio/qa/cppunit/emf/EmfImportTest.cxx
+@@ -933,97 +933,99 @@ CPPUNIT_TEST_FIXTURE(Test, testEmfPlusBrushPathGradientWithBlendColors)
+     assertXPath(pDocument, aXPathPrefix + "svgradialgradient", "spreadmethod", "pad");
+ }
+ 
+-CPPUNIT_TEST_FIXTURE(Test, testEmfPlusRecordTypeDrawCurve)
++CPPUNIT_TEST_FIXTURE(Test, testEmfPlusDrawCurve)
+ {
+     // tdf#143877 EMF+ records: DrawCurve, DrawClosedCurve
+-    Primitive2DSequence aSequence
+-        = parseEmf(u"emfio/qa/cppunit/emf/data/TestEmfPlusRecordTypeDrawCurve.emf");
++    Primitive2DSequence aSequence = parseEmf(u"emfio/qa/cppunit/emf/data/TestEmfPlusDrawCurve.emf");
+     CPPUNIT_ASSERT_EQUAL(1, static_cast<int>(aSequence.getLength()));
+     drawinglayer::Primitive2dXmlDump dumper;
+     xmlDocUniquePtr pDocument = dumper.dumpAndParse(Primitive2DContainer(aSequence));
+     CPPUNIT_ASSERT(pDocument);
+ 
+     assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke", 26);
+-    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[1]/line", "color", "#ff0000");
++
++    // Verify DrawCurve with tension=0.5, offset=0, segments=2
++    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[3]/line", "color", "#ff0000");
+     assertXPath(
+-        pDocument, aXPathPrefix + "mask/polypolygonstroke[1]/polypolygon", "path",
+-        "m15171.856932876 0c2167.40813326801 2167.4834989758 2167.40813326801 4334.9669979516 0 "
+-        "5418.7087474395-2167.40813326801-541.87087474395-2167.40813326801-2709.35437371975 "
+-        "0-5418.7087474395");
+-    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[5]/line", "color", "#ff0000");
++        pDocument, aXPathPrefix + "mask/polypolygonstroke[3]/polypolygon", "path",
++        "m4121.5678588927 597.698391624308 124.350808427242 119.857180790532 168.799608035277 "
++        "163.249184432137 191.024007839294 186.003527805174 191.024007839294 188.120210909643 "
++        "168.799608035277 169.599233745543 124.350808427242 130.440596312875 57.677609015188 "
++        "70.6442986116379 14.8162665360123 69.7182497534329 10.5830475257226 128.191620514377 "
++        "6.34982851543373 166.821087170928 2.11660950514397 185.606649723086-2.11660950514397 "
++        "184.548308170852-6.34982851543373 163.646062514225-10.5830475257226 "
++        "122.899912753206-14.8162665360123 62.3098588877929");
++
++    // Verify DrawCurve with tension=1.125, offset=0, segments=3
++    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[9]/line", "color", "#ff0000");
+     assertXPath(
+-        pDocument, aXPathPrefix + "mask/polypolygonstroke[5]/polypolygon", "path",
+-        "m9067.13138473787 655.113420833017 134.193869426752 101.812405648104 139.272492038215 "
+-        "99.2724892764088 141.812836844685 105.622473993772 141.813870345419 120.862553588321 "
+-        "139.272492038217 144.992857252138 134.19386942675 178.012997408972 126.573868508085 "
+-        "219.923426231116 106.674845357667 213.255822775207 76.1979421852029 161.820449175038 "
+-        "45.7189720112692 124.990111480451 15.2400018373355 102.765068075616-15.2400018373355 "
+-        "95.1448021921942-45.7179385105337 102.129959790608-76.1979421852029 "
+-        "123.72002410252-106.676912359138 159.915511896266");
+-    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[10]/line", "color", "#ff0000");
++        pDocument, aXPathPrefix + "mask/polypolygonstroke[9]/polypolygon", "path",
++        "m6593.23860852523 4960.44685532205 129.113179813817 111.125862984599 154.512493875552 "
++        "132.292694029285 167.212150906418 147.109475760564 167.212150906418 155.576208178439 "
++        "154.512493875552 157.692891282907 129.113179813817 153.45952507397 91.0142087212153 "
++        "142.876109551627 59.2650661440466 139.171914118808 42.3321901028912 144.463621879979 "
++        "25.399314061734 146.580304984447 8.46643802057861 145.521963432213-8.46643802057861 "
++        "141.288597223276-25.399314061734 133.880206357636-42.3321901028912 "
++        "123.296790835293-59.2650661440466 109.538350656248-83.6060754532091 "
++        "99.2195205219632-111.121999020089 93.3986419846751-132.288094071533 "
++        "85.9902511190348-147.104360607545 76.9943479250442-155.570798628123 "
++        "66.4109324027004-157.687408133268 54.2400045520071-153.454189122979 "
++        "40.4815643729608-142.871141597256 25.135611865564");
++
++    // Verify DrawCurve with tension=0.125, offset=0, segments=4
++    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[13]/line", "color", "#ff0000");
+     assertXPath(
+-        pDocument, aXPathPrefix + "mask/polypolygonstroke[10]/polypolygon", "path",
+-        "m9067.13138473787 4990.08041878461 134.193869426752 101.812664032273 139.272492038215 "
+-        "99.2722308922403 141.812836844685 105.622796973982 141.813870345419 120.862295204153 "
+-        "139.272492038217 144.992792656096 134.19386942675 178.013255793139 126.573868508085 "
+-        "219.923684615284 106.674845357667 213.255306006871 76.1979421852029 161.820319982953 "
+-        "45.7189720112692 124.990240672536 15.2400018373355 102.765068075615-15.2400018373355 "
+-        "95.14531896053-45.7179385105337 102.129959790608-76.1979421852029 "
+-        "123.720540870856-106.676912359138 159.915511896266-113.239642025967 "
+-        "159.967188729871-101.809123897599 119.010714256079-99.2687790911332 "
+-        "85.355142834027-105.618607606564 59.002541537061-120.857575943166 "
+-        "39.9523935968437-144.987751102401 28.2052157817125-178.007066082802 "
+-        "23.7599745549942-219.914487383636 26.6171866850245");
+-    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[15]/line", "color", "#ff0000");
++        pDocument, aXPathPrefix + "mask/polypolygonstroke[13]/polypolygon", "path",
++        "m4121.5678588927 9267.6323875275 124.350808427242 119.857180790532 168.799608035277 "
++        "163.249184432138 191.024007839294 186.003527805173 191.024007839294 188.120210909643 "
++        "168.799608035277 169.599233745543 124.350808427242 130.440596312876 57.677609015188 "
++        "70.6442986116381 14.8162665360123 69.7182497534323 10.5830475257226 128.191620514377 "
++        "6.34982851543373 166.821087170927 2.11660950514397 185.606649723086-2.11660950514397 "
++        "184.548308170854-6.34982851543373 163.646062514224-10.5830475257226 "
++        "122.899912753204-14.8162665360123 62.3098588877929-55.8255756981871 "
++        "42.2675157423582-119.853013228809 69.3875180183586-163.243508084272 "
++        "86.5855682421661-185.997060264576 93.861666413779-188.113669769721 "
++        "91.2158125331916-169.593336599706 78.6480066004096-130.436060754531 "
++        "56.1582486154312-70.6418422341994 "
++        "23.7465385782562-70.6418422341985-7.93756164175647-130.436060754532-28.046051134208-169."
++        "593336599706-41.8044913132544-188.113669769721-49.2128821788938-185.997060264576-50."
++        "271223731128-163.243508084272-44.979515969957-119.853013228809-33.3377588953808-55."
++        "8255756981871-15.3459525073959");
++
++    // Verify DrawCurve with tension=0.125, offset=1, segments=3
++    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[18]/line", "color", "#ff0000");
+     assertXPath(
+-        pDocument, aXPathPrefix + "mask/polypolygonstroke[15]/polypolygon", "path",
+-        "m9067.13138473787 9325.04741673621 134.193869426752 101.812664032272 139.272492038215 "
+-        "99.2722308922421 141.812836844685 105.623313742317 141.813870345419 120.862811972489 "
+-        "139.272492038217 144.993826192769 134.19386942675 178.013255793139 126.573868508085 "
+-        "219.924201383621 106.674845357667 213.252722165189 76.1979421852029 161.820836751291 "
+-        "45.7189720112692 124.989723904198 15.2400018373355 102.765584843952-15.2400018373355 "
+-        "95.1442854238576-45.7179385105337 102.130993327281-76.1979421852029 "
+-        "123.719507334185-106.676912359138 159.916028664602-113.239642025967 "
+-        "159.967705498208-101.809123897599 119.009680719406-99.2687790911332 "
+-        "85.3556596023645-105.618607606564 59.0025415370601-120.857575943166 "
+-        "39.9523935968446-144.987751102401 28.2052157817125-178.007066082802 "
+-        "23.7599745549942-219.914487383636 26.6177034533594-219.91758788584 "
+-        "15.0276232123888-178.007066082802-11.6417570745762-144.987751102401-31.9621215848092-120."
+-        "858092693532-45.9314032449638-105.618607606566-53.5516691283865-99.2687790911314-54."
+-        "8218856984004-101.808607147232-49.7410194183394-113.238608525233-38.3111373615429");
+-    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[20]/line", "color", "#ff0000");
++        pDocument, aXPathPrefix + "mask/polypolygonstroke[18]/polypolygon", "path",
++        "m5162.41058304753 14700.2318678401 10.5830475257226 128.191620514377 6.34982851543373 "
++        "166.821087170927 2.11660950514397 185.606649723086-2.11660950514397 "
++        "184.548308170854-6.34982851543373 163.646062514224-10.5830475257226 "
++        "122.899912753204-14.8162665360123 62.3098588877929-55.8255756981871 "
++        "42.2675157423582-119.853013228809 69.3875180183586-163.243508084272 "
++        "86.5855682421661-185.997060264576 93.861666413779-188.113669769721 "
++        "91.2158125331916-169.593336599706 78.6480066004096-130.436060754531 "
++        "56.1582486154312-70.6418422341994 23.7465385782562");
++
++    // Verify DrawClosedCurve with tension=0.5
++    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[22]/line", "color", "#ff0000");
+     assertXPath(
+-        pDocument, aXPathPrefix + "mask/polypolygonstroke[20]/polypolygon", "path",
+-        "m10130.9395287237 14843.7694408618 76.1979421852029 161.820836751291 45.7189720112692 "
+-        "124.989723904198 15.2400018373355 102.765584843952-15.2400018373355 "
+-        "95.1453189605309-45.7179385105337 102.129959790607-76.1979421852029 "
+-        "123.720540870856-106.676912359138 159.916028664602-113.239642025967 "
+-        "159.966671961536-101.809123897599 119.010714256079-99.2687790911332 "
+-        "85.3546260656913-105.618607606564 59.0025415370601-120.857575943166 "
+-        "39.953427133516-144.987751102401 28.2052157817125-178.007066082802 "
+-        "23.7599745549942-219.914487383636 26.6177034533612");
+-    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[25]/line", "color", "#ff0000");
+-    assertXPath(pDocument, aXPathPrefix + "mask/polypolygonstroke[25]/polypolygon", "path",
+-                "m10130.9395287237 19178.7364388134 76.1979421852029 161.820836751289 "
+-                "45.7189720112692 124.9897239042 15.2400018373355 "
+-                "102.764551307278-15.2400018373355 95.1453189605309-45.7179385105337 "
+-                "102.129959790607-76.1979421852029 123.720540870858-106.676912359138 "
+-                "159.914995127929-113.239642025967 159.968739034881-101.809123897599 "
+-                "119.009680719406-99.2687790911332 85.3556596023627-105.618607606564 "
+-                "59.0025415370619-120.857575943166 39.9544606701893-144.987751102401 "
+-                "28.2052157817125-178.007066082802 23.7610080916638-219.914487383636 "
+-                "26.6177034533612-233.252847868691 45.0291257302197-210.390778111221 "
+-                "61.2246453820844-184.991464049484 58.0496207253782-157.052321931652 "
+-                "35.5081859067977-126.572835007349-6.40379322035369-93.5540367773156-67."
+-                "6801154360437-57.9948937408126-148.324914886958-19.895922648212-248.340258646444 "
+-                "19.8948891474765-321.473313564504 57.9954104911813-345.283931416434 "
+-                "93.5540367773147-354.809005386542 126.573351757716-350.046468401488 "
+-                "157.05283868202-330.996320461269 184.991980799852-297.658561565891 "
+-                "210.390778111219-250.033191715345 233.250780867224-188.120210909645 "
+-                "219.914487383634-96.7845081224878 178.007066082804 3.22670149030819 "
+-                "144.987751102401 86.4140011546006 120.8586094439 152.773256723693 "
+-                "105.618607606564 202.300334050906 99.2698125918669 235.005568502958 "
+-                "101.809123897599 250.880691786475 113.238608525233 249.927770974791z");
++        pDocument, aXPathPrefix + "mask/polypolygonstroke[22]/polypolygon", "path",
++        "m2709.26016658501 19012.0476443365v122.767620059174 173.568014566423 198.968211820044 "
++        "198.968211820044 173.568014566423 122.767620059174 46.5670282983083l-46.5654091131796 "
++        "23.283514149156-122.763351298383 61.383810029587-173.561979421852 "
++        "86.7840072832114-198.961293483586 99.4841059100218-198.961293483586 "
++        "99.4841059100218-173.561979421852 86.7840072832114-122.763351298383 "
++        "61.383810029587-46.5654091131796 "
++        "23.283514149156-46.5654091131798-11.6417570745798-122.763351298383-30.6919050147917-173."
++        "561979421852-43.3920036416057-198.961293483586-49.7420529550109-198.961293483586-49."
++        "7420529550109-173.561979421852-43.3920036416057-122.763351298383-30.6919050147953-46."
++        "5654091131798-11.6417570745762 46.5654091131798-104.775813671193 "
++        "122.763351298383-276.227145133147 173.561979421852-390.528032774448 "
++        "198.961293483586-447.678476595098 198.961293483586-447.678476595102 "
++        "173.561979421852-390.528032774448 122.763351298383-276.227145133147 "
++        "46.5654091131798-104.775813671193 46.5654091131796 46.5670282983083 122.763351298383 "
++        "122.767620059178 173.561979421852 173.568014566419 198.961293483586 198.968211820044 "
++        "198.961293483586 198.968211820047 173.561979421852 173.568014566419 122.763351298383 "
++        "122.767620059178 46.5654091131796 46.5670282983083z");
+ }
+ 
+ CPPUNIT_TEST_FIXTURE(Test, testEmfPlusGetDC)
+@@ -1174,77 +1176,60 @@ CPPUNIT_TEST_FIXTURE(Test, testEmfPlusFillClosedCurve)
+ 
+     assertXPath(pDocument, aXPathPrefix + "polypolygoncolor", 2);
+     assertXPath(pDocument, aXPathPrefix + "polypolygoncolor[1]", "color", "#808080");
+-    assertXPath(
+-        pDocument, aXPathPrefix + "polypolygoncolor[1]/polypolygon", "path",
+-        "m19296.3351298383 "
+-        "18361.4321751005-414.061734443902-308.241977088233-546.349828515435-482.86833320689-607."
+-        "202351788335-586.056634549728-596.619304262618-617.806881116761-514.600685938261-578."
+-        "119072907972-361.146496815287-466.993209923374-136.25673689368-284.429292162964 "
+-        "145.516903478681-148.167817312798 383.635472807451-105.834155223427 "
+-        "542.381185693288-63.5004931340554 621.754042136206-21.1668310446876 621.758176139148 "
+-        "21.1688981180305 542.381185693288 63.5004931340554 383.639606810386 105.836222296773 "
+-        "145.516903478689 148.167817312798-136.265004899564 284.425158016275-361.146496815287 "
+-        "466.993209923374-514.600685938261 578.119072907972-596.619304262618 "
+-        "617.806881116761-607.202351788335 586.058701623075-546.349828515435 "
+-        "482.868333206887-414.061734443902 308.244044161576-210.338069573736 "
+-        "62.1775661937645-10.5830475257244-283.110499369355 116.413522782947-605.900538654125 "
+-        "211.660950514459-817.568849100979 275.159235668783-918.111296563235 "
+-        "306.912512248899-907.527881040893 306.908378245957-785.818602533949 "
+-        "275.163369671733-552.983461042411 211.660950514452-209.022456566268 211.652682508575 "
+-        "209.022456566268 275.159235668791 552.983461042411 306.908378245957 785.818602533949 "
+-        "306.908378245957 907.527881040893 275.163369671733 918.113363636578 211.660950514452 "
+-        "817.568849100979 116.417656785889 605.902605727468-10.5830475257171 283.106365222669z");
+     assertXPath(pDocument, aXPathPrefix + "polypolygoncolor[2]", "color", "#808080");
++
++    // Validate curve generated by FillClosedCurve, tension=0.25
+     assertXPath(
+         pDocument, aXPathPrefix + "polypolygoncolor[2]/polypolygon", "path",
+-        "m24376.1979421852 "
+-        "18361.4321751005-414.061734443902-308.241977088233-546.349828515435-482.86833320689-607."
+-        "202351788335-586.056634549728-596.619304262618-617.806881116761-514.600685938261-578."
+-        "119072907972-361.146496815287-466.993209923374-136.25673689368-284.429292162964 "
+-        "145.516903478681-148.167817312798 383.635472807451-105.834155223427 "
+-        "542.381185693288-63.5004931340554 621.754042136206-21.1668310446876 621.754042136206 "
+-        "21.1688981180305 542.381185693288 63.5004931340554 383.635472807451 105.836222296773 "
+-        "145.516903478681 148.167817312798-136.25673689368 284.425158016275-361.146496815287 "
+-        "466.993209923374-514.600685938261 578.119072907972-596.619304262618 "
+-        "617.806881116761-607.202351788335 586.058701623075-546.349828515435 "
+-        "482.868333206887-414.061734443902 308.244044161576-210.338069573736 "
+-        "62.1775661937645-10.5830475257244-283.110499369355 116.413522782947-605.900538654125 "
+-        "211.660950514459-817.568849100979 275.159235668783-918.111296563235 "
+-        "306.908378245964-907.527881040893 306.908378245957-785.818602533949 "
+-        "275.159235668791-552.983461042411 211.660950514452-209.022456566268 211.660950514452 "
+-        "209.022456566268 275.159235668791 552.983461042411 306.908378245957 785.818602533949 "
+-        "306.908378245964 907.527881040893 275.159235668783 918.113363636578 211.660950514459 "
+-        "817.568849100979 116.413522782947 605.902605727468-10.5830475257244 283.106365222669z");
++        "m1305.97700269476 "
++        "808.572945906987-50.3314857912787-25.4001972536228-68.1076984321412-40.2169789849024-76."
++        "5824044585986-48.6837114027768-75.7556038706516-50.8003945072452-65.6272966683-46."
++        "5670282983082-46.1974828515433-35.9836127759654-17.4661624203823-19.050147940217 "
++        "18.1896129348361-7.40839086563994 47.9544341009307-5.29170776117132 "
++        "67.797648211661-3.17502465670293 77.719255267026-1.0583415522342 77.719255267026 "
++        "1.0583415522342 67.7976482116608 3.17502465670293 47.9544341009309 5.29170776117132 "
++        "18.1896129348359 7.40839086563994-17.4661624203823 19.050147940217-46.1974828515431 "
++        "35.9836127759654-65.6272966683 46.5670282983082-75.7556038706516 "
++        "50.8003945072452-76.5824044585986 48.6837114027768-68.1076984321412 "
++        "40.2169789849024-50.3314857912787 25.4001972536228-23.2537665360119 4.23336620893701 "
++        "2.58375183733483-29.7658561565891 18.0862628613424-64.4265419922616 "
++        "29.2480707986281-87.1808853652984 36.0691756491915-98.0288862757 "
++        "38.5495774130329-96.9705447234655 36.6892760901519-84.0058607085957 "
++        "30.4882716805487-59.1348342310902 19.9465641842235-22.3574652909491 19.9465641842235 "
++        "22.3574652909491 30.4882716805487 59.1348342310902 36.6892760901519 84.0058607085957 "
++        "38.5495774130327 96.9705447234655 36.0691756491917 98.0288862757 29.2480707986281 "
++        "87.1808853652984 18.0862628613424 64.4265419922616 2.5837518373346 29.7658561565891z");
++
++    // Validate curve generated by DrawClosedCurve, tension=0.25
++    assertXPath(
++        pDocument, aXPathPrefix + "polypolygonstroke[2]/polypolygon", "path",
++        "m1305.97700269476 "
++        "808.572945906987-50.3314857912787-25.4001972536228-68.1076984321412-40.2169789849024-76."
++        "5824044585986-48.6837114027768-75.7556038706516-50.8003945072452-65.6272966683-46."
++        "5670282983082-46.1974828515433-35.9836127759654-17.4661624203823-19.050147940217 "
++        "18.1896129348361-7.40839086563994 47.9544341009307-5.29170776117132 "
++        "67.797648211661-3.17502465670293 77.719255267026-1.0583415522342 77.719255267026 "
++        "1.0583415522342 67.7976482116608 3.17502465670293 47.9544341009309 5.29170776117132 "
++        "18.1896129348359 7.40839086563994-17.4661624203823 19.050147940217-46.1974828515431 "
++        "35.9836127759654-65.6272966683 46.5670282983082-75.7556038706516 "
++        "50.8003945072452-76.5824044585986 48.6837114027768-68.1076984321412 "
++        "40.2169789849024-50.3314857912787 25.4001972536228-23.2537665360119 4.23336620893701 "
++        "2.58375183733483-29.7658561565891 18.0862628613424-64.4265419922616 "
++        "29.2480707986281-87.1808853652984 36.0691756491915-98.0288862757 "
++        "38.5495774130329-96.9705447234655 36.6892760901519-84.0058607085957 "
++        "30.4882716805487-59.1348342310902 19.9465641842235-22.3574652909491 19.9465641842235 "
++        "22.3574652909491 30.4882716805487 59.1348342310902 36.6892760901519 84.0058607085957 "
++        "38.5495774130327 96.9705447234655 36.0691756491917 98.0288862757 29.2480707986281 "
++        "87.1808853652984 18.0862628613424 64.4265419922616 2.5837518373346 29.7658561565891z");
+ 
+     assertXPath(pDocument, aXPathPrefix + "polypolygonstroke", 2);
+     assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[1]/line", "color", "#00ff00");
+-    assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[1]/line", "width", "33");
++    assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[1]/line", "width", "4");
+     assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[1]/line", "linejoin", "Miter");
+     assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[1]/line", "miterangle", "3");
+     assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[1]/line", "linecap", "BUTT");
+-
+-    assertXPath(
+-        pDocument, aXPathPrefix + "polypolygonstroke[1]/polypolygon", "path",
+-        "m19296.3351298383 "
+-        "18361.4321751005-414.061734443902-308.241977088233-546.349828515435-482.86833320689-607."
+-        "202351788335-586.056634549728-596.619304262618-617.806881116761-514.600685938261-578."
+-        "119072907972-361.146496815287-466.993209923374-136.25673689368-284.429292162964 "
+-        "145.516903478681-148.167817312798 383.635472807451-105.834155223427 "
+-        "542.381185693288-63.5004931340554 621.754042136206-21.1668310446876 621.758176139148 "
+-        "21.1688981180305 542.381185693288 63.5004931340554 383.639606810386 105.836222296773 "
+-        "145.516903478689 148.167817312798-136.265004899564 284.425158016275-361.146496815287 "
+-        "466.993209923374-514.600685938261 578.119072907972-596.619304262618 "
+-        "617.806881116761-607.202351788335 586.058701623075-546.349828515435 "
+-        "482.868333206887-414.061734443902 308.244044161576-210.338069573736 "
+-        "62.1775661937645-10.5830475257244-283.110499369355 116.413522782947-605.900538654125 "
+-        "211.660950514459-817.568849100979 275.159235668783-918.111296563235 "
+-        "306.912512248899-907.527881040893 306.908378245957-785.818602533949 "
+-        "275.163369671733-552.983461042411 211.660950514452-209.022456566268 211.652682508575 "
+-        "209.022456566268 275.159235668791 552.983461042411 306.908378245957 785.818602533949 "
+-        "306.908378245957 907.527881040893 275.163369671733 918.113363636578 211.660950514452 "
+-        "817.568849100979 116.417656785889 605.902605727468-10.5830475257171 283.106365222669z");
+     assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[2]/line", "color", "#aaaa00");
+-    assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[2]/line", "width", "33");
++    assertXPath(pDocument, aXPathPrefix + "polypolygonstroke[2]/line", "width", "4");
+ }
+ 
+ CPPUNIT_TEST_FIXTURE(Test, testExtTextOutOpaqueAndClipTransform)
+diff --git a/emfio/qa/cppunit/emf/data/TestEmfPlusDrawCurve.emf b/emfio/qa/cppunit/emf/data/TestEmfPlusDrawCurve.emf
+new file mode 100644
+index 0000000000000000000000000000000000000000..6137e4986b5cc6a9c2b0e9b27f14f5a249469abf
+GIT binary patch
+literal 2696
+zcma);v1?ON7{yQ0#EKN@P;3Ozr-Kf4C@A6}%`G-X&_a<4-PBq&f}&_09E1!G9XmK=
+z?AXB}W5<k6P7VbT9333`AJp@^@4ddJ2-gQE=f3a0@0YLl6kckQzFXz>?S?eGT;54z
+z8`AiFDeEjPN;Pesk}i6?Ze6!t7LWeCB7M9j?fHJXRul^x-W}84d_yaGs(0E@rjC}h
+zs2T6S(ObRNy58%Fch|kQrVsvnsTW>7D4xvRmG`d2ryjcRm7e*zy#Ki=k6p<x52~wH
+zW_j$HTBzxq*OOL#a`?lhK_eH>E?Wy0&t3`*O?b_9-hJizLTDbYXG1-*jPTWKH-ZlL
+zj`L22R^8k2tjh16^L>70^X2O3efgYpZ~$-Bx@R%p+0fD*uWwo7mh`I=O+HZd_%mp6
+zje2Gct;xc-y-z)VXvGc-?nKC&Z~DI1>m8i1yAPJHtYG7UXNS#q!N#{2*gVQ?c~%C3
+zSzi3#G~-S1R_``_5^KC%4~xA)iW!fxV(u4xEzblKhe;jgASy9uoAD}UFoQWC6-*o^
+zb(onwHRskb<|p^S{A>?q;4rDf?AlXIh0!^8+yish4ikq-9cJI2WP;R~)r>1R<O^rE
+z@MSx7&Vlb+?Ig}KW>hiB0w&qO#9>m0Nk&O#JkN?r7BK0DiNmDMI<r#DJfn(97BI;M
+zCJvK2OfpI_^NcDcS->P4m^e)8F#A@L8Ix&@WVGo%GNK=cM@9oX8GZS$j4CEsz-(DC
+zahTL$l2MWwGpd-ueK5<v6OVJkvob5i%rmN(WC4?Gm=lLd9cI@`G4qTnCjBsXEtohp
+z1e02lshabtawm(g?jxJM!hhST@7u}fPcoxXCRxC2Suk;!)M1iQlGz?*k`YX@fr-aC
+z?J&tG#oRi^Bny~i0~3cy9cI@`F%?GV+;I=gT?-}-lRC`4l{0y728(yxwBJX(H)k!b
+zX8a_BMtpzyEnfJPoqEeoHfI*Si0|NF{|9R>XL0thTK;}mI4tV0$Rx>X7jwB678$_8
+z<6L%FWRYTR6)esg7H1C&heaJ$*Pdc2G~;=3#;`bZSU4=|u=@6#RsQDUyy`x<^0(A!
+MbEYCI|KK;}Uwpz+8~^|S
+
+literal 0
+HcmV?d00001
+
+diff --git a/emfio/qa/cppunit/emf/data/TestEmfPlusFillClosedCurve.emf b/emfio/qa/cppunit/emf/data/TestEmfPlusFillClosedCurve.emf
+index f9f50092b64fa9463301d0967be8963e049ce3f7..b44a59a81b5c916c0f92896091cb59074d10a152 100644
+GIT binary patch
+delta 314
+zcmeytb%E2Ak%58X3J}AA1CS*E=P@vF0NE@I3<|EkZVU{J3>ScG!HK5ld31o{3P21L
+z*WSE?@e`w1gFTSj0Ks6kGmw3F@&RTAeIUc06-Y2JoNxlF0ZMp)BwfHl3<scm5Df;C
+x`B`L1))UR52-MSH2ek)i7Ra7oATxpXOasy&^Fe$N4dOFQUd@tAvL1I<LjYV$F~9%-
+
+delta 488
+zcmcb>`Gd=pk%58X3J}A<IWq=^18OiH0|Rpj0|R>y1A~IAuNwmcBSQr%1B1{+)ARLn
+zfNCZHF;HBa*@1zf2gq&!@yk++DoZjl^U@U((@Ii{6oBkv1t0<`)KN&SNKP#%QAo=N
+zNu(-(6f5K;7MCa#r6%VWrRV`oAPSh`R0VV<g9Q-l05Ql;6$eHJ9;oWg0*s#+#TXoc
+z+y*EHvKx*8@zKc=%nJHv&z!LX`Vbffj;;(1i(D8OJX{$VPPi~MSOe+xP(F|b^G{4p
+zXO<;d&t_&t1Gqg6ArN~GL_zFv@PpU`<^$~k^G~=;)?xIW9LOS%u#7m3ljpM-0sskn
+BW&r>I
+
+diff --git a/emfio/qa/cppunit/emf/data/TestEmfPlusRecordTypeDrawCurve.emf b/emfio/qa/cppunit/emf/data/TestEmfPlusRecordTypeDrawCurve.emf
+deleted file mode 100644
+index 299663ef4416ad1ae58c968ee200a569aedd8b17..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 2888
+zcmbuBy-yTD7{=fG5)+A`AaW)~M`E;q7!r-K5Evp55+xx96FTMNjw3-K$7!T6xx&K2
+z!oq^Wf|A05lJZImw6Y*ECYBTy{0I2_W_MYRV$Z}4&pos6%=_E9c`jLUX7)o$uJ8BE
+zS~rtBvqHnH>xr40n4UDt+0+HIeog14yV7dB^w%x3w|C4Abl;bYi?OvH73^TFXtP$a
+z4QrUQ37fV_8_@i^)osm|?3FEQc1d#!wyDomThZugywa&F>Rkw{o~iGJRkbeaUlwIv
+zmFUt&ZBTNOwmp#ZIlH29kCg9e{gl~mF%oM(OCKfH7QER9jho!RuGBXhwUw94Zob;6
+z)Sbo~PJb*Mbd@)YmGy?Jt}#(@EOx8&8x2>lEUwj;Zj11L7kkt3TTSAT{k~}3G4iUu
+zQ!>8hODE$Sr|LsKAHK7`s;=hfb>DTe&iTVa(qHs;Qs<d7(zwJk&--%TYfRS3*^Ou%
+zU2ZHHoxV@jnH?X)o0A?(@GkqZO=<i<>XOWUPXsglAgsw_X;F>3lUh<w?Aw~B9xa-c
+z!-CuGqvrd%Z#J99=j7^xrOU-^+~CP!^DNl-_BfNLnPu&j4Z%z<e)pwt<2BWMNS_&F
+zJQ=s*x!p|WxBdNLP$}~$?kj6gFmagFVeSTH?NiJUPs;RSu+Qf)6NgD1rjuvyvs$f=
+zw(s+udSHH%doggB)M3`-*-Y*840A_4F!$szahTL$ZppKmAr^fUq*AznL%wi^VxN&y
+z=Nx$6+(d`-3>l?NvVci8FmagFVUkftX2>XIk_AlqVd5~UGj>uoGs!4rk_Ak%fr-PU
+z4wH<snMp<|lPqA84NM#+b(mXHHZ#en*p|_I^^p<%I6N}im6Oqzf66Fjk_F7N1QUlz
+z9VQudWQL4VrdJ=#<a^>_pYS9nWiykEQYKlzBpddL!=w(gCS@~|j8Z23F!v;wI5h;5
+zS~io6a#ET*S$tI=*&M`vD5riTC!;?dGiqm&1<bMp6NgD1CK+{Pj<hq$2qxLU#KS)2
+zFv%#JNk;8VvVci8FmagFVb-K<CK<Iechm!OPlAcVqz-dSikQ4Ny~I1NPwyk%n?n*;
+zDSVPaF}%O@7LUDGPQ5HAn@f`#gm<u)pJi!(!x4+KhgH_|Vd1c-!y=Q8tdV$M>V-uH
+zu<)=iIV`fsW|2iHd`He27H1C&heaJ$O`gpngHm8|#;`bZSU4=|u(sq8EBT+1^U8az
+P4*g~q<-PG3<A376^c|I7
+
+-- 
+2.40.1
+
