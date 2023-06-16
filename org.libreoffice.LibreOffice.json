@@ -283,6 +283,24 @@
             ]
         },
         {
+            "name": "kdoc-tools",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/kdoctools-5.106.0.tar.xz",
+                    "sha256": "c6b249db8ebd909e46011dbd69d900aed72dcc81363b07222d3649128849ec4c"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
             "name": "kconfig-widgets",
             "buildsystem": "cmake",
             "builddir": true,
@@ -295,7 +313,7 @@
                 {
                   "type": "shell",
                   "commands": [
-                   "rm -fr poqm docs"
+                   "rm -fr poqm"
                 ]
               }
             ]
