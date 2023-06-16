@@ -295,7 +295,7 @@
                 {
                   "type": "shell",
                   "commands": [
-                   "rm -fr poqm"
+                   "rm -fr poqm docs"
                 ]
               }
             ]
