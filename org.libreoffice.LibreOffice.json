@@ -283,6 +283,24 @@
             ]
         },
         {
+            "name": "karchive",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/karchive-5.106.0.tar.xz",
+                    "sha256": "fc1e5a8e94bb000ba30a5e7ba975126363c97acec98112ab58aaec1069d5a596"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
             "name": "kdoc-tools",
             "buildsystem": "cmake",
             "builddir": true,
