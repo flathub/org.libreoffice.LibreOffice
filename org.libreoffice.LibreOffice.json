@@ -301,6 +301,24 @@
             ]
         },
         {
+            "name": "ki18n",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.106/ki18n-5.106.0.tar.xz",
+                    "sha256": "f1281bb3249b9cf99f89a0750a114858d013655000cb6bb24e5dc332c57b9b4c"
+                },
+                {
+                  "type": "shell",
+                  "commands": [
+                   "rm -fr poqm"
+                ]
+              }
+            ]
+        },
+        {
             "name": "kdoc-tools",
             "buildsystem": "cmake",
             "builddir": true,
