@@ -180,306 +180,275 @@
             }
           ]
         },
-          {
-            "name": "extra-cmake-modules",
-            "buildsystem": "cmake-ninja",
-            "cleanup": [
-              "*"
-            ],
-            "sources": [
-              {
-                "type": "archive",
-                "url": "https://download.kde.org/stable/frameworks/5.106/extra-cmake-modules-5.106.0.tar.xz",
-                "sha256": "404f58ecac5d37485e51472ff5f88149f460689bec8792ea29bae279e63cb598"
-              }
-            ]
-          },
-          {
-            "name": "kdbusaddons",
-            "buildsystem": "cmake-ninja",
-            "cleanup": [
-              "/bin",
-              "/include",
-              "/lib/cmake",
-              "/lib/mkspecs"
-            ],
-            "config-opts": [
-              "-DENABLE_TESTING=OFF"
-            ],
-            "sources": [
-              {
-                "type": "archive",
-                "url": "https://download.kde.org/stable/frameworks/5.106/kdbusaddons-5.106.0.tar.xz",
-                "sha256": "8183b45899681f7e8181c33aa573fe43fde8535eb4cb586b310038bbb0eacc17"
-              },
-              {
-                "type": "shell",
-                "commands": [
-                  "rm -fr poqm"
-                ]
-              }
-            ]
-          },
         {
-            "name": "kcodecs",
-            "buildsystem": "cmake-ninja",
-            "cleanup": [
-              "/bin",
-              "/include",
-              "/lib/cmake",
-              "/lib/mkspecs"
-            ],
-            "config-opts": [
-              "-DENABLE_TESTING=OFF"
-            ],
-            "sources": [
-              {
-                "type": "archive",
-                "url": "https://download.kde.org/stable/frameworks/5.106/kcodecs-5.106.0.tar.xz",
-                "sha256": "f5dd4213e7747516a8785a0c0c3a59aac19bc797eac8c41c66833a7a26365ea3"
-              },
-              {
-                "type": "shell",
-                "commands": [
-                  "rm -fr poqm"
-                ]
-              }
-            ]
-          },
+      "name": "extra-cmake-modules",
+      "buildsystem": "cmake-ninja",
+      "cleanup": [
+        "*"
+      ],
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-            "name": "kconfig",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kconfig-5.106.0.tar.xz",
-                    "sha256": "05294ed7db971e1c7c7ef9b1429513516a96f4951c768fce2d915c067e75502d"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/extra-cmake-modules-5.107.0.tar.xz",
+          "sha256": "3969aad56d1e6a5901e926aaf7a73510d98c4b363564ed3f1222d4135da633ed",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/extra-cmake-modules-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kconfig",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "cleanup": [
+        "/bin"
+      ],
+      "sources": [
         {
-            "name": "kcore-addons",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kcoreaddons-5.106.0.tar.xz",
-                    "sha256": "e80c50d0d9fc402726d92c869b0314dbb8fe8a2163627f695e0897d7c27cc07c"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kconfig-5.107.0.tar.xz",
+          "sha256": "9697d4bca5255e62df99f7e80b4d0f22d532317b4bff3d67e81c4f7641ee5b13",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kconfig-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "karchive",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-            "name": "karchive",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/karchive-5.106.0.tar.xz",
-                    "sha256": "fc1e5a8e94bb000ba30a5e7ba975126363c97acec98112ab58aaec1069d5a596"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/karchive-5.107.0.tar.xz",
+          "sha256": "e88cb94b9af8a88f360e627b3ae7a2b99ccdfe3fe9e1961452056b2a00f04a7f",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/karchive-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kwidgetsaddons",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-            "name": "ki18n",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/ki18n-5.106.0.tar.xz",
-                    "sha256": "f1281bb3249b9cf99f89a0750a114858d013655000cb6bb24e5dc332c57b9b4c"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kwidgetsaddons-5.107.0.tar.xz",
+          "sha256": "0fa19b9933c3f5553d16bb38b0d9f6fe0a290d58b70e7debf45714102ce887c9",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kwidgetsaddons-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kcompletion",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-            "name": "kdoc-tools",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kdoctools-5.106.0.tar.xz",
-                    "sha256": "c6b249db8ebd909e46011dbd69d900aed72dcc81363b07222d3649128849ec4c"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kcompletion-5.107.0.tar.xz",
+          "sha256": "50ab6473d2092bf98fc6d0ed7000566e9bb490f1139e1a502dabc39dfe6449f5",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcompletion-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kcoreaddons",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "cleanup": [
+        "/bin"
+      ],
+      "sources": [
         {
-            "name": "kconfig-widgets",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kconfigwidgets-5.106.0.tar.xz",
-                    "sha256": "05ec1550b058051afa7a76ee7e97edba669b9dbf78beef0dc72aca7b5e8f9b76"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kcoreaddons-5.107.0.tar.xz",
+          "sha256": "64baee484852ab2798aba18cc4780a1caafb688a5e0a0524de3bc7eb2a1eaf84",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcoreaddons-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kguiaddons",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-            "name": "kgui-addons",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kguiaddons-5.106.0.tar.xz",
-                    "sha256": "292357236c86066ef5e2680bc49537c9565d7f10c66666670e357d57e994b8d5"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kguiaddons-5.107.0.tar.xz",
+          "sha256": "ad2f6e6ca7dd3c230de54bab357e33a9c21e85a2836f63565e3b77ebf79984c1",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kguiaddons-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ki18n",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-            "name": "kwindow-system",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kwindowsystem-5.106.0.tar.xz",
-                    "sha256": "3371432556d0c884022f7e16578c775d59066419e5ee34ba1bae2e3fbb19480c"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.105/ki18n-5.105.0.tar.xz",
+          "sha256": "ba26cd1fc188ab305293f8f1276ab7871f57f4ab1309bb8d2adf42fb20958f3a",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/ki18n-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kitemmodels",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-            "name": "kcrash",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kcrash-5.106.0.tar.xz",
-                    "sha256": "529e26d32d5826fa075020d2396f4658af8c101da0e7393f9d92c084c4f1244b"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
-         {
-            "name": "kinit",
-            "buildsystem": "cmake",
-            "builddir": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.106/kinit-5.106.0.tar.xz",
-                    "sha256": "af3f392426e94c2dcce987af1375ca0668787a2531bfd6f2978ccc0ce979d5a5"
-                },
-                {
-                  "type": "shell",
-                  "commands": [
-                   "rm -fr poqm"
-                ]
-              }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kitemmodels-5.107.0.tar.xz",
+          "sha256": "b7f5aae6a5d0605f737ab3e993f9a195ba164f6f89672013e26b1276808a11af",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kitemmodels-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kitemviews",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-           "name": "kglobalaccel",
-           "buildsystem": "cmake",
-           "builddir": true,
-           "sources": [
-              {
-                  "type": "archive",
-                  "url": "https://download.kde.org/stable/frameworks/5.106/kglobalaccel-5.106.0.tar.xz",
-                  "sha256": "757cca928669905e5db0b8841724fd523956aa2d25aa9282c6960005f022b100"
-               },
-               {
-                 "type": "shell",
-                 "commands": [
-                  "rm -fr poqm"
-                ]
-             }
-           ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kitemviews-5.107.0.tar.xz",
+          "sha256": "d5460cee8e9b08c1c0472e88e07bbe04d33cf69da6faf45febd9680972a00b17",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kitemviews-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kimageformats",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-           "name": "kio",
-           "buildsystem": "cmake",
-           "builddir": true,
-           "sources": [
-              {
-                  "type": "archive",
-                  "url": "https://download.kde.org/stable/frameworks/5.106/kio-5.106.0.tar.xz",
-                  "sha256": "ed2f976422169ff92d67c2c434ac894e22a0216d22567acacb62e87c5908ccb6"
-               },
-               {
-                 "type": "shell",
-                 "commands": [
-                  "rm -fr poqm"
-                ]
-             }
-           ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kimageformats-5.107.0.tar.xz",
+          "sha256": "97258ad36bf98cd1aaeeb29c49946031f5051d9984bda9f41fda5a35ccd4d1c1",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kimageformats-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kwindowsystem",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
         {
-           "name": "knotifications",
-           "buildsystem": "cmake",
-           "builddir": true,
-           "sources": [
-              {
-                  "type": "archive",
-                  "url": "https://download.kde.org/stable/frameworks/5.106/knotifications-5.106.0.tar.xz",
-                  "sha256": "cf24db29bee9659c6ccc7bfc644de44e8785ba3f9de6a1b29ad0d1f3a91f8a9a"
-               },
-               {
-                 "type": "shell",
-                 "commands": [
-                  "rm -fr poqm"
-                ]
-             }
-           ]
-        },
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kwindowsystem-5.107.0.tar.xz",
+          "sha256": "a3aa7c3c82f70f6d347c489af45e0e4277fb792fb1b1fc1dd9a6dbb73ec6931e",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kwindowsystem-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kcrash",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kcrash-5.107.0.tar.xz",
+          "sha256": "5417cdd49ba0a54ef3e549eaf153c425d15158e2b91247c0ffddb6985f7df695",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcrash-$version.tar.xz"
+          }
+        }
+      ]
+    },
         {
             "name": "gvfs",
             "buildsystem": "meson",
