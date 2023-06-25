@@ -223,6 +223,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kconfig-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -243,7 +249,13 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/karchive-$version.tar.xz"
           }
-        }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        } 
       ]
     },
     {
@@ -263,6 +275,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kwidgetsaddons-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -283,6 +301,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcompletion-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -306,6 +330,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcoreaddons-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -326,6 +356,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kguiaddons-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -346,6 +382,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/ki18n-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -366,6 +408,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kitemmodels-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -386,6 +434,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kitemviews-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -406,6 +460,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kimageformats-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -426,6 +486,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kwindowsystem-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
@@ -446,6 +512,12 @@
             "stable-only": true,
             "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcrash-$version.tar.xz"
           }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
         }
       ]
     },
