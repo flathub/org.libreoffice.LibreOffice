@@ -1,0 +1,34 @@
+From dc89de95c0858af3e6116f2d2b736787c30fe213 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Wed, 25 Jan 2023 16:37:32 +0100
+Subject: [PATCH] Recipe has no dependency on target dir
+
+Seen this fail once at
+<https://buildbot.flathub.org/#/builders/31/builds/1623>,
+
+> cp: cannot create regular file '/run/build/libreoffice/workdir/CustomTarget/helpcontent2/help3xsl/online_transform.xsl': No such file or directory
+> make[1]: *** [/run/build/libreoffice/helpcontent2/CustomTarget_html.mk:186: /run/build/libreoffice/workdir/CustomTarget/helpcontent2/help3xsl/online_transform.xsl] Error 1
+
+Change-Id: I8cfa387d1bb2ef488f5f34ff20b9dc975d424751
+Reviewed-on: https://gerrit.libreoffice.org/c/help/+/146141
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+---
+ CustomTarget_html.mk | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CustomTarget_html.mk b/CustomTarget_html.mk
+index 0e633d7b8d..e73ea160e0 100644
+--- a/CustomTarget_html.mk
++++ b/CustomTarget_html.mk
+@@ -191,6 +191,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
+ # copy online_transform.xsl to workdir and build links.txt.xsl
+ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/online_transform.xsl : \
+ 		$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl
++	mkdir -p $(dir $@)
+ 	cp $(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl $@
+ 
+ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl : \
+-- 
+2.41.0
+
