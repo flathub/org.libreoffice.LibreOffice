@@ -92,13 +92,8 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.5.4.2",
+                    "tag": "libreoffice-7.5.5.1",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-No-longer-append-appdata-for-components-to-flatpak-s.patch",
-                    "use-git": true
                 },
                 {
                     "type": "patch",
@@ -121,11 +116,11 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-5408.tar.bz2",
-                    "sha256": "7db59b1e91f2bc0ab4c5e19d1a4f881e6a47dbb0d3b7e980a7358225b12a0f35",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-5778.tar.bz2",
+                    "sha256": "b1052ff24e9ffb11af017c444bb0f6ad508d64c9a0fb88cacb0e8210245dde06",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "pdfium-5408.tar.bz2"
+                    "dest-filename": "pdfium-5778.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.37.tar.gz",
@@ -303,11 +298,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2022-08-08.tar.bz2",
-                    "sha256": "e2d9224e0e50fc8ad12a3cf47396bbcadf45b2515839d4770432653a88972c00",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2023-05-11.tar.bz2",
+                    "sha256": "9042b64cd473bf36073513b474046f13778107b57c2ac47fb2633104120d69da",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2022-08-08.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2023-05-11.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.3.tar.bz2",
