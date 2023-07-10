@@ -92,21 +92,8 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.6.0.0.beta1",
+                    "tag": "libreoffice-7.6.0.1",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-No-longer-append-appdata-for-components-to-flatpak-s.patch",
-                    "use-git": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Recipe-has-no-dependency-on-target-dir.patch",
-                    "use-git": true,
-                    "options": [
-                        "--directory=helpcontent2"
-                    ]
                 },
                 {
                     "type": "archive",
@@ -233,11 +220,11 @@
                     "dest-filename": "gpgme-1.18.0.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.5.tar.bz2",
-                    "sha256": "8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4",
+                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.6.tar.bz2",
+                    "sha256": "e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libassuan-2.5.5.tar.bz2"
+                    "dest-filename": "libassuan-2.5.6.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.43.tar.bz2",
@@ -296,11 +283,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2022-08-08.tar.bz2",
-                    "sha256": "e2d9224e0e50fc8ad12a3cf47396bbcadf45b2515839d4770432653a88972c00",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2023-05-11.tar.bz2",
+                    "sha256": "9042b64cd473bf36073513b474046f13778107b57c2ac47fb2633104120d69da",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2022-08-08.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2023-05-11.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.3.tar.bz2",
@@ -436,11 +423,11 @@
                     "dest-filename": "liborcus-0.18.1.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-23.03.0.tar.xz",
-                    "sha256": "b04148bf849c1965ada7eff6be4685130e3a18a84e0cce73bf9bc472ec32f2b4",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-23.06.0.tar.xz",
+                    "sha256": "d38c6b2f31c8f6f3727fb60a011a0e6c567ebf56ef1ccad36263ca9ed6448a65",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-23.03.0.tar.xz"
+                    "dest-filename": "poppler-23.06.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -450,11 +437,11 @@
                     "dest-filename": "poppler-data-0.4.12.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.10.tar.bz2",
-                    "sha256": "5bbcf5a56d85c44f3a8b058fb46862ff49cbc91834d07e295d02e6de3c216df2",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.11.tar.bz2",
+                    "sha256": "4992ff647203566b670d4e54dc5317499a26856c93576d0ea951bdf6bee50bfb",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "postgresql-13.10.tar.bz2"
+                    "dest-filename": "postgresql-13.11.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/a39f6c07ddb20d7dd2ff1f95fa21e2cd-raptor2-2.0.15.tar.gz",
@@ -686,6 +673,13 @@
                     "type": "file",
                     "dest": "external/tarballs",
                     "dest-filename": "zxing-cpp-2.0.0.tar.gz"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/frozen-1.1.1.tar.gz",
+                    "sha256": "f7c7075750e8fceeac081e9ef01944f221b36d9725beac8681cbd2838d26be45",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "frozen-1.1.1.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
