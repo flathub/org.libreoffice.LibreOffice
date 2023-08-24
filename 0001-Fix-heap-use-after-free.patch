@@ -1,0 +1,53 @@
+From 7a13305052806ddab07648e0701d82acb0ea76f0 Mon Sep 17 00:00:00 2001
+From: Tibor Nagy <nagy.tibor2@nisz.hu>
+Date: Fri, 4 Aug 2023 00:39:24 +0200
+Subject: [PATCH] Fix heap-use-after-free
+
+The issue is caused by commit Ic87983fa6e3279a64841babc565fbe97710ff730
+(tdf#99808 sc: fix background of conditional formatting in merged cell)
+
+Change-Id: Ic72ba16c2649537dc3b486e07c12e2486cdf1957
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/155328
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+(cherry picked from commit 694bacca057c9f1d93ab27d61199aec9d060b868)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/155299
+Reviewed-by: Xisco Fauli <xiscofauli@libreoffice.org>
+---
+ sc/qa/unit/ucalc_condformat.cxx | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/sc/qa/unit/ucalc_condformat.cxx b/sc/qa/unit/ucalc_condformat.cxx
+index 6b79a4318501..7a0abc7cf026 100644
+--- a/sc/qa/unit/ucalc_condformat.cxx
++++ b/sc/qa/unit/ucalc_condformat.cxx
+@@ -1394,21 +1394,19 @@ CPPUNIT_TEST_FIXTURE(TestCondformat, testConditionStyleInMergedCell)
+     // Add a conditional format.
+     auto pFormat = std::make_unique<ScConditionalFormat>(1, m_pDoc);
+     pFormat->SetRange(ScRange(0, 0, 0, 0, 0, 0));
+-    auto pFormatTmp = pFormat.get();
+-    sal_uLong nKey = m_pDoc->AddCondFormat(std::move(pFormat), 0);
+ 
+     // Add condition in which if the value equals 1, set the "Good" style.
+     ScCondFormatEntry* pEntry = new ScCondFormatEntry(
+         ScConditionMode::Equal, "=1", "", *m_pDoc, ScAddress(0, 0, 0), ScResId(STR_STYLENAME_GOOD));
+-    pFormatTmp->AddEntry(pEntry);
++    pFormat->AddEntry(pEntry);
+ 
+     // Apply the format to the range.
+-    m_pDoc->AddCondFormatData(pFormatTmp->GetRange(), 0, nKey);
++    m_pDoc->AddCondFormatData(pFormat->GetRange(), 0, 1);
+ 
+     ScDocFunc& rFunc = m_xDocShell->GetDocFunc();
+-    sal_uInt32 nOldFormat = pFormatTmp->GetKey();
+-    const ScRangeList& rRangeList = pFormatTmp->GetRange();
+-    rFunc.ReplaceConditionalFormat(nOldFormat, pFormatTmp->Clone(), 0, rRangeList);
++    sal_uInt32 nOldFormat = pFormat->GetKey();
++    const ScRangeList& rRangeList = pFormat->GetRange();
++    rFunc.ReplaceConditionalFormat(nOldFormat, std::move(pFormat), 0, rRangeList);
+ 
+     CPPUNIT_ASSERT_EQUAL(true, aListener.mbPaintAllMergedCell);
+ 
+-- 
+2.41.0
+
