@@ -2,7 +2,7 @@
     "id": "org.libreoffice.LibreOffice",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.15-22.08",
-    "sdk": "org.kde.Sdk2",
+    "sdk": "org.kde.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.openjdk17"
     ],
