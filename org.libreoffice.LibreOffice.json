@@ -67,11 +67,13 @@
             "cleanup": [
                "*"
             ],
-            {
+            "sources": [
+                {
               "type": "archive",
               "url": "https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.gz",
-              "sha256": "431075ad0bf529ef13cb41e9042c542381103e80015686222b8a9d4abef42a1c",
-            }
+              "sha256": "431075ad0bf529ef13cb41e9042c542381103e80015686222b8a9d4abef42a1c"
+                }
+            ]
         },
         {
             "name": "krb5",
