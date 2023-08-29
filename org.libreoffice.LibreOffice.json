@@ -1,8 +1,8 @@
 {
     "id": "org.libreoffice.LibreOffice",
-    "runtime": "org.freedesktop.Platform",
+    "runtime": "org.kde.Platform",
     "runtime-version": "22.08",
-    "sdk": "org.freedesktop.Sdk",
+    "sdk": "org.kde.Sdk2",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.openjdk17"
     ],
@@ -58,6 +58,20 @@
                     }
                 }
             ]
+        },
+        {    
+            "name": "autoconf",
+            "config-opts": [
+             "--program-suffix=-2.71"
+            ],
+            "cleanup": [
+               "*"
+            ],
+            {
+              "type": "archive",
+              "url": "https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.gz",
+              "sha256": "431075ad0bf529ef13cb41e9042c542381103e80015686222b8a9d4abef42a1c",
+            }
         },
         {
             "name": "krb5",
