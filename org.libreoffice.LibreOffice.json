@@ -92,12 +92,12 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.6.0.3",
+                    "commit": "380b586d6e69412aa5f4b9558ebb192ed8bcfc38",
                     "disable-fsckobjects": true
                 },
                 {
                     "type": "patch",
-                    "path": "0001-Fix-heap-use-after-free.patch",
+                    "path": "0001-In-test-use-char-from-older-Unicode-version-supporte.patch",
                     "use-git": true
                 },
                 {
@@ -113,18 +113,18 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-5778.tar.bz2",
-                    "sha256": "b1052ff24e9ffb11af017c444bb0f6ad508d64c9a0fb88cacb0e8210245dde06",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-5941.tar.bz2",
+                    "sha256": "9a9ce3f62de525cdfd8373a155ac549579c2c8067c6050716ca4b5cd5c11f655",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "pdfium-5778.tar.bz2"
+                    "dest-filename": "pdfium-5941.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.37.tar.gz",
-                    "sha256": "5f8dfbcb6d1e56bddd0b5ec2e00a3d0ca5342a9f57c24dffde5c796b2be2871c",
+                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.3.1.tar.gz",
+                    "sha256": "10f48384d4fd1afc05fea545b74fbf7c152582f0a895c189f164d55270400c63",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "xmlsec1-1.2.37.tar.gz"
+                    "dest-filename": "xmlsec1-1.3.1.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/368f114c078f94214a308a74c7e991bc-crosextrafonts-20130214.tar.gz",
@@ -190,11 +190,11 @@
                     "dest-filename": "48d647fbd8ef8889e5a7f422c1bfda94-clucene-core-2.3.3.4.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/CoinMP-1.7.6.tgz",
-                    "sha256": "86c798780b9e1f5921fe4efe651a93cb420623b45aa1fdff57af8c37f116113f",
+                    "url": "https://dev-www.libreoffice.org/src/CoinMP-1.8.4.tgz",
+                    "sha256": "3459fb0ccbdd39342744684338984ac4cc153fb0434f4cae8cf74bd67490a38d",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "CoinMP-1.7.6.tgz"
+                    "dest-filename": "CoinMP-1.8.4.tgz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/cppunit-1.15.1.tar.gz",
@@ -218,11 +218,11 @@
                     "dest-filename": "glm-0.9.9.8.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.18.0.tar.bz2",
-                    "sha256": "361d4eae47ce925dba0ea569af40e7b52c645c4ae2e65e5621bf1b6cdd8b0e9e",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.20.0.tar.bz2",
+                    "sha256": "25a5785a5da356689001440926b94e967d02e13c49eb7743e35ef0cf22e42750",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.18.0.tar.bz2"
+                    "dest-filename": "gpgme-1.20.0.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.6.tar.bz2",
@@ -414,11 +414,11 @@
                     "dest-filename": "noto-fonts-20171024.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.4.tgz",
-                    "sha256": "d51704e50178430c06cf3d8aa174da66badf559747a47d920bb54b2d4aa40991",
+                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.6.tgz",
+                    "sha256": "082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "openldap-2.6.4.tgz"
+                    "dest-filename": "openldap-2.6.6.tgz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liborcus-0.18.1.tar.xz",
@@ -638,18 +638,18 @@
                     "dest-filename": "libnumbertext-1.0.11.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.6.8.tar.gz",
-                    "sha256": "1d6a279edf81767e74d2ad2c9fce09459bc65f12c6525a40b0cb3e53c089f665",
+                    "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.8.0.tar.gz",
+                    "sha256": "15676e7674e11bda5a7e50a73f4d9e7d60452271b8acf6fd39a71fefdf89fa31",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libatomic_ops-7.6.8.tar.gz"
+                    "dest-filename": "libatomic_ops-7.8.0.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz",
-                    "sha256": "0d08a99ed46cde43b5ad2672b5d8770c8eb85d0d26cb8f1f85fd9befe1e9ceb9",
+                    "url": "https://dev-www.libreoffice.org/src/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz",
+                    "sha256": "2223ebce534458a37826e8fe4f24635b0712cde7ed1bd3208f089f6fdd796e01",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz"
+                    "dest-filename": "skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/dragonbox-1.1.3.tar.gz",
@@ -673,11 +673,11 @@
                     "dest-filename": "box2d-2.4.1.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/zxing-cpp-2.0.0.tar.gz",
-                    "sha256": "12b76b7005c30d34265fc20356d340da179b0b4d43d2c1b35bcca86776069f76",
+                    "url": "https://dev-www.libreoffice.org/src/zxing-cpp-2.1.0.tar.gz",
+                    "sha256": "6d54e403592ec7a143791c6526c1baafddf4c0897bb49b1af72b70a0f0c4a3fe",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "zxing-cpp-2.0.0.tar.gz"
+                    "dest-filename": "zxing-cpp-2.1.0.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/frozen-1.1.1.tar.gz",
@@ -685,6 +685,13 @@
                     "type": "file",
                     "dest": "external/tarballs",
                     "dest-filename": "frozen-1.1.1.tar.gz"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/Java-WebSocket-1.5.4.tar.gz",
+                    "sha256": "a6828b35d1f938fee2335945f3d3c563cbbfa58ce7eb0bf72778d0fa7a550720",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "Java-WebSocket-1.5.4.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
@@ -697,7 +704,8 @@
             "buildsystem": "simple",
             "build-commands": [
                 "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --with-gdrive-client-id=280867422816-9jc83t6phkfb2q8p94dtk8kr5fa8af3r.apps.googleusercontent.com --with-gdrive-client-secret=Hnzikj7HqdqsUYLru4jmFo1p",
-                "make check",
+                "make",
+                "make CppunitTest_sw_core_text CPPUNIT_TEST_NAME=testScriptinfosurrogatePairs::TestBody",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
                 "printf '<?xml version=\"1.0\"?>\\n<oor:data xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:oor=\"http://openoffice.org/2001/registry\"><dependency file=\"main\"/><oor:component-data oor:name=\"Common\" oor:package=\"org.openoffice.Office\"><node oor:name=\"Misc\"><prop oor:name=\"UseOpenCL\"><value>false</value></prop></node></oor:component-data></oor:data>' >/app/libreoffice/share/registry/flatpak.xcd"
