@@ -1,0 +1,69 @@
+From d5861936a8e4c714d42da1b85ba93ae026b275e0 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Mon, 11 Sep 2023 15:28:11 +0200
+Subject: [PATCH] In test, use char from older Unicode version, supported by
+ older ICU
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+3af30bafbedb8eb481024efb35cb7876c63d26dc "sw: Handle surrogate pairs when
+tweaking script info" had added a test involving U+10EFD ARABIC SMALL LOW WORD,
+which was only introduced in Unicode 15 (cf.
+<https://util.unicode.org/UnicodeJsps/character.jsp?a=10EFD>), which is only
+supported since ICU 72 (cf. <https://icu.unicode.org/download/72>).  But at
+least the Flathub builds with org.freedesktop.Sdk//22.08 are done against
+ICU 71, and those builds failed with
+
+> Test name: testScriptinfosurrogatePairs::TestBody
+> equality assertion failed
+> - Expected: 11
+> - Actual  : 11◌
+> - In <>, attribute 'portion' of '//txt[1]/SwParaPortion/SwLineLayout/SwLinePortion[1]' incorrect value.
+
+U+10A01 KHAROSHTHI VOWEL SIGN I appears to be a character with similar
+properties (it would make the test fail in the expected way when
+sw/source/core/text/porlay.cxx is rolled back to before
+3af30bafbedb8eb481024efb35cb7876c63d26dc), but is already present since Unicode
+4.1 (cf. <https://util.unicode.org/UnicodeJsps/character.jsp?a=10A01>), so
+should be less problematic.
+
+Change-Id: I61f6e32069b895720cbee5e3d2ce1295727cfd51
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/156825
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+(cherry picked from commit 8f011771acaae44c224f0306fcceaf6125955a79)
+---
+ sw/qa/core/text/data/scriptinfo-surrogate-pairs.fodt | 2 +-
+ sw/qa/core/text/text.cxx                             | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sw/qa/core/text/data/scriptinfo-surrogate-pairs.fodt b/sw/qa/core/text/data/scriptinfo-surrogate-pairs.fodt
+index 5b54fc9e8601..ceee84b55ff5 100644
+--- a/sw/qa/core/text/data/scriptinfo-surrogate-pairs.fodt
++++ b/sw/qa/core/text/data/scriptinfo-surrogate-pairs.fodt
+@@ -286,7 +286,7 @@
+     <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
+     <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
+    </text:sequence-decls>
+-   <text:p text:style-name="Standard">11◌𐻽</text:p>
++   <text:p text:style-name="Standard">11◌𐨁</text:p>
+    <text:p text:style-name="Standard">11𝐀َ</text:p>
+   </office:text>
+  </office:body>
+diff --git a/sw/qa/core/text/text.cxx b/sw/qa/core/text/text.cxx
+index d398bddd4992..eec7292b6b68 100644
+--- a/sw/qa/core/text/text.cxx
++++ b/sw/qa/core/text/text.cxx
+@@ -1338,7 +1338,7 @@ CPPUNIT_TEST_FIXTURE(SwCoreTextTest, testScriptinfosurrogatePairs)
+     // - Actual  : 11◌
+     assertXPath(pXmlDoc, "//txt[1]/SwParaPortion/SwLineLayout/SwLinePortion[1]", "portion", u"11");
+     assertXPath(pXmlDoc, "//txt[1]/SwParaPortion/SwLineLayout/SwLinePortion[2]", "portion",
+-                u"\u25CC\U00010EFD");
++                u"\u25CC\U00010A01");
+ 
+     // Without the fix this would crash because we got a lone surrogate that
+     // can’t be converted to UTF-8, but if it were not for that it might fail
+-- 
+2.41.0
+
