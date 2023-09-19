@@ -92,12 +92,17 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.6.0.3",
+                    "tag": "libreoffice-7.6.1.2",
                     "disable-fsckobjects": true
                 },
                 {
                     "type": "patch",
-                    "path": "0001-Fix-heap-use-after-free.patch",
+                    "path": "0001-In-test-use-char-from-older-Unicode-version-supporte.patch",
+                    "use-git": true
+                },
+                {
+                    "type": "patch",
+                    "path": "0001-Temporarily-drop-failing-test.patch",
                     "use-git": true
                 },
                 {
@@ -414,11 +419,11 @@
                     "dest-filename": "noto-fonts-20171024.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.4.tgz",
-                    "sha256": "d51704e50178430c06cf3d8aa174da66badf559747a47d920bb54b2d4aa40991",
+                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.6.tgz",
+                    "sha256": "082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "openldap-2.6.4.tgz"
+                    "dest-filename": "openldap-2.6.6.tgz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liborcus-0.18.1.tar.xz",
