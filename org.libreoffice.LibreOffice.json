@@ -92,13 +92,8 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.6.1.2",
+                    "tag": "libreoffice-7.6.2.1",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-In-test-use-char-from-older-Unicode-version-supporte.patch",
-                    "use-git": true
                 },
                 {
                     "type": "patch",
