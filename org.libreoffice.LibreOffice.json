@@ -101,6 +101,11 @@
                     "use-git": true
                 },
                 {
+                    "type": "patch",
+                    "path": "0001-use-Liberation-Sans-instead-of-Calibri-in-the-test-f.patch",
+                    "use-git": true
+                },
+                {
                     "type": "archive",
                     "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.13-bin.tar.xz",
                     "sha512": "26e56bf670c22c8093fe51ec952fa51e813b1ab4200cb09fcd68fa291c5f6f626d7c6a42b4d3358b38111466e249d4bc6089b8c4093383759d6f8a08d39bc32d",
