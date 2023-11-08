@@ -1,7 +1,7 @@
 {
     "id": "org.libreoffice.LibreOffice",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "22.08",
+    "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.openjdk17"
@@ -98,6 +98,21 @@
                 {
                     "type": "patch",
                     "path": "0001-Temporarily-drop-failing-test.patch",
+                    "use-git": true
+                },
+                {
+                    "type": "patch",
+                    "path": "0001-use-Liberation-Sans-instead-of-Calibri-in-the-test-f.patch",
+                    "use-git": true
+                },
+                {
+                    "type": "patch",
+                    "path": "0001-CppunitTest_sd_import_tests-smartart-make-testAutofi.patch",
+                    "use-git": true
+                },
+                {
+                    "type": "patch",
+                    "path": "0001-Replace-use-of-Calibri-and-Calibri-Light-with-Noto-S.patch",
                     "use-git": true
                 },
                 {
