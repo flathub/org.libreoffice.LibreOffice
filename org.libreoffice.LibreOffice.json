@@ -92,17 +92,12 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.6.3.1",
+                    "tag": "libreoffice-7.6.3.2",
                     "disable-fsckobjects": true
                 },
                 {
                     "type": "patch",
                     "path": "0001-Temporarily-drop-failing-test.patch",
-                    "use-git": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Replace-use-of-Calibri-and-Calibri-Light-with-Noto-S.patch",
                     "use-git": true
                 },
                 {
@@ -258,11 +253,11 @@
                     "dest-filename": "libcdr-0.1.7.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libcmis-0.6.0.tar.xz",
-                    "sha256": "56df575f78dacc21b4cec7cec73d671fd235f7c2010a8bb7940ef1413dc899fd",
+                    "url": "https://dev-www.libreoffice.org/src/libcmis-0.6.1.tar.xz",
+                    "sha256": "d54d19d86153dbc88e2d468f7136269a2cfe71b73227e12fded01d29ac268074",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libcmis-0.6.0.tar.xz"
+                    "dest-filename": "libcmis-0.6.1.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libe-book-0.1.3.tar.xz",
