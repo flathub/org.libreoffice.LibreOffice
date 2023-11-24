@@ -92,7 +92,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-7.6.4.1",
+                    "tag": "libreoffice-24.2.0.0.alpha1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -113,18 +113,18 @@
                     "type": "shell"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/pdfium-5778.tar.bz2",
-                    "sha256": "b1052ff24e9ffb11af017c444bb0f6ad508d64c9a0fb88cacb0e8210245dde06",
+                    "url": "https://dev-www.libreoffice.org/src/pdfium-6060.tar.bz2",
+                    "sha256": "021456a0ddfa473855651496e277b6e1493dbf9572fce4e3204f7580964b42c7",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "pdfium-5778.tar.bz2"
+                    "dest-filename": "pdfium-6060.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.2.37.tar.gz",
-                    "sha256": "5f8dfbcb6d1e56bddd0b5ec2e00a3d0ca5342a9f57c24dffde5c796b2be2871c",
+                    "url": "https://dev-www.libreoffice.org/src/xmlsec1-1.3.2.tar.gz",
+                    "sha256": "4003c56b3d356d21b1db7775318540fad6bfedaf5f117e8f7c010811219be3cf",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "xmlsec1-1.2.37.tar.gz"
+                    "dest-filename": "xmlsec1-1.3.2.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/368f114c078f94214a308a74c7e991bc-crosextrafonts-20130214.tar.gz",
@@ -190,11 +190,11 @@
                     "dest-filename": "48d647fbd8ef8889e5a7f422c1bfda94-clucene-core-2.3.3.4.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/CoinMP-1.7.6.tgz",
-                    "sha256": "86c798780b9e1f5921fe4efe651a93cb420623b45aa1fdff57af8c37f116113f",
+                    "url": "https://dev-www.libreoffice.org/src/CoinMP-1.8.4.tgz",
+                    "sha256": "3459fb0ccbdd39342744684338984ac4cc153fb0434f4cae8cf74bd67490a38d",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "CoinMP-1.7.6.tgz"
+                    "dest-filename": "CoinMP-1.8.4.tgz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/cppunit-1.15.1.tar.gz",
@@ -218,11 +218,11 @@
                     "dest-filename": "glm-0.9.9.8.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.18.0.tar.bz2",
-                    "sha256": "361d4eae47ce925dba0ea569af40e7b52c645c4ae2e65e5621bf1b6cdd8b0e9e",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.20.0.tar.bz2",
+                    "sha256": "25a5785a5da356689001440926b94e967d02e13c49eb7743e35ef0cf22e42750",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.18.0.tar.bz2"
+                    "dest-filename": "gpgme-1.20.0.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.6.tar.bz2",
@@ -232,11 +232,11 @@
                     "dest-filename": "libassuan-2.5.6.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.43.tar.bz2",
-                    "sha256": "a9ab83ca7acc442a5bd846a75b920285ff79bdb4e3d34aa382be88ed2c3aebaf",
+                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.47.tar.bz2",
+                    "sha256": "9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libgpg-error-1.43.tar.bz2"
+                    "dest-filename": "libgpg-error-1.47.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libabw-0.1.3.tar.xz",
@@ -414,6 +414,97 @@
                     "dest-filename": "noto-fonts-20171024.tar.gz"
                 },
                 {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSans-v2.012.zip",
+                    "sha256": "efef2f66ed2c5e005472cba156bd2afb68063a51bb628c6ee14143edc019d293",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSans-v2.012.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSerif-v2.012.zip",
+                    "sha256": "3d4566a0e51e7fc14528f5a1eecc6f12e5ffbbec6484470d3da48b0d8ead345a",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSerif-v2.012.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSansArabic-v2.010.zip",
+                    "sha256": "a5a34ac1ea01d0d71c083f99440ebfb1f64224474a0d88bb7ef0e2f8d9a996d2",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSansArabic-v2.010.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoNaskhArabic-v2.016.zip",
+                    "sha256": "2b6a3f30f21d27bc6b75b40a350221e12e64b753604d613bf3ddf71cdbe331ac",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoNaskhArabic-v2.016.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSansHebrew-v2.003.zip",
+                    "sha256": "ded809309ff924bc45834bf19afaa5693cadf17580972468f6041f5e599ddb8a",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSansHebrew-v2.003.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSerifHebrew-v2.003.zip",
+                    "sha256": "e45c149d6c29b38b8981401f875ab4304e73a366312783c41c082eb5366d3921",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSerifHebrew-v2.003.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSansArmenian-v2.008.zip",
+                    "sha256": "eab89b99e134177ca6a3f9f0412a7cb812aafceb13175d686b4c45cb237f64ac",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSansArmenian-v2.008.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSerifArmenian-v2.008.zip",
+                    "sha256": "b21c198a4c76ae598a304decefb3b5c2a4c2d4c3ae226728eff359185f291c6f",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSerifArmenian-v2.008.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSansGeorgian-v2.003.zip",
+                    "sha256": "bd75d1f0b9ef619b5ded0018d6258eeab2f9e976d8f8074bb7890f4e301648bf",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSansGeorgian-v2.003.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSerifGeorgian-v2.003.zip",
+                    "sha256": "cfb41a264b97d463bab6807a5be937ba4a6ddcfa93d519a21b98b0ba73ca27d4",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSerifGeorgian-v2.003.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSansLao-v2.003.zip",
+                    "sha256": "5a87c31b1a40ef8147c1e84437e5f0ceba2d4dbbfc0b56a65821ad29870da8c0",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSansLao-v2.003.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSerifLao-v2.003.zip",
+                    "sha256": "e96a303d3347790b0ef3db274971a989a736ce766ec9ea1bea0e1458568a80b2",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSerifLao-v2.003.zip"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/NotoSansLisu-v2.102.zip",
+                    "sha256": "b12a1ff762680681b7ce4d98dd29a7f54d90f5bcadd10c955afc640a27b3a268",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "NotoSansLisu-v2.102.zip"
+                },
+                {
                     "url": "https://dev-www.libreoffice.org/src/openldap-2.6.6.tgz",
                     "sha256": "082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0",
                     "type": "file",
@@ -421,11 +512,11 @@
                     "dest-filename": "openldap-2.6.6.tgz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.18.1.tar.xz",
-                    "sha256": "6006b9f1576315e313df715a7e72a17f3e0b17d7b6bd119cfa8a0b608ce971eb",
+                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.19.2.tar.xz",
+                    "sha256": "69ed26a00d4aaa7688e62a6e003cbc81928521a45e96605e53365aa499719e39",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "liborcus-0.18.1.tar.xz"
+                    "dest-filename": "liborcus-0.19.2.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-23.09.0.tar.xz",
@@ -638,18 +729,18 @@
                     "dest-filename": "libnumbertext-1.0.11.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.6.8.tar.gz",
-                    "sha256": "1d6a279edf81767e74d2ad2c9fce09459bc65f12c6525a40b0cb3e53c089f665",
+                    "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.8.0.tar.gz",
+                    "sha256": "15676e7674e11bda5a7e50a73f4d9e7d60452271b8acf6fd39a71fefdf89fa31",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libatomic_ops-7.6.8.tar.gz"
+                    "dest-filename": "libatomic_ops-7.8.0.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz",
-                    "sha256": "0d08a99ed46cde43b5ad2672b5d8770c8eb85d0d26cb8f1f85fd9befe1e9ceb9",
+                    "url": "https://dev-www.libreoffice.org/src/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz",
+                    "sha256": "2223ebce534458a37826e8fe4f24635b0712cde7ed1bd3208f089f6fdd796e01",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz"
+                    "dest-filename": "skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/dragonbox-1.1.3.tar.gz",
@@ -673,11 +764,11 @@
                     "dest-filename": "box2d-2.4.1.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/zxing-cpp-2.0.0.tar.gz",
-                    "sha256": "12b76b7005c30d34265fc20356d340da179b0b4d43d2c1b35bcca86776069f76",
+                    "url": "https://dev-www.libreoffice.org/src/zxing-cpp-2.1.0.tar.gz",
+                    "sha256": "6d54e403592ec7a143791c6526c1baafddf4c0897bb49b1af72b70a0f0c4a3fe",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "zxing-cpp-2.0.0.tar.gz"
+                    "dest-filename": "zxing-cpp-2.1.0.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/frozen-1.1.1.tar.gz",
@@ -685,6 +776,20 @@
                     "type": "file",
                     "dest": "external/tarballs",
                     "dest-filename": "frozen-1.1.1.tar.gz"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/Java-WebSocket-1.5.4.tar.gz",
+                    "sha256": "a6828b35d1f938fee2335945f3d3c563cbbfa58ce7eb0bf72778d0fa7a550720",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "Java-WebSocket-1.5.4.tar.gz"
+                },
+                {
+                    "url": "https://dev-www.libreoffice.org/src/zxcvbn-c-2.5.tar.gz",
+                    "sha256": "77d6c6ecb35952a8d8ce7f736b7a2bf466275c48210e309b73782d6b7e84dffd",
+                    "type": "file",
+                    "dest": "external/tarballs",
+                    "dest-filename": "zxcvbn-c-2.5.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
