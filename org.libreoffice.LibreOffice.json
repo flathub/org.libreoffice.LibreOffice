@@ -97,7 +97,7 @@
                 },
                 {
                     "type": "patch",
-                    "path": "0001-Temporarily-drop-failing-test.patch",
+                    "path": "0001-Follow-up-tdf-156985-Use-SC_USE_SSE2-to-determine-wh.patch",
                     "use-git": true
                 },
                 {

@@ -1,0 +1,238 @@
+From 91736bbec8244e05d91af7d20d397cb63ee9c74e Mon Sep 17 00:00:00 2001
+From: Eike Rathke <erack@redhat.com>
+Date: Sun, 15 Oct 2023 17:29:01 +0200
+Subject: [PATCH] Follow-up: tdf#156985 Use SC_USE_SSE2 to determine which
+ KahanSum::add() to use
+
+Also, the CPU identifier for MSVC WIN32 is not X86 but INTEL, so
+actually use SSE2 there as well, which was the cause of things
+failing on that platform.
+
+For other platforms than Intel x86/x86_64 SSE2 is not defined, so
+exclude the new unit test based on that and live on with the old
+slightly off value. Experiments did not yield any solution that
+works, even using plain sumNeumaierNormal() (similar to SSE2) in
+the executeUnrolled() case instead of KahanSum with its m_fMem did
+not help, nor trying to add the internal values in different
+orders or with long double, au contraire the error was slightly
+larger.
+
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/156899
+Reviewed-by: Eike Rathke <erack@redhat.com>
+Tested-by: Jenkins
+(cherry picked from commit 361c4f008e48b08df635839d2e5dcad7389df44a)
+
+ Conflicts:
+	sc/qa/unit/ucalc_formula2.cxx
+
+Change-Id: Ica0b2963f76c01f248799e9a809ef06eb099e722
+---
+ sc/inc/arraysumfunctor.hxx           | 17 -------
+ sc/inc/kahan.hxx                     | 66 ++++++++++++++++++++--------
+ sc/source/core/tool/arraysum.hxx     | 36 ---------------
+ sc/source/core/tool/arraysumSSE2.cxx |  6 +--
+ 4 files changed, 50 insertions(+), 75 deletions(-)
+ delete mode 100644 sc/source/core/tool/arraysum.hxx
+
+diff --git a/sc/inc/arraysumfunctor.hxx b/sc/inc/arraysumfunctor.hxx
+index c261c120addf..c1eabb220e27 100644
+--- a/sc/inc/arraysumfunctor.hxx
++++ b/sc/inc/arraysumfunctor.hxx
+@@ -12,29 +12,12 @@
+ 
+ #include <cmath>
+ #include "kahan.hxx"
+-#include "arraysumfunctor.hxx"
+ #include <formula/errorcodes.hxx>
+ 
+ namespace sc::op
+ {
+-// Checkout available optimization options.
+-// Note that it turned out to be problematic to support CPU-specific code
+-// that's not guaranteed to be available on that specific platform (see
+-// git history). SSE2 is guaranteed on x86_64 and it is our baseline requirement
+-// for x86 on Windows, so SSE2 use is hardcoded on those platforms.
+-// Whenever we raise baseline to e.g. AVX, this may get
+-// replaced with AVX code (get it from git history).
+-// Do it similarly with other platforms.
+-#if defined(X86_64) || (defined(X86) && defined(_WIN32))
+-#define SC_USE_SSE2 1
+-KahanSum executeSSE2(size_t& i, size_t nSize, const double* pCurrent);
+-#else
+-#define SC_USE_SSE2 0
+-#endif
+-
+ /**
+   * If no boosts available, Unrolled KahanSum.
+-  * Most likely to use on android.
+   */
+ static inline KahanSum executeUnrolled(size_t& i, size_t nSize, const double* pCurrent)
+ {
+diff --git a/sc/inc/kahan.hxx b/sc/inc/kahan.hxx
+index ac97ae4394fa..03b05c25aa6b 100644
+--- a/sc/inc/kahan.hxx
++++ b/sc/inc/kahan.hxx
+@@ -12,6 +12,26 @@
+ #include <rtl/math.hxx>
+ #include <cmath>
+ 
++class KahanSum;
++namespace sc::op
++{
++// Checkout available optimization options.
++// Note that it turned out to be problematic to support CPU-specific code
++// that's not guaranteed to be available on that specific platform (see
++// git commit 2d36e7f5186ba5215f2b228b98c24520bd4f2882). SSE2 is guaranteed on
++// x86_64 and it is our baseline requirement for x86 on Windows, so SSE2 use is
++// hardcoded on those platforms.
++// Whenever we raise baseline to e.g. AVX, this may get
++// replaced with AVX code (get it from mentioned git commit).
++// Do it similarly with other platforms.
++#if defined(X86_64) || (defined(INTEL) && defined(_WIN32))
++#define SC_USE_SSE2 1
++KahanSum executeSSE2(size_t& i, size_t nSize, const double* pCurrent);
++#else
++#define SC_USE_SSE2 0
++#endif
++}
++
+ /**
+   * This class provides LO with Kahan summation algorithm
+   * About this algorithm: https://en.wikipedia.org/wiki/Kahan_summation_algorithm
+@@ -41,6 +61,21 @@ public:
+     constexpr KahanSum(const KahanSum& fSum) = default;
+ 
+ public:
++    /**
++      * Performs one step of the Neumaier sum of doubles.
++      * Overwrites the summand and error.
++      * T could be double or long double.
++      */
++    template <typename T> static inline void sumNeumaierNormal(T& sum, T& err, const double& value)
++    {
++        T t = sum + value;
++        if (std::abs(sum) >= std::abs(value))
++            err += (sum - t) + value;
++        else
++            err += (value - t) + sum;
++        sum = t;
++    }
++
+     /**
+       * Adds a value to the sum using Kahan summation.
+       * @param x_i
+@@ -71,32 +106,27 @@ public:
+       */
+     inline void add(const KahanSum& fSum)
+     {
+-#ifdef _WIN32
+-        // For some odd unknown reason WIN32 fails badly with the
+-        // sum+compensation value. Continue keeping the old though slightly off
+-        // (see tdf#156985) explicit addition of the compensation value.
+-        add(fSum.m_fSum);
+-        add(fSum.m_fError);
+-#else
++#if SC_USE_SSE2
+         add(fSum.m_fSum + fSum.m_fError);
+-#endif
+         add(fSum.m_fMem);
++#else
++        // Without SSE2 the sum+compensation value fails badly. Continue
++        // keeping the old though slightly off (see tdf#156985) explicit
++        // addition of the compensation value.
++        double sum = fSum.m_fSum;
++        double err = fSum.m_fError;
++        if (fSum.m_fMem != 0.0)
++            sumNeumaierNormal(sum, err, fSum.m_fMem);
++        add(sum);
++        add(err);
++#endif
+     }
+ 
+     /**
+       * Substracts a value to the sum using Kahan summation.
+       * @param fSum
+       */
+-    inline void subtract(const KahanSum& fSum)
+-    {
+-#ifdef _WIN32
+-        add(-fSum.m_fSum);
+-        add(-fSum.m_fError);
+-#else
+-        add(-(fSum.m_fSum + fSum.m_fError));
+-#endif
+-        add(-fSum.m_fMem);
+-    }
++    inline void subtract(const KahanSum& fSum) { add(-fSum); }
+ 
+ public:
+     constexpr KahanSum operator-() const
+diff --git a/sc/source/core/tool/arraysum.hxx b/sc/source/core/tool/arraysum.hxx
+deleted file mode 100644
+index ce8a7f30f4dc..000000000000
+--- a/sc/source/core/tool/arraysum.hxx
++++ /dev/null
+@@ -1,36 +0,0 @@
+-/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+-/*
+- * This file is part of the LibreOffice project.
+- *
+- * This Source Code Form is subject to the terms of the Mozilla Public
+- * License, v. 2.0. If a copy of the MPL was not distributed with this
+- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+- *
+- */
+-
+-#pragma once
+-
+-#include <math.h>
+-
+-namespace sc::op
+-{
+-/**
+-  * Performs one step of the Neumanier sum between doubles
+-  * Overwrites the summand and error
+-  * @parma sum
+-  * @param err
+-  * @param value
+-  */
+-inline void sumNeumanierNormal(double& sum, double& err, const double& value)
+-{
+-    double t = sum + value;
+-    if (fabs(sum) >= fabs(value))
+-        err += (sum - t) + value;
+-    else
+-        err += (value - t) + sum;
+-    sum = t;
+-}
+-
+-} // end namespace sc::op
+-
+-/* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/sc/source/core/tool/arraysumSSE2.cxx b/sc/source/core/tool/arraysumSSE2.cxx
+index 5d962baf9900..f7b87070b70d 100644
+--- a/sc/source/core/tool/arraysumSSE2.cxx
++++ b/sc/source/core/tool/arraysumSSE2.cxx
+@@ -8,8 +8,6 @@
+  *
+  */
+ 
+-#include "arraysum.hxx"
+-
+ #include <arraysumfunctor.hxx>
+ 
+ #include <tools/simdsupport.hxx>
+@@ -106,8 +104,8 @@ KahanSum executeSSE2(size_t& i, size_t nSize, const double* pCurrent)
+ 
+         // First Kahan & pairwise summation
+         // 0+1 -> 0
+-        sumNeumanierNormal(sums[0], errs[0], sums[1]);
+-        sumNeumanierNormal(sums[0], errs[0], errs[1]);
++        KahanSum::sumNeumaierNormal(sums[0], errs[0], sums[1]);
++        KahanSum::sumNeumaierNormal(sums[0], errs[0], errs[1]);
+ 
+         // Store result
+         return { sums[0], errs[0] };
+-- 
+2.41.0
+
