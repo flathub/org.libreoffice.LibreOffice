@@ -92,7 +92,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-24.2.1.1",
+                    "tag": "libreoffice-24.2.1.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -290,11 +290,11 @@
                     "dest-filename": "language-subtag-registry-2023-08-02.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.3.tar.bz2",
-                    "sha256": "1f12a20a02ec3a8d22e54dedb8b683a43c9c160bda1ba337bf1060607ae733bd",
+                    "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.7.tar.bz2",
+                    "sha256": "5ed6bcd4ae3f3c05c912e62f216cd1a44123846147f729a49fb5668da51e030e",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "liblangtag-0.6.3.tar.bz2"
+                    "dest-filename": "liblangtag-0.6.7.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libmspub-0.1.4.tar.xz",
