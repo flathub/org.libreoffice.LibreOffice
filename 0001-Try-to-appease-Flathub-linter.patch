@@ -1,0 +1,42 @@
+From fd3537d6b599f94b4c5232e98091214653a63f89 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Wed, 28 Feb 2024 16:23:46 +0100
+Subject: [PATCH] Try to appease Flathub linter
+
+...which caused a recent
+<https://buildbot.flathub.org/#/builders/33/builds/12708> test build to fail
+with
+
+> {
+>     "errors": [
+>         "appstream-failed-validation"
+>     ],
+>     "warnings": [
+>         "appstream-screenshot-missing-caption"
+>     ],
+>     "appstream": [
+>         "E: org.libreoffice.LibreOffice.desktop:~: desktop-app-launchable-omitted"
+>     ],
+>     "message": "Please consult the documentation at https://docs.flathub.org/docs/for-app-authors/linter"
+> }
+
+Change-Id: I3655d3985c70780e5980bec2d4753120fb302f1a
+---
+ solenv/bin/assemble-flatpak-appdata.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/solenv/bin/assemble-flatpak-appdata.sh b/solenv/bin/assemble-flatpak-appdata.sh
+index 4896cf3f20bc..84b5f5399299 100755
+--- a/solenv/bin/assemble-flatpak-appdata.sh
++++ b/solenv/bin/assemble-flatpak-appdata.sh
+@@ -41,6 +41,7 @@ cat <<\EOF >"${1?}"org.libreoffice.LibreOffice.appdata.xml
+   you can easily share documents with users of other popular office suites
+   without worrying about compatibility.</p>
+  </description>
++ <launchable type="desktop-id">org.libreoffice.LibreOffice.desktop</launchable>
+  <url type="homepage">http://www.libreoffice.org/discover/libreoffice/</url>
+  <url type="bugtracker">https://bugs.documentfoundation.org/</url>
+  <url type="donation">https://donate.libreoffice.org/</url>
+-- 
+2.43.2
+
