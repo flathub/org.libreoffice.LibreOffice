@@ -92,13 +92,8 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-24.2.1.2",
+                    "tag": "libreoffice-24.2.2.2",
                     "disable-fsckobjects": true
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Try-to-appease-Flathub-linter.patch",
-                    "use-git": true
                 },
                 {
                     "type": "archive",
@@ -218,11 +213,11 @@
                     "dest-filename": "glm-0.9.9.8.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.20.0.tar.bz2",
-                    "sha256": "25a5785a5da356689001440926b94e967d02e13c49eb7743e35ef0cf22e42750",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.23.2.tar.bz2",
+                    "sha256": "9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.20.0.tar.bz2"
+                    "dest-filename": "gpgme-1.23.2.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.6.tar.bz2",
@@ -407,11 +402,11 @@
                     "dest-filename": "mdds-2.1.1.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/noto-fonts-20171024.tar.gz",
-                    "sha256": "29acc15a4c4d6b51201ba5d60f303dfbc2e5acbfdb70413c9ae1ed34fa259994",
+                    "url": "https://dev-www.libreoffice.org/src/NotoKufiArabic-v2.109.zip",
+                    "sha256": "1b6880e4b8df09c3b9e246d6084bfd94bf32a0ffff60cf2dcffd3622d0e2d79f",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "noto-fonts-20171024.tar.gz"
+                    "dest-filename": "NotoKufiArabic-v2.109.zip"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/NotoSans-v2.012.zip",
@@ -799,11 +794,11 @@
                     "dest-filename": "phc-winner-argon2-20190702.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.40.tar.xz",
-                    "sha256": "535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1",
+                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.42.tar.xz",
+                    "sha256": "c919dbc11f4c03b05aba3f8884d8eb7adfe3572ad228af972bb60057bdb48450",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libpng-1.6.40.tar.xz"
+                    "dest-filename": "libpng-1.6.42.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
