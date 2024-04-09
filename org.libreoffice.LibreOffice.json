@@ -34,6 +34,7 @@
                 "-Dhttp=false",
                 "-Dmtp=false",
                 "-Dnfs=false",
+                "-Donedrive=false",
                 "-Dsftp=false",
                 "-Dsmb=false",
                 "-Dudisks2=false",
