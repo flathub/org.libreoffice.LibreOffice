@@ -45,7 +45,8 @@
                 "-Dgudev=false",
                 "-Dkeyring=false",
                 "-Dlogind=false",
-                "-Dlibusb=false"
+                "-Dlibusb=false",
+                "-Dwsdd=false"
             ],
             "sources": [
                 {
