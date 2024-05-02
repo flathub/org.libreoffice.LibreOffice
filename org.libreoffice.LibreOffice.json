@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-24.2.2.2",
+                    "tag": "libreoffice-24.2.3.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -222,18 +222,18 @@
                     "dest-filename": "gpgme-1.23.2.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.6.tar.bz2",
-                    "sha256": "e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426",
+                    "url": "https://dev-www.libreoffice.org/src/libassuan-2.5.7.tar.bz2",
+                    "sha256": "0103081ffc27838a2e50479153ca105e873d3d65d8a9593282e9c94c7e6afb76",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libassuan-2.5.6.tar.bz2"
+                    "dest-filename": "libassuan-2.5.7.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.47.tar.bz2",
-                    "sha256": "9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb",
+                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.48.tar.bz2",
+                    "sha256": "89ce1ae893e122924b858de84dc4f67aae29ffa610ebf668d5aa539045663d6f",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libgpg-error-1.47.tar.bz2"
+                    "dest-filename": "libgpg-error-1.48.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libabw-0.1.3.tar.xz",
@@ -341,11 +341,11 @@
                     "dest-filename": "libstaroffice-0.0.7.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/ltm-1.2.1.tar.xz",
-                    "sha256": "986025d7b374276fee2e30e99f3649e4ac0db8a02257a37ee10eae72abed0d1f",
+                    "url": "https://dev-www.libreoffice.org/src/ltm-1.3.0.tar.xz",
+                    "sha256": "296272d93435991308eb73607600c034b558807a07e829e751142e65ccfa9d08",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "ltm-1.2.1.tar.xz"
+                    "dest-filename": "ltm-1.3.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libvisio-0.1.7.tar.xz",
@@ -390,11 +390,11 @@
                     "dest-filename": "26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.7-src.tar.gz",
-                    "sha256": "975a9a862fed80f84e0206373f7ef05537aada5b65d99b71b36ab892b44240bf",
+                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.8-src.tar.gz",
+                    "sha256": "f9f076b4aa9fb22cc94b24f82c80f9ef063805ecd6533a2eb5d5060cf93833e8",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mariadb-connector-c-3.3.7-src.tar.gz"
+                    "dest-filename": "mariadb-connector-c-3.3.8-src.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/mdds-2.1.1.tar.xz",
@@ -502,11 +502,11 @@
                     "dest-filename": "NotoSansLisu-v2.102.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.6.tgz",
-                    "sha256": "082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0",
+                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.7.tgz",
+                    "sha256": "cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "openldap-2.6.6.tgz"
+                    "dest-filename": "openldap-2.6.7.tgz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liborcus-0.19.2.tar.xz",
@@ -530,11 +530,11 @@
                     "dest-filename": "poppler-data-0.4.12.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.11.tar.bz2",
-                    "sha256": "4992ff647203566b670d4e54dc5317499a26856c93576d0ea951bdf6bee50bfb",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.14.tar.bz2",
+                    "sha256": "b8df078551898960bd500dc5d38a177e9905376df81fe7f2b660a1407fa6a5ed",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "postgresql-13.11.tar.bz2"
+                    "dest-filename": "postgresql-13.14.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/a39f6c07ddb20d7dd2ff1f95fa21e2cd-raptor2-2.0.15.tar.gz",
@@ -796,11 +796,11 @@
                     "dest-filename": "phc-winner-argon2-20190702.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.42.tar.xz",
-                    "sha256": "c919dbc11f4c03b05aba3f8884d8eb7adfe3572ad228af972bb60057bdb48450",
+                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.43.tar.xz",
+                    "sha256": "6a5ca0652392a2d7c9db2ae5b40210843c0bbc081cbd410825ab00cc59f14a6c",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libpng-1.6.42.tar.xz"
+                    "dest-filename": "libpng-1.6.43.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
