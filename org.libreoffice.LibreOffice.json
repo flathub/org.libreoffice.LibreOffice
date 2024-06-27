@@ -1,4 +1,4 @@
-{
+{   
     "id": "org.libreoffice.LibreOffice",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "23.08",
@@ -15,6 +15,512 @@
                 "/usr/lib/sdk/openjdk21/install.sh"
             ]
         },
+        {
+            "name": "qtbase",
+            "buildsystem": "autotools",
+            "builddir": true,
+            "build-options": {
+                "arch": {
+                  "x86_64": {
+                    "config-opts": [
+                      "-reduce-relocations",
+                      "-force-debug-info"
+                    ]
+                  },
+                  "aarch64": {
+                    "config-opts": [
+                      "-no-reduce-relocations",
+                      "-optimize-size",
+                      "-opengl",
+                      "es2"
+                    ]
+                  }
+                }
+              },
+            "config-opts": [
+               "-confirm-license",
+               "-opensource",
+               "-shared",
+               "-platform",
+               "linux-g++",
+               "-optimized-qmake",
+               "-nomake",
+               "examples",
+               "-nomake",
+               "tests",
+               "-system-harfbuzz",
+               "-system-sqlite",
+               "-accessibility",
+               "-dbus-linked",
+               "-fontconfig",
+               "-glib",
+               "-icu",
+               "-openssl-linked",
+               "-no-pch",
+               "-no-rpath",
+               "-no-directfb",
+               "-no-linuxfb",
+               "-no-kms",
+               "-system-proxies",
+               "-gtk",
+               "-no-use-gold-linker",
+               "-no-cups",
+               "-no-directfb",
+               "-no-gbm",
+               "-no-linuxfb",
+               "-no-kms",
+               "-archdatadir",
+               "/app/lib/"
+            ],
+            "cleanup": [
+              "/bin",
+              "/doc",
+              "/include",
+              "/lib/*.a",
+              "/lib/*.la",
+              "/lib/*.prl",
+              "/lib/cmake",
+              "/lib/debug",
+              "/lib/mkspecs",
+             "/lib/pkgconfig"
+             ],
+              "sources": [
+              {
+                "type": "archive",
+                "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtbase-everywhere-opensource-src-5.15.9.tar.xz",
+                "sha256": "1947deb9d98aaf46bf47e6659b3e1444ce6616974470523756c082041d396d1e"
+              }
+            ]
+        },
+        {
+            "name": "qt5-qtsvg",
+            "buildsystem": "qmake",
+            "cleanup": [
+              "/bin",
+              "/include",
+              "/lib/*.a",
+              "/lib/*.la",
+              "/lib/*.prl",
+              "/lib/cmake",
+              "/lib/debug",
+              "/lib/mkspecs",
+              "/lib/pkgconfig"
+            ],
+            "sources": [
+              {
+                "type": "archive",
+                "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtsvg-everywhere-opensource-src-5.15.9.tar.xz",
+                "sha256": "881f75d3c4a29a4ef88202763115c19d4869af2638227e9c3474e422639abb5a"
+              }
+            ]
+          },
+        {
+          "name": "qt5-wayland",
+          "buildsystem": "qmake",
+          "cleanup": [
+            "/bin",
+            "/include",
+            "/lib/*.a",
+            "/lib/*.la",
+            "/lib/*.prl",
+            "/lib/cmake",
+            "/lib/debug",
+            "/lib/mkspecs",
+            "/lib/pkgconfig"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtwayland-everywhere-opensource-src-5.15.9.tar.xz",
+              "sha256": "b719baf33068f3b92309ac610c3b7ed70edb5bf1e8fa07eefc7cbae6ab6a3c12"
+            }
+          ]
+        },
+        {
+            "name": "qt5-declarative",
+            "buildsystem": "qmake",
+            "cleanup": [
+                "/bin",
+            "/include",
+            "/lib/*.a",
+            "/lib/*.la",
+            "/lib/*.prl",
+            "/lib/cmake",
+            "/lib/debug",
+            "/lib/mkspecs",
+            "/lib/pkgconfig"
+            ],
+           "sources": [
+            {
+              "type": "archive",
+              "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtdeclarative-everywhere-opensource-src-5.15.9.tar.xz",
+              "sha256": "124aa6e0513f8d4b33a1b351b8d0980be37522da68f7051d0db9adfcf07ba726"
+            }
+          ] 
+        },
+         {
+          "name": "qt5-x11extras",
+          "buildsystem": "qmake",
+          "cleanup": [
+            "/bin",
+            "/include",
+            "/lib/*.a",
+            "/lib/*.la",
+            "/lib/*.prl",
+            "/lib/cmake",
+            "/lib/debug",
+            "/lib/mkspecs",
+            "/lib/pkgconfig"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://download.qt.io/archive/qt/5.15/5.15.9/submodules/qtx11extras-everywhere-opensource-src-5.15.9.tar.xz",
+              "sha256": "7ba3123de7b4ff87d02f513ffa1e4c4284e8f882563d114f29cb98d4c00fcbdb"
+            }
+          ]
+        },
+        {
+      "name": "extra-cmake-modules",
+      "buildsystem": "cmake-ninja",
+      "cleanup": [
+        "*"
+      ],
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/extra-cmake-modules-5.107.0.tar.xz",
+          "sha256": "3969aad56d1e6a5901e926aaf7a73510d98c4b363564ed3f1222d4135da633ed",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/extra-cmake-modules-$version.tar.xz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kconfig",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "cleanup": [
+        "/bin"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kconfig-5.107.0.tar.xz",
+          "sha256": "9697d4bca5255e62df99f7e80b4d0f22d532317b4bff3d67e81c4f7641ee5b13",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kconfig-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "karchive",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/karchive-5.107.0.tar.xz",
+          "sha256": "e88cb94b9af8a88f360e627b3ae7a2b99ccdfe3fe9e1961452056b2a00f04a7f",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/karchive-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        } 
+      ]
+    },
+    {
+      "name": "kwidgetsaddons",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kwidgetsaddons-5.107.0.tar.xz",
+          "sha256": "0fa19b9933c3f5553d16bb38b0d9f6fe0a290d58b70e7debf45714102ce887c9",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kwidgetsaddons-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kcompletion",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kcompletion-5.107.0.tar.xz",
+          "sha256": "50ab6473d2092bf98fc6d0ed7000566e9bb490f1139e1a502dabc39dfe6449f5",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcompletion-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kcoreaddons",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "cleanup": [
+        "/bin"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kcoreaddons-5.107.0.tar.xz",
+          "sha256": "64baee484852ab2798aba18cc4780a1caafb688a5e0a0524de3bc7eb2a1eaf84",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcoreaddons-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kguiaddons",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kguiaddons-5.107.0.tar.xz",
+          "sha256": "ad2f6e6ca7dd3c230de54bab357e33a9c21e85a2836f63565e3b77ebf79984c1",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kguiaddons-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ki18n",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.105/ki18n-5.105.0.tar.xz",
+          "sha256": "ba26cd1fc188ab305293f8f1276ab7871f57f4ab1309bb8d2adf42fb20958f3a",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/ki18n-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kitemmodels",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kitemmodels-5.107.0.tar.xz",
+          "sha256": "b7f5aae6a5d0605f737ab3e993f9a195ba164f6f89672013e26b1276808a11af",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kitemmodels-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kitemviews",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kitemviews-5.107.0.tar.xz",
+          "sha256": "d5460cee8e9b08c1c0472e88e07bbe04d33cf69da6faf45febd9680972a00b17",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kitemviews-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kimageformats",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kimageformats-5.107.0.tar.xz",
+          "sha256": "97258ad36bf98cd1aaeeb29c49946031f5051d9984bda9f41fda5a35ccd4d1c1",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kimageformats-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kwindowsystem",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kwindowsystem-5.107.0.tar.xz",
+          "sha256": "a3aa7c3c82f70f6d347c489af45e0e4277fb792fb1b1fc1dd9a6dbb73ec6931e",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kwindowsystem-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kcrash",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.kde.org/stable/frameworks/5.107/kcrash-5.107.0.tar.xz",
+          "sha256": "5417cdd49ba0a54ef3e549eaf153c425d15158e2b91247c0ffddb6985f7df695",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 8762,
+            "stable-only": true,
+            "url-template": "https://download.kde.org/stable/frameworks/$major.$minor/kcrash-$version.tar.xz"
+          }
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "rm -fr poqm"
+          ]
+        }
+      ]
+    },
         {
             "name": "gvfs",
             "buildsystem": "meson",
@@ -812,7 +1318,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --with-gdrive-client-id=280867422816-9jc83t6phkfb2q8p94dtk8kr5fa8af3r.apps.googleusercontent.com --with-gdrive-client-secret=Hnzikj7HqdqsUYLru4jmFo1p",
+                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --enable-qt5 --enable-kf5 --with-gdrive-client-id=280867422816-9jc83t6phkfb2q8p94dtk8kr5fa8af3r.apps.googleusercontent.com --with-gdrive-client-secret=Hnzikj7HqdqsUYLru4jmFo1p",
                 "make check",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
@@ -850,6 +1356,7 @@
         "--env=LIBO_FLATPAK=1",
         "--own-name=org.libreoffice.LibreOfficeIpc0",
         "--talk-name=org.gtk.vfs.*",
-        "--talk-name=com.canonical.AppMenu.Registrar"
+        "--talk-name=com.canonical.AppMenu.Registrar",
+        "--env=QT_QPA_PLATFORM=wayland"
     ]
 }
