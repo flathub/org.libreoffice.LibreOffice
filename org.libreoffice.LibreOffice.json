@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-24.2.4.2",
+                    "tag": "libreoffice-24.2.5.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -285,11 +285,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2024-05-16.tar.bz2",
-                    "sha256": "9090265f2bb0f4fb20ec1f7357062c033b9556b362b70c441985c1c905dd9a73",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2024-06-14.tar.bz2",
+                    "sha256": "75bc394dd83ddfd62b172a462db1b66bdb5950f40823ed63b8c7db6b71e37e75",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2024-05-16.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2024-06-14.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.7.tar.bz2",
@@ -432,18 +432,18 @@
                     "dest-filename": "NotoSansArabic-v2.010.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/NotoNaskhArabic-v2.016.zip",
-                    "sha256": "2b6a3f30f21d27bc6b75b40a350221e12e64b753604d613bf3ddf71cdbe331ac",
+                    "url": "https://dev-www.libreoffice.org/src/NotoNaskhArabic-v2.019.zip",
+                    "sha256": "7a509e10c9c8d21f384a26807ef2f5fbbecec46fdb8626c5441bed6d894edb81",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "NotoNaskhArabic-v2.016.zip"
+                    "dest-filename": "NotoNaskhArabic-v2.019.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/NotoSansHebrew-v2.004.zip",
-                    "sha256": "54b5b06b466f4de8ec8e8f988877e297ead271419f6646527046638e434815fe",
+                    "url": "https://dev-www.libreoffice.org/src/NotoSansHebrew-v3.001.zip",
+                    "sha256": "df0a71814b4e63644cf40fcc4529111b61266b7a2dafbe95068b29a7520cc3cb",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "NotoSansHebrew-v2.004.zip"
+                    "dest-filename": "NotoSansHebrew-v3.001.zip"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/NotoSerifHebrew-v2.004.zip",
@@ -812,7 +812,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --with-gdrive-client-id=280867422816-9jc83t6phkfb2q8p94dtk8kr5fa8af3r.apps.googleusercontent.com --with-gdrive-client-secret=Hnzikj7HqdqsUYLru4jmFo1p --enable-ext-nlpsolver",
+                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --with-gdrive-client-id=280867422816-9jc83t6phkfb2q8p94dtk8kr5fa8af3r.apps.googleusercontent.com --with-gdrive-client-secret=Hnzikj7HqdqsUYLru4jmFo1p",
                 "make check",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
