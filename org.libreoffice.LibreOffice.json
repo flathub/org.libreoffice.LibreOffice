@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-24.8.0.3",
+                    "tag": "libreoffice-24.8.1.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -390,11 +390,11 @@
                     "dest-filename": "26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.8-src.tar.gz",
-                    "sha256": "f9f076b4aa9fb22cc94b24f82c80f9ef063805ecd6533a2eb5d5060cf93833e8",
+                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.10-src.tar.gz",
+                    "sha256": "fb156c40147d375ba7ce85d554a67ce4080b2aeb523c6438030f6fe4d680378b",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mariadb-connector-c-3.3.8-src.tar.gz"
+                    "dest-filename": "mariadb-connector-c-3.3.10-src.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/mdds-2.1.1.tar.xz",
@@ -516,11 +516,11 @@
                     "dest-filename": "liborcus-0.19.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-24.06.0.tar.xz",
-                    "sha256": "0cdabd495cada11f6ee9e75c793f80daf46367b66c25a63ee8c26d0f9ec40c76",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-24.08.0.tar.xz",
+                    "sha256": "97453fbddf0c9a9eafa0ea45ac710d3d49bcf23a62e864585385d3c0b4403174",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-24.06.0.tar.xz"
+                    "dest-filename": "poppler-24.08.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -530,11 +530,11 @@
                     "dest-filename": "poppler-data-0.4.12.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.15.tar.bz2",
-                    "sha256": "42edd415446d33b8c242be76d1ad057531b2264b2e86939339b7075c6e4ec925",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-13.16.tar.bz2",
+                    "sha256": "c9cbbb6129f02328204828066bb3785c00a85c8ca8fd329c2a8a53c1f5cd8865",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "postgresql-13.15.tar.bz2"
+                    "dest-filename": "postgresql-13.16.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/a39f6c07ddb20d7dd2ff1f95fa21e2cd-raptor2-2.0.15.tar.gz",
