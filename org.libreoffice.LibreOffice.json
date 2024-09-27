@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-24.8.1.2",
+                    "tag": "libreoffice-24.8.2.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -390,11 +390,11 @@
                     "dest-filename": "26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.10-src.tar.gz",
-                    "sha256": "fb156c40147d375ba7ce85d554a67ce4080b2aeb523c6438030f6fe4d680378b",
+                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.11-src.tar.gz",
+                    "sha256": "f7ba02f70aa2ae2b13e9ee5acc78423f6bede38998afb91326a62be46cf5956a",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mariadb-connector-c-3.3.10-src.tar.gz"
+                    "dest-filename": "mariadb-connector-c-3.3.11-src.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/mdds-2.1.1.tar.xz",
@@ -789,11 +789,11 @@
                     "dest-filename": "phc-winner-argon2-20190702.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.43.tar.xz",
-                    "sha256": "6a5ca0652392a2d7c9db2ae5b40210843c0bbc081cbd410825ab00cc59f14a6c",
+                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.44.tar.xz",
+                    "sha256": "60c4da1d5b7f0aa8d158da48e8f8afa9773c1c8baa5d21974df61f1886b8ce8e",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libpng-1.6.43.tar.xz"
+                    "dest-filename": "libpng-1.6.44.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
