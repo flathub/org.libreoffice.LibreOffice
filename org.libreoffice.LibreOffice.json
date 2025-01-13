@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.2.0.1",
+                    "tag": "libreoffice-25.2.0.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -516,11 +516,11 @@
                     "dest-filename": "liborcus-0.19.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-24.08.0.tar.xz",
-                    "sha256": "97453fbddf0c9a9eafa0ea45ac710d3d49bcf23a62e864585385d3c0b4403174",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-25.01.0.tar.xz",
+                    "sha256": "7eefc122207bbbd72a303c5e0743f4941e8ae861e24dcf0501e18ce1d1414112",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-24.08.0.tar.xz"
+                    "dest-filename": "poppler-25.01.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -838,11 +838,11 @@
                     "dest-filename": "phc-winner-argon2-20190702.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.44.tar.xz",
-                    "sha256": "60c4da1d5b7f0aa8d158da48e8f8afa9773c1c8baa5d21974df61f1886b8ce8e",
+                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.45.tar.xz",
+                    "sha256": "926485350139ffb51ef69760db35f78846c805fef3d59bfdcb2fba704663f370",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libpng-1.6.44.tar.xz"
+                    "dest-filename": "libpng-1.6.45.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
