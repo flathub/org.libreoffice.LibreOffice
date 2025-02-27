@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.2.1.1",
+                    "tag": "libreoffice-25.2.1.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -215,18 +215,18 @@
                     "dest-filename": "glm-1.0.1.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.24.1.tar.bz2",
-                    "sha256": "ea05d0258e71061d61716584ec34cef59330a91340571edc46b78374973ba85f",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.24.2.tar.bz2",
+                    "sha256": "e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.24.1.tar.bz2"
+                    "dest-filename": "gpgme-1.24.2.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libassuan-3.0.1.tar.bz2",
-                    "sha256": "c8f0f42e6103dea4b1a6a483cb556654e97302c7465308f58363778f95f194b1",
+                    "url": "https://dev-www.libreoffice.org/src/libassuan-3.0.2.tar.bz2",
+                    "sha256": "d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libassuan-3.0.1.tar.bz2"
+                    "dest-filename": "libassuan-3.0.2.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.51.tar.bz2",
@@ -285,11 +285,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-01-21.tar.bz2",
-                    "sha256": "06b37484c2736816e84b8bdd2075011d5961c2316865bc2795831230b925608d",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-02-06.tar.bz2",
+                    "sha256": "e5fffcbd640e743fa9b699087d63ccf8ab5b52eed521da68f8c894f350856662",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2025-01-21.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2025-02-06.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.7.tar.bz2",
@@ -530,11 +530,11 @@
                     "dest-filename": "poppler-data-0.4.12.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-14.15.tar.bz2",
-                    "sha256": "02e891e314b4e9ee24cbd78028dab7c73f9c1ba3e30835bcbef71fe220401fc5",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-14.17.tar.bz2",
+                    "sha256": "6ce0ccd6403bf7f0f2eddd333e2ee9ba02edfa977c66660ed9b4b1057e7630a1",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "postgresql-14.15.tar.bz2"
+                    "dest-filename": "postgresql-14.17.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/raptor2-2.0.16.tar.gz",
@@ -838,11 +838,11 @@
                     "dest-filename": "phc-winner-argon2-20190702.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.46.tar.xz",
-                    "sha256": "f3aa8b7003998ab92a4e9906c18d19853e999f9d3bca9bd1668f54fa81707cb1",
+                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.47.tar.xz",
+                    "sha256": "b213cb381fbb1175327bd708a77aab708a05adde7b471bc267bd15ac99893631",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libpng-1.6.46.tar.xz"
+                    "dest-filename": "libpng-1.6.47.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
