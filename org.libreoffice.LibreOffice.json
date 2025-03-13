@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.2.1.2",
+                    "tag": "libreoffice-25.2.2.1",
                     "disable-fsckobjects": true
                 },
                 {
