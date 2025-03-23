@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.2.2.1",
+                    "tag": "libreoffice-25.2.2.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -285,11 +285,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-02-06.tar.bz2",
-                    "sha256": "e5fffcbd640e743fa9b699087d63ccf8ab5b52eed521da68f8c894f350856662",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-03-10.tar.bz2",
+                    "sha256": "555968dd413c69fe2c072a29e0f1a2a48856533d923ffd8377ff86f6ea701b39",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2025-02-06.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2025-03-10.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.7.tar.bz2",
