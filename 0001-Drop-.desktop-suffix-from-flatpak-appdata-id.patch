@@ -1,0 +1,38 @@
+From c36f2356511d36c3d5c8cf6ffbdad308c9c4120b Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Wed, 2 Apr 2025 10:17:33 +0200
+Subject: [PATCH 1/2] Drop .desktop suffix from flatpak appdata id
+
+...that had been like that (for reasons that escape me now) ever since
+<https://git.libreoffice.org/dev-tools/+/cb6ca493be62b59aa16c7ec6a051e594a1d92f18%5E!>
+"Create a single-app LibreOffice.flatpak", but which causes an error
+"appstream-id-mismatch-flatpak-id: The ID tag:
+org.libreoffice.LibreOffice.desktop in Metainfo does not match the FLATPAK_ID:
+org.libreoffice.LibreOffice" from `flatpak run --command=flatpak-builder-lint
+org.flatpak.Builder repo repo` (see
+<https://docs.flathub.org/docs/for-app-authors/submission#run-the-linter>)
+
+Change-Id: I0823020e6de20930b1ef8d5205fcf49ac2319a92
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/183633
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <stephan.bergmann@allotropia.de>
+---
+ solenv/bin/assemble-flatpak-appdata.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/solenv/bin/assemble-flatpak-appdata.sh b/solenv/bin/assemble-flatpak-appdata.sh
+index 84b5f5399299..7d99671945c5 100755
+--- a/solenv/bin/assemble-flatpak-appdata.sh
++++ b/solenv/bin/assemble-flatpak-appdata.sh
+@@ -25,7 +25,7 @@ set -e
+ cat <<\EOF >"${1?}"org.libreoffice.LibreOffice.appdata.xml
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop">
+- <id>org.libreoffice.LibreOffice.desktop</id>
++ <id>org.libreoffice.LibreOffice</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MPL-2.0</project_license>
+  <name>LibreOffice</name>
+-- 
+2.49.0
+

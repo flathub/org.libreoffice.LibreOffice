@@ -1,0 +1,57 @@
+From ff3c48c213332e2bb617de4cda6ebc4994906f92 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Wed, 2 Apr 2025 10:12:51 +0200
+Subject: [PATCH 2/2] Fill in the flatpak appdata screenshot captions
+
+...that had been left empty when they had been introduced in
+<https://git.libreoffice.org/dev-tools/+/f96d7afbf282e5621697aca84177e42fe2cc2255%5E!>
+"Adapt org.libreoffice.LibreOffice.appdata.xml".  (This should avoid the warning
+"appstream-screenshot-missing-caption: One or more screenshots are missing
+captions in the Metainfo file" from `flatpak run --command=flatpak-builder-lint
+org.flatpak.Builder repo repo`, see
+<https://docs.flathub.org/docs/for-app-authors/submission#run-the-linter>.)
+
+Change-Id: Ib1f3a629cbb19229408f8d476a37385678a607d7
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/183634
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <stephan.bergmann@allotropia.de>
+---
+ solenv/bin/assemble-flatpak-appdata.sh | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/solenv/bin/assemble-flatpak-appdata.sh b/solenv/bin/assemble-flatpak-appdata.sh
+index 7d99671945c5..874f23e1fc27 100755
+--- a/solenv/bin/assemble-flatpak-appdata.sh
++++ b/solenv/bin/assemble-flatpak-appdata.sh
+@@ -51,23 +51,23 @@ cat <<\EOF >"${1?}"org.libreoffice.LibreOffice.appdata.xml
+  <screenshots>
+   <screenshot type="default">
+    <image>https://hub.libreoffice.org/screenshots/writer-01.png</image>
+-   <caption><!-- Describe this screenshot in less than ~10 words --></caption>
++   <caption>Sample Writer document</caption>
+   </screenshot>
+   <screenshot>
+    <image>https://hub.libreoffice.org/screenshots/calc-02.png</image>
+-   <caption><!-- Describe this screenshot in less than ~10 words --></caption>
++   <caption>Sample Calc document</caption>
+   </screenshot>
+   <screenshot>
+    <image>https://hub.libreoffice.org/screenshots/impress-01.png</image>
+-   <caption><!-- Describe this screenshot in less than ~10 words --></caption>
++   <caption>Sample Impress document</caption>
+   </screenshot>
+   <screenshot>
+    <image>https://hub.libreoffice.org/screenshots/draw-02.png</image>
+-   <caption><!-- Describe this screenshot in less than ~10 words --></caption>
++   <caption>Sample Draw document</caption>
+   </screenshot>
+   <screenshot>
+    <image>https://hub.libreoffice.org/screenshots/base-02.png</image>
+-   <caption><!-- Describe this screenshot in less than ~10 words --></caption>
++   <caption>Sample Base document</caption>
+   </screenshot>
+  </screenshots>
+  <developer_name>The Document Foundation</developer_name>
+-- 
+2.49.0
+
