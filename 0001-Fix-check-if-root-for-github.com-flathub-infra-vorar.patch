@@ -1,0 +1,38 @@
+From 35308765664c14bc06b108e99adc056381ee133f Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Fri, 25 Apr 2025 09:39:30 +0200
+Subject: Fix check-if-root for github.com/flathub-infra/vorarbeiter
+
+Pushing PRs to <https://github.com/flathub/org.libreoffice.LibreOffice> used to
+trigger test builds on <https://buildbot.flathub.org/#/>, but has apparently
+changed recently to triggering test builds on some github actions based
+infrastructure, which then failed our check-if-root (see e.g.,
+<https://github.com/flathub/org.libreoffice.LibreOffice/pull/323#issuecomment-2829465141>),
+because systemd-detect-virt is apparently not available in those containers.
+But those containers apparently do have container=flatpak in their env, so add
+back the check for that from e19b67dcf5e987e58ce4252d8d1c8313d111df85 "allow
+building as root inside a container without complaint" (which had been removed
+by 1eb18361783a25e6c70a94564d55d4e2db7586dd "use systemd-detect-virt to detect
+building as root in container").
+
+Change-Id: Ib3cc5911826644ddfb4a9b6afb0da653c0546a1a
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 7941da9a2848..36a81704ab88 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -69,7 +69,7 @@ else # MAKE_RESTARTS
+ # Nested test is to check if the systemd-detect-virt command doesn't exist or it reports we're not
+ # in a container:
+ check-if-root:
+-	@if test ! `uname` = 'Haiku' -a `id -u` = 0; then \
++	@if test ! `uname` = 'Haiku' -a `id -u` = 0 && test -z $$container; then \
+ 		if test ! -x "$$(command -v systemd-detect-virt)" || ! systemd-detect-virt -c -q; then \
+ 			echo; \
+ 			echo 'Building LibreOffice as root is a very bad idea, use a regular user.'; \
+-- 
+2.49.0
+
