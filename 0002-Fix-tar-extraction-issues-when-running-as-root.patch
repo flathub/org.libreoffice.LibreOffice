@@ -1,0 +1,51 @@
+From e07121e127cc3907fc0f92d972cdf170bb9cbe2b Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Fri, 25 Apr 2025 13:10:32 +0200
+Subject: Fix tar extraction issues when running as root
+
+Following up on 20b48ed9e311c529dcce46b31ed0d986ed7e3ed4 "Fix check-if-root for
+github.com/flathub-infra/vorarbeiter", the next issue those new github actions
+based flathub test builds run into is
+
+> tar: configure: Cannot change ownership to uid 1000, gid 1000: Invalid argument
+
+etc. from the various UnpackedTarball targets.  The reason is that at least GNU
+tar 1.35 defaults to --same-owner when run as root.  I hope the --no-same-owner
+countermeasure is available on all the GNU and BSD tar versions that we care
+about (it is at least supported by /usr/bin/tar bsdtar 3.5.3 on macOS Sequoia
+15.4.1).
+
+Change-Id: Ie9a17856f9bca752817d914e6dd1b9cb2b5ea699
+---
+ external/liblangtag/UnpackedTarball_liblangtag.mk | 2 +-
+ solenv/gbuild/UnpackedTarball.mk                  | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/external/liblangtag/UnpackedTarball_liblangtag.mk b/external/liblangtag/UnpackedTarball_liblangtag.mk
+index 40102052a79c..a6a1e97ab6f7 100644
+--- a/external/liblangtag/UnpackedTarball_liblangtag.mk
++++ b/external/liblangtag/UnpackedTarball_liblangtag.mk
+@@ -12,7 +12,7 @@ $(eval $(call gb_UnpackedTarball_UnpackedTarball,liblangtag))
+ $(eval $(call gb_UnpackedTarball_set_tarball,liblangtag,$(LIBLANGTAG_TARBALL),,liblangtag))
+ 
+ $(eval $(call gb_UnpackedTarball_set_pre_action,liblangtag,\
+-	$(GNUTAR) -x -j -f $(call gb_Helper_cyg_path,$(gb_UnpackedTarget_TARFILE_LOCATION)/$(LANGTAGREG_TARBALL)) \
++	$(GNUTAR) -x -j --no-same-owner -f $(call gb_Helper_cyg_path,$(gb_UnpackedTarget_TARFILE_LOCATION)/$(LANGTAGREG_TARBALL)) \
+ ))
+ 
+ $(eval $(call gb_UnpackedTarball_update_autoconf_configs,liblangtag))
+diff --git a/solenv/gbuild/UnpackedTarball.mk b/solenv/gbuild/UnpackedTarball.mk
+index 17ed32c8d185..04614bf5bfce 100644
+--- a/solenv/gbuild/UnpackedTarball.mk
++++ b/solenv/gbuild/UnpackedTarball.mk
+@@ -24,6 +24,7 @@ $(GNUTAR) \
+ 	$(3) \
+ 	-C $(UNPACKED_DIR) \
+ 	$(STRIP_COMPONENTS)=$(UNPACKED_STRIP_COMPONENTS) \
++	--no-same-owner \
+ 	-f $(call gb_Helper_cyg_path,$(UNPACKED_TARBALL))
+ endef
+ 
+-- 
+2.49.0
+
