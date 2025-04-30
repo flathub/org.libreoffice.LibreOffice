@@ -94,17 +94,17 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.2.2.2",
+                    "tag": "libreoffice-25.2.3.2",
                     "disable-fsckobjects": true
                 },
                 {
                     "type": "patch",
-                    "path": "0001-Drop-.desktop-suffix-from-flatpak-appdata-id.patch",
+                    "path": "0001-Fix-check-if-root-for-github.com-flathub-infra-vorar.patch",
                     "use-git": true
                 },
                 {
                     "type": "patch",
-                    "path": "0002-Fill-in-the-flatpak-appdata-screenshot-captions.patch",
+                    "path": "0002-Fix-tar-extraction-issues-when-running-as-root.patch",
                     "use-git": true
                 },
                 {
@@ -239,11 +239,11 @@
                     "dest-filename": "libassuan-3.0.2.tar.bz2"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.51.tar.bz2",
-                    "sha256": "be0f1b2db6b93eed55369cdf79f19f72750c8c7c39fc20b577e724545427e6b2",
+                    "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.54.tar.bz2",
+                    "sha256": "607dcadfd722120188eca5cd07193158b9dd906b578a557817ec779bd5e16d0e",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libgpg-error-1.51.tar.bz2"
+                    "dest-filename": "libgpg-error-1.54.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libabw-0.1.3.tar.xz",
@@ -400,11 +400,11 @@
                     "dest-filename": "26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.14-src.tar.gz",
-                    "sha256": "497c324ed9ebce1dd8a940c1d308574f0d4db41c8209f19bfb3ded25e733ed49",
+                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.15-src.tar.gz",
+                    "sha256": "b593fdd3d5b8964a9feec2bf57a13e6cc8f178a4fe948e89f60ede9c53d621fe",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mariadb-connector-c-3.3.14-src.tar.gz"
+                    "dest-filename": "mariadb-connector-c-3.3.15-src.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/mdds-2.1.1.tar.xz",
@@ -596,11 +596,11 @@
                     "dest-filename": "alef-1.001.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/Amiri-1.000.zip",
-                    "sha256": "926fe1bd7dfde8e55178281f645258bfced6420c951c6f2fd532fd21691bca30",
+                    "url": "https://dev-www.libreoffice.org/src/Amiri-1.001.zip",
+                    "sha256": "cae999a9fc5638cb69cf0812e8bca1437ef1ebbf094f8b3c5b3f0a3ea2ef8c3a",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "Amiri-1.000.zip"
+                    "dest-filename": "Amiri-1.001.zip"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/culmus-0.140.tar.gz",
