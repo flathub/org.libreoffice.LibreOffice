@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.8.0.0.alpha1",
+                    "tag": "libreoffice-25.8.0.0.beta1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -215,11 +215,11 @@
                     "dest-filename": "glm-1.0.1.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.24.2.tar.bz2",
-                    "sha256": "e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581",
+                    "url": "https://dev-www.libreoffice.org/src/gpgme-1.24.3.tar.bz2",
+                    "sha256": "bfc17f5bd1b178c8649fdd918956d277080f33df006a2dc40acdecdce68c50dd",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "gpgme-1.24.2.tar.bz2"
+                    "dest-filename": "gpgme-1.24.3.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libassuan-3.0.2.tar.bz2",
@@ -285,11 +285,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-03-10.tar.bz2",
-                    "sha256": "555968dd413c69fe2c072a29e0f1a2a48856533d923ffd8377ff86f6ea701b39",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-05-15.tar.bz2",
+                    "sha256": "41ef23262b29d920667303329699d8255136b46a286161cd1e65ac667fe15331",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2025-03-10.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2025-05-15.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.7.tar.bz2",
@@ -502,25 +502,25 @@
                     "dest-filename": "NotoSansLisu-v2.102.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.9.tgz",
-                    "sha256": "2cb7dc73e9c8340dff0d99357fbaa578abf30cc6619f0521972c555681e6b2ff",
+                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.10.tgz",
+                    "sha256": "c065f04aad42737aebd60b2fe4939704ac844266bc0aeaa1609f0cad987be516",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "openldap-2.6.9.tgz"
+                    "dest-filename": "openldap-2.6.10.tgz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.20.0.tar.xz",
-                    "sha256": "fb6438977a75e7f455b772acf80d861fbc787ab18d52f7997af44a212311a507",
+                    "url": "https://dev-www.libreoffice.org/src/liborcus-0.20.1.tar.xz",
+                    "sha256": "ec27f30e8445a2a3f307f7e829fc446fd48193150b7f8f23bb5bfb25ec6e4e27",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "liborcus-0.20.0.tar.xz"
+                    "dest-filename": "liborcus-0.20.1.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-25.05.0.tar.xz",
-                    "sha256": "9b1627c5b76816ac5e4052a03f5b605ba40b45cf06b02cadd0479620b499ab38",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-25.06.0.tar.xz",
+                    "sha256": "8199532d38984fab46dbd0020ec9c40f20e928e33e9b4cc6043572603a821d83",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-25.05.0.tar.xz"
+                    "dest-filename": "poppler-25.06.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
