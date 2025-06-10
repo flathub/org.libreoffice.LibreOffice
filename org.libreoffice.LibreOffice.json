@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.2.4.1",
+                    "tag": "libreoffice-25.2.4.3",
                     "disable-fsckobjects": true
                 },
                 {
@@ -502,11 +502,11 @@
                     "dest-filename": "NotoSansLisu-v2.102.zip"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.9.tgz",
-                    "sha256": "2cb7dc73e9c8340dff0d99357fbaa578abf30cc6619f0521972c555681e6b2ff",
+                    "url": "https://dev-www.libreoffice.org/src/openldap-2.6.10.tgz",
+                    "sha256": "c065f04aad42737aebd60b2fe4939704ac844266bc0aeaa1609f0cad987be516",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "openldap-2.6.9.tgz"
+                    "dest-filename": "openldap-2.6.10.tgz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liborcus-0.19.2.tar.xz",
