@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.8.0.0.beta1",
+                    "tag": "libreoffice-25.8.0.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -285,11 +285,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-05-15.tar.bz2",
-                    "sha256": "41ef23262b29d920667303329699d8255136b46a286161cd1e65ac667fe15331",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-06-23.tar.bz2",
+                    "sha256": "0c05ec727a104ca154a3bb532c9a992b459d9688012663f1f3aa6814db484f69",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2025-05-15.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2025-06-23.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.7.tar.bz2",
@@ -516,11 +516,11 @@
                     "dest-filename": "liborcus-0.20.1.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-25.06.0.tar.xz",
-                    "sha256": "8199532d38984fab46dbd0020ec9c40f20e928e33e9b4cc6043572603a821d83",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-25.07.0.tar.xz",
+                    "sha256": "c504a9066dbdfebe377ad53cec641fd971ee96c4e1e8ca74e6c9c03d46d817ae",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-25.06.0.tar.xz"
+                    "dest-filename": "poppler-25.07.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -838,11 +838,11 @@
                     "dest-filename": "phc-winner-argon2-20190702.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.48.tar.xz",
-                    "sha256": "46fd06ff37db1db64c0dc288d78a3f5efd23ad9ac41561193f983e20937ece03",
+                    "url": "https://dev-www.libreoffice.org/src/libpng-1.6.50.tar.xz",
+                    "sha256": "4df396518620a7aa3651443e87d1b2862e4e88cad135a8b93423e01706232307",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libpng-1.6.48.tar.xz"
+                    "dest-filename": "libpng-1.6.50.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/libeot-0.01.tar.bz2",
