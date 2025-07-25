@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.8.0.1",
+                    "tag": "libreoffice-25.8.0.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -397,11 +397,11 @@
                     "dest-filename": "mariadb-connector-c-3.3.15-src.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mdds-3.0.0.tar.xz",
-                    "sha256": "9b077e8d929050e9a432cc131beed2380ac85cfe98b17fc26d01d0ed532129c8",
+                    "url": "https://dev-www.libreoffice.org/src/mdds-3.1.0.tar.xz",
+                    "sha256": "ca295f4c86968a7eb1f5d503ff7ae180e6605210cfb26d01658be42048c0924c",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mdds-3.0.0.tar.xz"
+                    "dest-filename": "mdds-3.1.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/NotoKufiArabic-v2.109.zip",
