@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.8.0.4",
+                    "tag": "libreoffice-25.8.1.1",
                     "disable-fsckobjects": true
                 },
                 {
@@ -516,11 +516,11 @@
                     "dest-filename": "liborcus-0.20.1.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-25.07.0.tar.xz",
-                    "sha256": "c504a9066dbdfebe377ad53cec641fd971ee96c4e1e8ca74e6c9c03d46d817ae",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-25.08.0.tar.xz",
+                    "sha256": "425ed4d4515a093bdcdbbaac6876f20617451edc710df6a4fd6c45dd67eb418d",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-25.07.0.tar.xz"
+                    "dest-filename": "poppler-25.08.0.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -530,11 +530,11 @@
                     "dest-filename": "poppler-data-0.4.12.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/postgresql-15.13.tar.bz2",
-                    "sha256": "4f62e133d22ea08a0401b0840920e26698644d01a80c34341fb732dd0a90ca5d",
+                    "url": "https://dev-www.libreoffice.org/src/postgresql-15.14.tar.bz2",
+                    "sha256": "06dd75d305cd3870ee62b3932e661c624543eaf9ae2ba37cdec0a4f8edd051d2",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "postgresql-15.13.tar.bz2"
+                    "dest-filename": "postgresql-15.14.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/raptor2-2.0.16.tar.gz",
@@ -824,11 +824,11 @@
                     "dest-filename": "Java-WebSocket-1.6.0.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/zxcvbn-c-2.5.tar.gz",
-                    "sha256": "77d6c6ecb35952a8d8ce7f736b7a2bf466275c48210e309b73782d6b7e84dffd",
+                    "url": "https://dev-www.libreoffice.org/src/zxcvbn-c-2.6.tar.gz",
+                    "sha256": "11e39f6776f9c82c68b2acb94336e32697d4ab6cdb4ac16f9583ccbdd735113a",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "zxcvbn-c-2.5.tar.gz"
+                    "dest-filename": "zxcvbn-c-2.6.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/phc-winner-argon2-20190702.tar.gz",
