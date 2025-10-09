@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "url": "https://gerrit.libreoffice.org/core",
-                    "tag": "libreoffice-25.8.1.1",
+                    "tag": "libreoffice-25.8.2.2",
                     "disable-fsckobjects": true
                 },
                 {
@@ -285,11 +285,11 @@
                     "dest-filename": "libfreehand-0.1.2.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-07-15.tar.bz2",
-                    "sha256": "2689f0a9a1fc21442d8097951fbca6d7013f9f9847f0b5e87144bd8e1355e052",
+                    "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-08-25.tar.bz2",
+                    "sha256": "9b008d21f97bbf37c5aefd07805ff5500524bccbe8c39d623e184b1ed425ff39",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "language-subtag-registry-2025-07-15.tar.bz2"
+                    "dest-filename": "language-subtag-registry-2025-08-25.tar.bz2"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.7.tar.bz2",
@@ -390,11 +390,11 @@
                     "dest-filename": "26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.15-src.tar.gz",
-                    "sha256": "b593fdd3d5b8964a9feec2bf57a13e6cc8f178a4fe948e89f60ede9c53d621fe",
+                    "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.3.17-src.tar.gz",
+                    "sha256": "a5abb7331508988f7287b481c1839bd929261ce38352cd0fde6c002c300e0c01",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "mariadb-connector-c-3.3.15-src.tar.gz"
+                    "dest-filename": "mariadb-connector-c-3.3.17-src.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/mdds-3.1.0.tar.xz",
@@ -516,11 +516,11 @@
                     "dest-filename": "liborcus-0.20.1.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/poppler-25.08.0.tar.xz",
-                    "sha256": "425ed4d4515a093bdcdbbaac6876f20617451edc710df6a4fd6c45dd67eb418d",
+                    "url": "https://dev-www.libreoffice.org/src/poppler-25.09.1.tar.xz",
+                    "sha256": "0c1091d01d3dd1664a13816861e812d02b29201e96665454b81b52d261fad658",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "poppler-25.08.0.tar.xz"
+                    "dest-filename": "poppler-25.09.1.tar.xz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -768,11 +768,11 @@
                     "dest-filename": "libnumbertext-1.0.11.tar.xz"
                 },
                 {
-                    "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.8.2.tar.gz",
-                    "sha256": "d305207fe207f2b3fb5cb4c019da12b44ce3fcbc593dfd5080d867b1a2419b51",
+                    "url": "https://dev-www.libreoffice.org/src/libatomic_ops-7.8.4.tar.gz",
+                    "sha256": "2356e002e80ef695875e971d6a4fd8c61ca5c6fa4fd1bf31cce54a269c8bfcd5",
                     "type": "file",
                     "dest": "external/tarballs",
-                    "dest-filename": "libatomic_ops-7.8.2.tar.gz"
+                    "dest-filename": "libatomic_ops-7.8.4.tar.gz"
                 },
                 {
                     "url": "https://dev-www.libreoffice.org/src/skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz",
