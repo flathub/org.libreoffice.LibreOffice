@@ -16,6 +16,26 @@
             ]
         },
         {
+            "name": "gtk4",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dbuild-examples=false",
+                "-Dbuild-demos=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk/4.20/gtk-4.20.3.tar.xz",
+                    "sha256": "2873f2903088a66c71173ea2ed85ffae266a66b972c3a4842bbb2f6f187ec153",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "gtk",
+                        "stable-only": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "gvfs",
             "buildsystem": "meson",
             "config-opts": [
@@ -861,7 +881,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "./autogen.sh --prefix=/run/build/libreoffice/inst --with-distro=LibreOfficeFlatpak --without-system-colamd --with-gdrive-client-id=280867422816-9jc83t6phkfb2q8p94dtk8kr5fa8af3r.apps.googleusercontent.com --with-gdrive-client-secret=Hnzikj7HqdqsUYLru4jmFo1p",
+                "./autogen.sh --prefix=/run/build/libreoffice/inst --enable-gtk4 --with-distro=LibreOfficeFlatpak --without-system-colamd --with-gdrive-client-id=280867422816-9jc83t6phkfb2q8p94dtk8kr5fa8af3r.apps.googleusercontent.com --with-gdrive-client-secret=Hnzikj7HqdqsUYLru4jmFo1p",
                 "make",
                 "make distro-pack-install",
                 "make cmd cmd='$(SRCDIR)/solenv/bin/assemble-flatpak.sh'",
