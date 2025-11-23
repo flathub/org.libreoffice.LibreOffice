@@ -1,8 +1,8 @@
 {
     "id": "org.libreoffice.LibreOffice",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "49",
-    "sdk": "org.gnome.Sdk",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "25.08",
+    "sdk": "org.freedesktop.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.openjdk21"
     ],
@@ -13,6 +13,28 @@
             "buildsystem": "simple",
             "build-commands": [
                 "/usr/lib/sdk/openjdk21/install.sh"
+            ]
+        },
+        {
+            "name": "gtk4",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dbuild-examples=false",
+                "-Dbuild-demos=false",
+                "-Dcolord=enabled",
+                "-Dcloudproviders=enabled"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk/4.20/gtk-4.20.3.tar.xz",
+                    "sha256": "2873f2903088a66c71173ea2ed85ffae266a66b972c3a4842bbb2f6f187ec153",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "gtk",
+                        "stable-only": true
+                    }
+                }
             ]
         },
         {
