@@ -21,7 +21,6 @@
             "config-opts": [
                 "-Dbuild-examples=false",
                 "-Dbuild-demos=false",
-                "-Dcolord=enabled",
                 "-Dcloudproviders=enabled"
             ],
             "sources": [
