@@ -133,11 +133,11 @@
         "dest-filename": "libassuan-3.0.2.tar.bz2"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.58.tar.bz2",
-        "sha256": "f943aea9a830a8bd938e5124b579efaece24a3225ff4c3d27611a80ce1260c27",
+        "url": "https://dev-www.libreoffice.org/src/libgpg-error-1.59.tar.bz2",
+        "sha256": "a19bc5087fd97026d93cb4b45d51638d1a25202a5e1fbc3905799f424cfa6134",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "libgpg-error-1.58.tar.bz2"
+        "dest-filename": "libgpg-error-1.59.tar.bz2"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/libabw-0.1.3.tar.xz",
@@ -742,11 +742,11 @@
         "dest-filename": "phc-winner-argon2-20190702.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.54.tar.xz",
-        "sha256": "01c9d8a303c941ec2c511c14312a3b1d36cedb41e2f5168ccdaa85d53b887805",
+        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.55.tar.xz",
+        "sha256": "d925722864837ad5ae2a82070d4b2e0603dc72af44bd457c3962298258b8e82d",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "libpng-1.6.54.tar.xz"
+        "dest-filename": "libpng-1.6.55.tar.xz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/libeot-0.01.tar.bz2",
