@@ -420,11 +420,11 @@
         "dest-filename": "liborcus-0.21.0.tar.xz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/poppler-26.01.0.tar.xz",
-        "sha256": "1cb944a4b88847f5fb6551683bc799db59f04990f5d8be07aba2acbf38601089",
+        "url": "https://dev-www.libreoffice.org/src/poppler-26.03.0.tar.xz",
+        "sha256": "8b3c5e2a9f2ab4c3ec5029f28af1b433c6b71f0d1e7b3997aa561cf1c0ca4ebe",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "poppler-26.01.0.tar.xz"
+        "dest-filename": "poppler-26.03.0.tar.xz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -434,11 +434,11 @@
         "dest-filename": "poppler-data-0.4.12.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/postgresql-15.15.tar.bz2",
-        "sha256": "5753aaeb8b09cbf61016f78aa69bf5cbdf01b43263f010cbf168c82896213aaa",
+        "url": "https://dev-www.libreoffice.org/src/postgresql-15.17.tar.bz2",
+        "sha256": "ae14f24c14727e0b2ded1c5553031666099bd1054db3ef44bfa6e2bd6d554a56",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "postgresql-15.15.tar.bz2"
+        "dest-filename": "postgresql-15.17.tar.bz2"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/raptor2-2.0.16.tar.gz",
