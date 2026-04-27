@@ -99,8 +99,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.14-bin.tar.bz2",
-                    "sha512": "05e9f786044b9ba0dcc5e2b40ed2bd4ecfb25896a453ba78e2d4df18896c6be7d1564fd615f483c90c0d26dd1e0fb507c778f0c10712818b1fc8c9acbc0a26c6",
+                    "url": "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.17-bin.tar.bz2",
+                    "sha512": "2b6fe559f0780a25ee0fb3c0b9a4639d30d605ab948058b8846f1b9fd89d8d70206ab3a8f6c9fd44ee90d0b0ed138f326939e733d984b9c0e6313de657cb769b",
                     "dest": "ant"
                 },
                 {
