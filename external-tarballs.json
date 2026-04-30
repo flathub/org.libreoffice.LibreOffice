@@ -406,11 +406,11 @@
         "dest-filename": "NotoSansLisu-v2.102.zip"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/openldap-2.6.12.tgz",
-        "sha256": "1716ad779e85d743694c3e3b05277fb71b6a5eadca43c7a958aa62683b22208e",
+        "url": "https://dev-www.libreoffice.org/src/openldap-2.6.13.tgz",
+        "sha256": "d693b49517a42efb85a1a364a310aed16a53d428d1b46c0d31ef3fba78fcb656",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "openldap-2.6.12.tgz"
+        "dest-filename": "openldap-2.6.13.tgz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/liborcus-0.21.0.tar.xz",
@@ -420,11 +420,11 @@
         "dest-filename": "liborcus-0.21.0.tar.xz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/poppler-26.03.0.tar.xz",
-        "sha256": "8b3c5e2a9f2ab4c3ec5029f28af1b433c6b71f0d1e7b3997aa561cf1c0ca4ebe",
+        "url": "https://dev-www.libreoffice.org/src/poppler-26.04.0.tar.xz",
+        "sha256": "b0955163114af96bc0106f68cb24daf973a629462453d8b82775f81b0d4e0693",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "poppler-26.03.0.tar.xz"
+        "dest-filename": "poppler-26.04.0.tar.xz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -742,11 +742,11 @@
         "dest-filename": "phc-winner-argon2-20190702.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.55.tar.xz",
-        "sha256": "d925722864837ad5ae2a82070d4b2e0603dc72af44bd457c3962298258b8e82d",
+        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.56.tar.xz",
+        "sha256": "f7d8bf1601b7804f583a254ab343a6549ca6cf27d255c302c47af2d9d36a6f18",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "libpng-1.6.55.tar.xz"
+        "dest-filename": "libpng-1.6.56.tar.xz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/libeot-0.01.tar.bz2",
