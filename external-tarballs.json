@@ -189,11 +189,11 @@
         "dest-filename": "libfreehand-0.1.2.tar.xz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2025-08-25.tar.bz2",
-        "sha256": "9b008d21f97bbf37c5aefd07805ff5500524bccbe8c39d623e184b1ed425ff39",
+        "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2026-04-21.tar.bz2",
+        "sha256": "0aef705315aeec1dc43052c920b1971f447f86aad3091e15a9bbc0390a3bc8ff",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "language-subtag-registry-2025-08-25.tar.bz2"
+        "dest-filename": "language-subtag-registry-2026-04-21.tar.bz2"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.8.tar.bz2",
@@ -742,11 +742,11 @@
         "dest-filename": "phc-winner-argon2-20190702.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.56.tar.xz",
-        "sha256": "f7d8bf1601b7804f583a254ab343a6549ca6cf27d255c302c47af2d9d36a6f18",
+        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.58.tar.xz",
+        "sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "libpng-1.6.56.tar.xz"
+        "dest-filename": "libpng-1.6.58.tar.xz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/libeot-0.01.tar.bz2",
