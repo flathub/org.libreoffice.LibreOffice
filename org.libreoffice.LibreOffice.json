@@ -143,7 +143,7 @@
         "--socket=pulseaudio",
         "--socket=cups",
         "--device=dri",
-        "--filesystem=xdg-config/gtk-3.0",
+        "--filesystem=xdg-config/gtk-3.0:ro",
         "--filesystem=xdg-config/fontconfig:ro",
         "--filesystem=xdg-run/gvfsd",
         "--filesystem=host",
