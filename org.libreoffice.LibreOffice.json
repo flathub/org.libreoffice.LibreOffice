@@ -151,6 +151,7 @@
         "--env=GIO_EXTRA_MODULES=/app/lib/gio/modules",
         "--env=JAVA_HOME=/app/jre",
         "--env=LIBO_FLATPAK=1",
+        "--env=QT_QPA_PLATFORMTHEME=kde",
         "--own-name=org.libreoffice.LibreOfficeIpc0",
         "--talk-name=org.gtk.vfs.*"
     ]
