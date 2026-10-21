@@ -153,6 +153,9 @@
         "--env=LIBO_FLATPAK=1",
         "--env=QT_QPA_PLATFORMTHEME=kde",
         "--own-name=org.libreoffice.LibreOfficeIpc0",
-        "--talk-name=org.gtk.vfs.*"
+        "--talk-name=org.gtk.vfs.*",
+        "--talk-name=org.kde.kiod6",
+        "--system-talk-name=org.freedesktop.UDisks2"
+        
     ]
 }
