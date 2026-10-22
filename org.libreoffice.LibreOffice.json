@@ -145,6 +145,7 @@
         "--socket=cups",
         "--device=dri",
         "--filesystem=xdg-config/gtk-3.0:ro",
+        "--filesystem=xdg-data/user-places.xbel:ro",
         "--filesystem=xdg-config/fontconfig:ro",
         "--filesystem=xdg-run/gvfsd",
         "--filesystem=host",
