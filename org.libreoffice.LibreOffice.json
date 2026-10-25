@@ -148,6 +148,7 @@
         "--filesystem=xdg-config/fontconfig:ro",
         "--filesystem=xdg-run/gvfsd",
         "--filesystem=host",
+        "--filesystem=xdg-data/user-places.xbel:ro",
         "--env=GIO_EXTRA_MODULES=/app/lib/gio/modules",
         "--env=JAVA_HOME=/app/jre",
         "--env=LIBO_FLATPAK=1",
