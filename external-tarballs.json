@@ -1,10 +1,10 @@
 [
     {
-        "url": "https://dev-www.libreoffice.org/src/pdfium-7681.tar.bz2",
-        "sha256": "8de122fff74461770c9ca93ca3e6ca946b077f9110d562f40815e187e1255774",
+        "url": "https://dev-www.libreoffice.org/src/pdfium-8073.tar.bz2",
+        "sha256": "a3624f6f0ac46a7e190969d405aa7a07dbc342baf69f81192487575bf64055a5",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "pdfium-7681.tar.bz2"
+        "dest-filename": "pdfium-8073.tar.bz2"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/afdko-4.0.3.tar.gz",
@@ -98,11 +98,11 @@
         "dest-filename": "cppunit-1.15.1.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/Firebird-3.0.13.33818-0.tar.bz2",
-        "sha256": "bd263c4f685fb8fc3f1dcb8be8a411033cc31c5404d1dfce5d3849aa3f63a64d",
+        "url": "https://dev-www.libreoffice.org/src/Firebird-3.0.14.33856-0.tar.bz2",
+        "sha256": "dce3f26c0f015b3c40f36085f8cc21de58dd568e0f347fdd0fcc7942deda8cff",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "Firebird-3.0.13.33818-0.tar.bz2"
+        "dest-filename": "Firebird-3.0.14.33856-0.tar.bz2"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/glm-1.0.3.zip",
@@ -182,11 +182,11 @@
         "dest-filename": "libfreehand-0.1.4.tar.xz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2026-08-08.tar.bz2",
-        "sha256": "48293d95a13372f3e5bae04890d7d54ef4168b2469060e8e49cf60461cfc616f",
+        "url": "https://dev-www.libreoffice.org/src/language-subtag-registry-2026-9-17.tar.bz2",
+        "sha256": "10223cc8c219427c86a4c66ce98282a00c7f4d9b0609355146282344783007f2",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "language-subtag-registry-2026-08-08.tar.bz2"
+        "dest-filename": "language-subtag-registry-2026-9-17.tar.bz2"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/liblangtag-0.6.8.tar.bz2",
@@ -287,11 +287,11 @@
         "dest-filename": "26b3e95ddf3d9c077c480ea45874b3b8-lp_solve_5.5.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.4.9-src.tar.gz",
-        "sha256": "a84bba97e59b6a322637a189964d4fd72bd8d92f2d22a9f8d6a5f0657c821e97",
+        "url": "https://dev-www.libreoffice.org/src/mariadb-connector-c-3.4.11-src.tar.gz",
+        "sha256": "521c0712e9291fa96558df9e2ff431376a3a79329f13751896b694cae12765b4",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "mariadb-connector-c-3.4.9-src.tar.gz"
+        "dest-filename": "mariadb-connector-c-3.4.11-src.tar.gz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/mdds-3.2.1.tar.xz",
@@ -413,11 +413,11 @@
         "dest-filename": "liborcus-0.21.0.tar.xz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/poppler-26.08.0.tar.xz",
-        "sha256": "dc906e68cea698109706ac6aa3d2c9d4512fcfcac42d90b8afcda486d1b9abd0",
+        "url": "https://dev-www.libreoffice.org/src/poppler-26.10.0.tar.xz",
+        "sha256": "6792cb7c69205007ad87d2e936cecc5b3a31fac29ab54ffc3175fdb6b2a6ce35",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "poppler-26.08.0.tar.xz"
+        "dest-filename": "poppler-26.10.0.tar.xz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/poppler-data-0.4.12.tar.gz",
@@ -735,11 +735,11 @@
         "dest-filename": "phc-winner-argon2-20190702.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.58.tar.xz",
-        "sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775",
+        "url": "https://dev-www.libreoffice.org/src/libpng-1.6.59.tar.xz",
+        "sha256": "d80dd2a38a37f803cb9b6ac7b14bd6e74ddc3b654780a8380bdf93523fdb4389",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "libpng-1.6.58.tar.xz"
+        "dest-filename": "libpng-1.6.59.tar.xz"
     },
     {
         "url": "https://dev-www.libreoffice.org/src/libeot-0.01.tar.bz2",
@@ -763,11 +763,11 @@
         "dest-filename": "fast_float-8.2.10.tar.gz"
     },
     {
-        "url": "https://dev-www.libreoffice.org/src/md4c-release-0.5.3.tar.gz",
-        "sha256": "353c346f376b87c954a13f3415ede2d51264cc61dc5abcd38ff1d2aa0d059b9e",
+        "url": "https://dev-www.libreoffice.org/src/md4c-0.6.0.tar.gz",
+        "sha256": "4d151298125a81da3b2efa2e0eed8bdb7a9318569804e4fa4d7a2375ab83ef70",
         "type": "file",
         "dest": "external/tarballs",
-        "dest-filename": "md4c-release-0.5.3.tar.gz"
+        "dest-filename": "md4c-0.6.0.tar.gz"
     },
     {
         "url": "https://dev-www.libreoffice.org/extern/f543e6e2d7275557a839a164941c0a86e5f2c3f2a0042bfc434c88c6dde9e140-opens___.ttf",
